@@ -1,16 +1,18 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
+use_frameworks!
 
 target 'HampKit' do
-  use_frameworks!
-
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
 
   target 'HampKitTests' do
-    inherit! :search_paths
+      pod 'Firebase/Auth'
+      pod 'Firebase/Database'
+      pod 'Firebase/Core'
+      pod 'Firebase/Messaging'
   end
 
 end
