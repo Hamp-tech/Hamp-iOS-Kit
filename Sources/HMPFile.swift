@@ -43,3 +43,9 @@ extension HMPFile {
     }
 }
 
+extension HMPFile : Equatable {
+    public static func ==(lhs: HMPFile, rhs: HMPFile) -> Bool {
+        return lhs.route == rhs.route
+    }
+}
+
