@@ -13,6 +13,7 @@ public struct HMPFile {
     // - MARK : Public propertes
     public private(set) var filename : String
     public private(set) var filepath : String
+    public private(set) var route : String
     
     // - MARK: Initializers
     
@@ -22,12 +23,14 @@ public struct HMPFile {
     /// - Parameter filename: name of file
     public init(filename : String, ofType : String) throws{
         self.filename = filename + "." + ofType
+        self.filepath = Bundle.main.bundlePath
         
         guard let path = Bundle.main.path(forResource: filename, ofType: ofType) else {
             throw FileError.missingFileError
         }
         
-        self.filepath = path
+        self.route = path
+        
     }
 }
 

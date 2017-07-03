@@ -24,6 +24,24 @@ class HampKitTests: XCTestCase {
     func testConstructor_True() {
         let file = try? HMPFile(filename: "Info", ofType: "plist")
         XCTAssertEqual("Info.plist", file!.filename)
+        XCTAssertEqual(file?.filepath, mainBundlePath())
+        XCTAssertEqual(file!.filepath + file!.filename, mainBundlePath() + "Info.plist")
+    }
+    
+    func testThrow_True_FileMissing() {
+        XCTAssertThrowsError(try HMPFile(filename: "info", ofType: "plist")) { error in
+            XCTAssertEqual(error as? HMPFile.FileError, HMPFile.FileError.missingFileError)
+        }
+    }
+    
+    func testThrow_False_FileMissing() {
+        XCTAssertNoThrow(try HMPFile(filename: "Info", ofType: "plist"))
     }
         
+}
+
+extension HampKitTests {
+    fileprivate func mainBundlePath() -> String {
+       return Bundle.main.bundlePath
+    }
 }
