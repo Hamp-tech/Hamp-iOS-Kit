@@ -25,7 +25,7 @@ class HampKitTests: XCTestCase {
         let file = try? HMPFile(filename: "Info", ofType: "plist")
         XCTAssertEqual("Info.plist", file!.filename)
         XCTAssertEqual(file?.filepath, mainBundlePath())
-        XCTAssertEqual(file!.filepath + file!.filename, mainBundlePath() + "Info.plist")
+        XCTAssertEqual(file!.route, mainBundlePath() + "/Info.plist")
     }
     
     func testThrow_True_FileMissing() {

@@ -16,7 +16,6 @@ public struct HMPFile {
     public private(set) var route : String
     
     // - MARK: Initializers
-    
     // TODO: Write description
     /// Description
     ///
