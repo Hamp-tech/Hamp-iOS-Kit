@@ -10,9 +10,12 @@ import Foundation
 
 public class HMPEnvironment {
     
-    //MARK - Properties
+    // MARK: Properties
     public private(set) var name : String
     public private(set) var file : HMPFile
+    
+    
+    // MARK: Constructor
     
     /// Create a new environtment
     ///
