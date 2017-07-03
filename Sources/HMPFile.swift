@@ -35,6 +35,10 @@ public struct HMPFile {
 }
 
 extension HMPFile {
+    
+    /// Errors indicating the different problems finding a file
+    ///
+    /// - missingFileError: file doesn't exists
     enum FileError : Swift.Error {
         case missingFileError
     }
