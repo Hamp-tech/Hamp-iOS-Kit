@@ -16,8 +16,19 @@ public struct HMPManager {
     
     //MARK - Properties
     public private(set) var environtment : HMPEnvironment
+    public private(set) var configured : Bool
     
     init(environtment : HMPEnvironment) {
         self.environtment = environtment
+        self.configured = false
+    }
+    
+    //MARK - Public API
+    
+    /// Connect to firebase
+    public mutating func connect() {
+        let options = FirebaseOptions.init(contentsOfFile: environtment.file.route)
+        FirebaseApp.configure(options: options!)
+        configured = true
     }
 }
