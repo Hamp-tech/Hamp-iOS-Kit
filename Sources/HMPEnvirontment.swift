@@ -25,6 +25,12 @@ public class HMPEnvironment {
     }
 }
 
+extension HMPEnvironment : Equatable {
+    public static func ==(lhs: HMPEnvironment, rhs: HMPEnvironment) -> Bool {
+        return lhs.name == rhs.name && lhs.file == rhs.file
+    }
+}
+
 
 
 
