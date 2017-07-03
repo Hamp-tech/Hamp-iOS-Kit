@@ -7,3 +7,34 @@
 //
 
 import Foundation
+
+public class HMPEnvironment {
+    
+    //MARK - 
+    public private(set) var name : String
+    public private(set) var file : HMPFile
+    
+    /// Create a new environtment
+    ///
+    /// - Parameters:
+    ///   - name: environtment name
+    ///   - file: firebase file path
+    public init(name : String, file : HMPFile) {
+        self.name = name
+        self.file = file
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
