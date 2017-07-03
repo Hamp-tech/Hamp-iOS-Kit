@@ -24,4 +24,24 @@ class HampKitEnviromentTests: XCTestCase {
         XCTAssertEqual(e.name, "Production")
         XCTAssertEqual(e.file, f)
     }
+    
+    func testEquatable_True() {
+        let f1 = try! HMPFile(filename: "Info", ofType: "plist")
+        let e1 = HMPEnvironment(name: "Production", file: f1)
+        
+        let f2 = try! HMPFile(filename: "Info", ofType: "plist")
+        let e2 = HMPEnvironment(name: "Production", file: f2)
+        
+        XCTAssertTrue(e1 == e2)
+    }
+    
+    func testEquatable_False() {
+        let f1 = try! HMPFile(filename: "Info", ofType: "plist")
+        let e1 = HMPEnvironment(name: "Production", file: f1)
+        
+        let f2 = try! HMPFile(filename: "Info", ofType: "plist")
+        let e2 = HMPEnvironment(name: "Development", file: f2)
+        
+        XCTAssertFalse(e1 == e2)
+    }
 }
