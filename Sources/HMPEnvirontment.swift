@@ -10,7 +10,7 @@ import Foundation
 
 public class HMPEnvironment {
     
-    //MARK - 
+    //MARK - Properties
     public private(set) var name : String
     public private(set) var file : HMPFile
     

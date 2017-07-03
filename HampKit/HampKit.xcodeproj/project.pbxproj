@@ -14,6 +14,7 @@
 		4E5B08E61F047BA500236A9E /* HMPFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HMPFile.swift */; };
 		4E7D19971F04860E00231234 /* HMPFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HMPFile.swift */; };
 		4E881E371F0484EE00DB700E /* HampKitFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E881E361F0484EE00DB700E /* HampKitFileTests.swift */; };
+		4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */; };
 		7A4DA6F8D8FCD7054E9F1560 /* Pods_HampKit_HampKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE8D9D0465669BA02232D74 /* Pods_HampKit_HampKitTests.framework */; };
 		E04B20A9F4F99841943FDFB6 /* Pods_HampKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */; };
 /* End PBXBuildFile section */
@@ -359,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */,
 				4E7D19971F04860E00231234 /* HMPFile.swift in Sources */,
 				4E881E371F0484EE00DB700E /* HampKitFileTests.swift in Sources */,
 				4E23560B1F0A93C8006F7161 /* HampKitEnviromentTests.swift in Sources */,

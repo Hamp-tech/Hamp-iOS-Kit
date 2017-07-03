@@ -10,5 +10,18 @@ import XCTest
 @testable import HampKit
 
 class HampKitEnviromentTests: XCTestCase {
-
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    func testConstructor_FileExists() {
+        let f = try! HMPFile(filename: "Info", ofType: "plist")
+        let e = HMPEnvironment(name: "Production", file: f)
+        XCTAssertEqual(e.name, "Production")
+        XCTAssertEqual(e.file, f)
+    }
 }
