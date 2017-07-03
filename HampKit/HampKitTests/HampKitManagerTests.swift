@@ -23,11 +23,21 @@ class HampKitManagerTests: XCTestCase {
         let manager = HMPManager.sharedManager!
         let env = manager.environtment
         XCTAssertEqual(env, try! HMPFirebaseFilesProvider.defaultEnvirontment())
+        XCTAssertFalse(manager.configured)
     }
     
     func testConstructor_True() {
         let env = HMPEnvironment(name: "Development", file: try! HMPFile(filename: "GoogleService-Info", ofType: "plist"))
         let manager = HMPManager(environtment: env)
         XCTAssertEqual(env, manager.environtment)
+        XCTAssertFalse(manager.configured)
+    }
+    
+    func testConnect() {
+        let env = HMPEnvironment(name: "Development", file: try! HMPFile(filename: "GoogleService-Info", ofType: "plist"))
+        var manager = HMPManager(environtment: env)
+        manager.connect()
+        XCTAssertTrue(manager.configured)
+        
     }
 }
