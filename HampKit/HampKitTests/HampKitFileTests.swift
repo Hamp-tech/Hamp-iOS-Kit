@@ -9,7 +9,7 @@
 import XCTest
 @testable import HampKit
 
-class HampKitTests: XCTestCase {
+class HampKitFileTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -40,7 +40,7 @@ class HampKitTests: XCTestCase {
         
 }
 
-extension HampKitTests {
+extension HampKitFileTests {
     fileprivate func mainBundlePath() -> String {
        return Bundle.main.bundlePath
     }
