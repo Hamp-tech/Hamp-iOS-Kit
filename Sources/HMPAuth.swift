@@ -19,23 +19,23 @@ public struct HMPAuth {
     /// - Parameters:
     ///   - mail: email to log in
     ///   - password: password to log in
-    ///   - successBlock: block called if all was successfull
-    ///   - errorBlock: block called if error ocurred
+    ///   - onSuccess: block called if all was successfull
+    ///   - onError: block called if error ocurred
     public static func signIn(
-        withEmail email : String,
-        password : String,
-        successBlock: SuccessBlock,
-        errorBlock: ErrorBlock) {
+        withEmail email: String,
+        password: String,
+        onSuccess: SuccessBlock = nil,
+        onError: ErrorBlock = nil) {
         
         managerConfiguredChecker()
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             print(user as Any)
-            if let e = error, let eBlock = errorBlock {
+            if let e = error, let eBlock = onError {
                 let code = (e as NSError).code
                 let authError = AuthError.error(by : code)
                 eBlock(authError)
-            } else if let sBlock = successBlock {
+            } else if let sBlock = onSuccess {
                 let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
                 sBlock(user)
             }
@@ -47,13 +47,13 @@ public struct HMPAuth {
     /// - Parameters:
     ///   - mail: email to log in
     ///   - password: password to log in
-    ///   - successBlock: block called if all was successfull
-    ///   - errorBlock: block called if error ocurred
+    ///   - onSuccess: block called if all was successfull
+    ///   - onError: block called if error ocurred
     public static func signUp(
-        withEmail email : String,
-        password : String,
-        successBlock: SuccessBlock,
-        errorBlock: ErrorBlock) {
+        withEmail email: String,
+        password: String,
+        onSuccess: SuccessBlock,
+        onError: ErrorBlock) {
         
         managerConfiguredChecker()
         
@@ -62,11 +62,11 @@ public struct HMPAuth {
     /// Sign out on firebase
     ///
     /// - Parameters:
-    ///   - success: block called if all was successfull
-    ///   - error: block called if error ocurred
+    ///   - onSuccess: block called if all was successfull
+    ///   - onError: block called if error ocurredd
     public static func signOut(
-        successBlock : SuccessBlock,
-        errorBlock : ErrorBlock) {
+        onSuccess: SuccessBlock,
+        onError: ErrorBlock) {
         
         managerConfiguredChecker()
         
@@ -76,12 +76,12 @@ public struct HMPAuth {
     ///
     /// - Parameters:
     ///   - accessToken: token retrieved from facebook sdk
-    ///   - successBlock: block called if all was successfull
-    ///   - errorBlock: block called if error ocurred
+    ///   - onSuccess: block called if all was successfull
+    ///   - onError: block called if error ocurredd
     public static func singInWithFacebook(
-        accessToken : String,
-        successBlock: SuccessBlock,
-        errorBlock: ErrorBlock) {
+        accessToken: String,
+        onSuccess: SuccessBlock,
+        onError: ErrorBlock) {
         
         managerConfiguredChecker()
         
@@ -98,9 +98,6 @@ extension HMPAuth {
 
 extension HMPAuth {
     /// Errors indicating the different problems authenticating users
-    ///
-    /// - ConnectionUnavailable: Connection to internet not reachable
-    /// - BadCredentials: Email or password wrong
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
     public enum AuthError : Swift.Error, CustomStringConvertible {
         case UserDisabled
