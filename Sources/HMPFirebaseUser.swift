@@ -13,3 +13,11 @@ public struct HMPFirebaseUser {
     var uid : String
     var email : String
 }
+
+extension HMPFirebaseUser : Equatable {
+    public static func ==(lhs: HMPFirebaseUser, rhs: HMPFirebaseUser) -> Bool {
+        return lhs.uid == rhs.uid && lhs.email == rhs.email
+    }
+    
+    
+}
