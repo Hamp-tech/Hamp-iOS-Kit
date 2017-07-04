@@ -17,6 +17,10 @@
 		4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */; };
 		4E93D2001F0AA1BF00442673 /* HMPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D1FF1F0AA1BF00442673 /* HMPManager.swift */; };
 		4E93D2041F0AA59C00442673 /* HMPFirebaseFilesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */; };
+		4EB3C98D1F0BB68800183EFB /* HMPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98C1F0BB68800183EFB /* HMPAuth.swift */; };
+		4EB3C98F1F0BB78F00183EFB /* HMPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98E1F0BB78F00183EFB /* HMPUser.swift */; };
+		4EB3C9901F0BB78F00183EFB /* HMPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98E1F0BB78F00183EFB /* HMPUser.swift */; };
+		4EB3C9911F0BB79700183EFB /* HMPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98C1F0BB68800183EFB /* HMPAuth.swift */; };
 		4EE2866B1F0AA600001F1071 /* HampKitManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */; };
 		4EE2866C1F0AA63C001F1071 /* HMPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D1FF1F0AA1BF00442673 /* HMPManager.swift */; };
 		4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */; };
@@ -50,6 +54,8 @@
 		4E881E381F0484EE00DB700E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E93D1FF1F0AA1BF00442673 /* HMPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPManager.swift; path = ../Sources/HMPManager.swift; sourceTree = "<group>"; };
 		4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseFilesProvider.swift; path = ../Sources/HMPFirebaseFilesProvider.swift; sourceTree = "<group>"; };
+		4EB3C98C1F0BB68800183EFB /* HMPAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPAuth.swift; path = ../Sources/HMPAuth.swift; sourceTree = "<group>"; };
+		4EB3C98E1F0BB78F00183EFB /* HMPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPUser.swift; path = ../Sources/HMPUser.swift; sourceTree = "<group>"; };
 		4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitManagerTests.swift; sourceTree = "<group>"; };
 		4EE2866E1F0AA797001F1071 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CB9AC343DA4BE670916D2C1 /* Pods-HampKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 				4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */,
 				4E93D1FF1F0AA1BF00442673 /* HMPManager.swift */,
 				4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */,
+				4EB3C98C1F0BB68800183EFB /* HMPAuth.swift */,
+				4EB3C98E1F0BB78F00183EFB /* HMPUser.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -366,6 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */,
+				4EB3C98F1F0BB78F00183EFB /* HMPUser.swift in Sources */,
+				4EB3C98D1F0BB68800183EFB /* HMPAuth.swift in Sources */,
 				4E5B08E61F047BA500236A9E /* HMPFile.swift in Sources */,
 				4E93D2041F0AA59C00442673 /* HMPFirebaseFilesProvider.swift in Sources */,
 				4E2356091F0A8C21006F7161 /* HMPEnvirontment.swift in Sources */,
@@ -377,10 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB3C9911F0BB79700183EFB /* HMPAuth.swift in Sources */,
 				4EE2866C1F0AA63C001F1071 /* HMPManager.swift in Sources */,
 				4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */,
 				4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */,
 				4E7D19971F04860E00231234 /* HMPFile.swift in Sources */,
+				4EB3C9901F0BB78F00183EFB /* HMPUser.swift in Sources */,
 				4EE2866B1F0AA600001F1071 /* HampKitManagerTests.swift in Sources */,
 				4E881E371F0484EE00DB700E /* HampKitFileTests.swift in Sources */,
 				4E23560B1F0A93C8006F7161 /* HampKitEnviromentTests.swift in Sources */,
