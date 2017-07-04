@@ -1,5 +1,5 @@
 //
-//  HMPUser.swift
+//  HMPFirebaseUser.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 4/7/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HMPUser {
+public struct HMPFirebaseUser {
     //MARK: Properties
     var uid : String
     var email : String
