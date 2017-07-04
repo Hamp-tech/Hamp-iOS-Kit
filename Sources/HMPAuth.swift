@@ -33,7 +33,7 @@ public struct HMPAuth {
             print(user as Any)
             if let e = error, let eBlock = onError {
                 let code = (e as NSError).code
-                let authError = AuthError.error(by : code)
+                let authError = AuthError(rawValue: code)
                 eBlock(authError)
             } else if let sBlock = onSuccess {
                 let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
@@ -100,86 +100,76 @@ extension HMPAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
     public enum AuthError : Swift.Error, CustomStringConvertible {
-        case UserDisabled
-        case EmailAlreadyInUse
-        case InvalidEmail
-        case WrongPassword
-        case UserNotFound
-        case RecentLogin
-        case NetworkError
-        case WeakPassword
-        case Unknown
+        case userDisabled
+        case emailAlreadyInUse
+        case invalidEmail
+        case wrongPassword
+        case userNotFound
+        case recentLogin
+        case networkError
+        case weakPassword
+        case unknown
+        
+        /// Instance new error by code
+        ///
+        /// - Parameter rawValue: <#rawValue description#>
+        init(rawValue: Int) {
+            switch rawValue {
+            case 17005: self = .userDisabled
+            case 17007: self = .emailAlreadyInUse
+            case 17008: self = .invalidEmail
+            case 17009: self = .wrongPassword
+            case 17011: self = .userNotFound
+            case 17014: self = .recentLogin
+            case 17020: self = .networkError
+            case 17026: self = .weakPassword
+            default: self = .unknown
+            }
+        }
         
         /// Code number for each error
         public var code : Int {
             switch self {
-            case .UserDisabled:
+            case .userDisabled:
                 return 17005
-            case .EmailAlreadyInUse:
+            case .emailAlreadyInUse:
                 return 17007
-            case .InvalidEmail:
+            case .invalidEmail:
                 return 17008
-            case .WrongPassword:
+            case .wrongPassword:
                 return 17009
-            case .UserNotFound:
+            case .userNotFound:
                 return 17011
-            case .RecentLogin:
+            case .recentLogin:
                 return 17014
-            case .NetworkError:
+            case .networkError:
                 return 17020
-            case .WeakPassword:
+            case .weakPassword:
                 return 17026
-            case .Unknown:
+            case .unknown:
                 return 17999
-            }
-        }
-        
-        /// Return an error by code
-        ///
-        /// - Parameter code: error code
-        /// - Returns: AuthError indicating error for the parameters code
-        public static func error(by code: Int) -> AuthError {
-            switch code {
-            case 17005:
-                return .UserDisabled
-            case 17007:
-                return .EmailAlreadyInUse
-            case 17008:
-                return .InvalidEmail
-            case 17009:
-                return .WrongPassword
-            case 17011:
-                return .UserNotFound
-            case 17014:
-                return .RecentLogin
-            case 17020:
-                return .NetworkError
-            case 17026:
-                return .WeakPassword
-            default :
-                return .Unknown
             }
         }
         
         public var description: String {
             switch self {
-            case .UserDisabled:
+            case .userDisabled:
                 return "17005"
-            case .EmailAlreadyInUse:
+            case .emailAlreadyInUse:
                 return "17007"
-            case .InvalidEmail:
+            case .invalidEmail:
                 return "17008"
-            case .WrongPassword:
+            case .wrongPassword:
                 return "17009"
-            case .UserNotFound:
+            case .userNotFound:
                 return "17011"
-            case .RecentLogin:
+            case .recentLogin:
                 return "17014"
-            case .NetworkError:
+            case .networkError:
                 return "17020"
-            case .WeakPassword:
+            case .weakPassword:
                 return "17026"
-            case .Unknown:
+            case .unknown:
                 return "17999"
             }
         }
