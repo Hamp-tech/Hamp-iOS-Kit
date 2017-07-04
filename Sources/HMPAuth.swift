@@ -27,6 +27,7 @@ public struct HMPAuth {
         successBlock: SuccessBlock,
         errorBlock: ErrorBlock) {
         
+        managerConfiguredChecker()
     }
     
     /// Sign up to firebase
@@ -42,6 +43,8 @@ public struct HMPAuth {
         successBlock: SuccessBlock,
         errorBlock: ErrorBlock) {
         
+        managerConfiguredChecker()
+        
     }
     
     /// Sign out on firebase
@@ -52,6 +55,8 @@ public struct HMPAuth {
     public static func signOut(
         success : SuccessBlock,
         error : ErrorBlock) {
+        
+        managerConfiguredChecker()
         
     }
     
@@ -66,7 +71,15 @@ public struct HMPAuth {
         successBlock: SuccessBlock,
         errorBlock: ErrorBlock) {
         
+        managerConfiguredChecker()
+        
     }
-    
-    
+}
+
+extension HMPAuth {
+    /// Check if manager is configured.
+    /// - If isn't configured, fire assert
+    private static func managerConfiguredChecker() {
+        assert(HMPManager.sharedManager!.configured, "Connect HMPManager")
+    }
 }

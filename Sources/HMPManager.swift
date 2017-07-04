@@ -13,7 +13,7 @@ public struct HMPManager {
     // MARK: Class properties
     
     /// Singleton with a default configuration:
-    public static let sharedManager = try? HMPManager(environtment : HMPFirebaseFilesProvider.defaultEnvirontment())
+    public static var sharedManager = try? HMPManager(environtment : HMPFirebaseFilesProvider.defaultEnvirontment())
     
     // MARK: Properties
     public private(set) var environtment : HMPEnvironment
