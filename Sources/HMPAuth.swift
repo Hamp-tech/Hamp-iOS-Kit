@@ -35,9 +35,9 @@ public struct HMPAuth {
                 let code = (e as NSError).code
                 let authError = AuthError.error(by : code)
                 eBlock(authError)
-            } else {
+            } else if let sBlock = successBlock {
                 let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
-                print(user)
+                sBlock(user)
             }
         }
     }
