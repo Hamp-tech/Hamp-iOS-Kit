@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>421636865291-heupfir91fpl2c307a64283mtm74i4cu.apps.googleusercontent.com</string>
+	<string>874157671570-9jubnepj39vbjoqdb551lo2mftcujn93.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.421636865291-heupfir91fpl2c307a64283mtm74i4cu</string>
+	<string>com.googleusercontent.apps.874157671570-9jubnepj39vbjoqdb551lo2mftcujn93</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA71IDcIh-rIWoP-eR6biWU1dqZFPE9Uic</string>
+	<string>AIzaSyCgN_oDOTsNXuwCedlyE45dc1t6-k00BJI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>421636865291</string>
+	<string>874157671570</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>netfactorial.zonetacts</string>
+	<string>com.hamp</string>
 	<key>PROJECT_ID</key>
-	<string>zonetacts-1229</string>
+	<string>hamp-57b75</string>
 	<key>STORAGE_BUCKET</key>
-	<string>zonetacts-1229.appspot.com</string>
+	<string>hamp-57b75.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:421636865291:ios:7c321633c5781bbf</string>
+	<string>1:874157671570:ios:baf10ef19207d7b5</string>
 	<key>DATABASE_URL</key>
-	<string>https://zonetacts-1229.firebaseio.com</string>
+	<string>https://hamp-57b75.firebaseio.com</string>
 </dict>
 </plist>
