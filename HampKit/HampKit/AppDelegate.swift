@@ -16,11 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         HMPManager.sharedManager?.connect()
-        HMPAuth.signIn(withEmail: "test@test.com", password: "arcanin", onSuccess: { (user) in
-            
-        }, onError: { (error) in
-            
-        })
         return true
     }
 

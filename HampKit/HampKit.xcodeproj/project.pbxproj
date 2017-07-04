@@ -22,6 +22,7 @@
 		4EB3C98F1F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */; };
 		4EB3C9901F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */; };
 		4EB3C9911F0BB79700183EFB /* HMPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98C1F0BB68800183EFB /* HMPAuth.swift */; };
+		4ECFBB181F0BE2070097BC91 /* HampKitAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFBB171F0BE2070097BC91 /* HampKitAuthTests.swift */; };
 		4EE2866B1F0AA600001F1071 /* HampKitManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */; };
 		4EE2866C1F0AA63C001F1071 /* HMPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D1FF1F0AA1BF00442673 /* HMPManager.swift */; };
 		4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */; };
@@ -57,6 +58,7 @@
 		4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseFilesProvider.swift; path = ../Sources/HMPFirebaseFilesProvider.swift; sourceTree = "<group>"; };
 		4EB3C98C1F0BB68800183EFB /* HMPAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPAuth.swift; path = ../Sources/HMPAuth.swift; sourceTree = "<group>"; };
 		4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseUser.swift; path = ../Sources/HMPFirebaseUser.swift; sourceTree = "<group>"; };
+		4ECFBB171F0BE2070097BC91 /* HampKitAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitAuthTests.swift; sourceTree = "<group>"; };
 		4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitManagerTests.swift; sourceTree = "<group>"; };
 		6CB9AC343DA4BE670916D2C1 /* Pods-HampKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		860AD15CD5553611C2383A9F /* Pods-HampKit-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				4E881E361F0484EE00DB700E /* HampKitFileTests.swift */,
 				4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */,
 				4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */,
+				4ECFBB171F0BE2070097BC91 /* HampKitAuthTests.swift */,
 			);
 			path = HampKitTests;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECFBB181F0BE2070097BC91 /* HampKitAuthTests.swift in Sources */,
 				4EB3C9911F0BB79700183EFB /* HMPAuth.swift in Sources */,
 				4EE2866C1F0AA63C001F1071 /* HMPManager.swift in Sources */,
 				4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */,
@@ -521,6 +525,7 @@
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = U9QF88MGC2;
 				INFOPLIST_FILE = HampKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamp.HampKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,6 +542,7 @@
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = U9QF88MGC2;
 				INFOPLIST_FILE = HampKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamp.HampKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

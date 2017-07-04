@@ -7,29 +7,46 @@
 //
 
 import XCTest
+@testable import HampKit
 
 class HampKitAuthTests: XCTestCase {
     
+    var expectedUser : HMPFirebaseUser!
+    var connected = false
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        if !connected {
+            HMPManager.sharedManager?.connect()
+            connected = true
+        }
+        expectedUser = HMPFirebaseUser(uid: "EdsmCnKNbte96H927URdTeOYVH62", email: "test@test.com")
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testSigninWithEmailPassword_True_AllValid() {
+        let exp = self.expectation(description: "myExpectation")
+        
+        HMPAuth.signIn(
+            withEmail: "test@test.com",
+            password: "arcanine",
+            onSuccess: { (user) in
+                XCTAssertEqual(user, self.expectedUser!)
+                exp.fulfill()
+        },
+            onError: { (error) in
+                XCTAssertTrue(false)
+                exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
-    
 }
+
