@@ -163,15 +163,15 @@ class HampKitAuthTests: XCTestCase {
             password: "arcanine",
             onSuccess: { (user) in
                 XCTAssertEqual(user, self.expectedUser!)
-                exp.fulfill()
-                
                 XCTAssertNotNil(HMPFirebaseAuth.currentUser())
                 
                 HMPFirebaseAuth.signOut(
                     onSuccess: {
                         XCTAssertNil(HMPFirebaseAuth.currentUser())
+                        exp.fulfill()
                 },  onError: { (error) in
                         XCTAssertFalse(true)
+                        exp.fulfill()
                 })
         }, onError: { (error) in
             XCTAssertTrue(false)
