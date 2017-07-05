@@ -30,13 +30,12 @@ public class HampFirebaseDatabaseConnector <T : HampFirebaseObject> {
     private var changedHandler : DatabaseHandle?
     private var movedHandler : DatabaseHandle?
     private var valueHandler : DatabaseHandle?
+    private var tableName : String!
     
     
     /// Create new databaseConnector
-    ///
-    /// - Parameter name: firebase table name
-    public init(name : String) {
-        self.name = name
+    public init() {
+        self.name = T.tableName
     }
 }
 
