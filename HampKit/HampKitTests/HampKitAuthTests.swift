@@ -16,9 +16,8 @@ class HampKitAuthTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        if !connected {
+        if !(HMPManager.sharedManager?.configured)! {
             HMPManager.sharedManager?.connect()
-            connected = true
         }
         expectedUser = HMPFirebaseUser(uid: "EdsmCnKNbte96H927URdTeOYVH62", email: "test@test.com")
     }
@@ -47,10 +46,30 @@ class HampKitAuthTests: XCTestCase {
         }
     }
     
+    func testSigninWithEmailPassword_True_Error17009() {
+        let exp = self.expectation(description: "Sign in error 17009")
+        HMPAuth.signIn(
+            withEmail: "test@test.com",
+            password: "arcanine1",
+            onSuccess: { (user) in
+                XCTAssertTrue(false)
+                exp.fulfill()
+        },  onError: { (error) in
+                XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.wrongPassword)
+                exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     func testCreateUserWithEmailPassword_AllValid() {
         //If fire onErrorBlock, run again the test
         
-        let exp = self.expectation(description: "New user correct ")
+        let exp = self.expectation(description: "New user correct")
         
         HMPAuth.createUser(
             withEmail: "test\(arc4random_uniform(100)+1)@test.com",
@@ -72,7 +91,7 @@ class HampKitAuthTests: XCTestCase {
     }
     
     func testCreateUserWithEmailPassword_Error17007() {
-        let exp = self.expectation(description: "New user correct ")
+        let exp = self.expectation(description: "New user error 17007")
         
         HMPAuth.createUser(
             withEmail: "test@test.com",
@@ -93,7 +112,7 @@ class HampKitAuthTests: XCTestCase {
     }
     
     func testCreateUserWithEmailPassword_Error17026() {
-        let exp = self.expectation(description: "New user correct ")
+        let exp = self.expectation(description: "New user error 17026")
         
         HMPAuth.createUser(
             withEmail: "test1@test.com",
@@ -114,7 +133,7 @@ class HampKitAuthTests: XCTestCase {
     }
     
     func testCreateUserWithEmailPassword_Error17008() {
-        let exp = self.expectation(description: "New user correct ")
+        let exp = self.expectation(description: "New user error 17026 17008")
         
         HMPAuth.createUser(
             withEmail: "test1",
