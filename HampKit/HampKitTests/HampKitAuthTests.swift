@@ -28,7 +28,7 @@ class HampKitAuthTests: XCTestCase {
     
     func testSigninWithEmailPassword_True_AllValid() {
         let exp = self.expectation(description: "Sign in correct")
-        HMPAuth.signIn(
+        HMPFirebaseAuth.signIn(
             withEmail: "test@test.com",
             password: "arcanine",
             onSuccess: { (user) in
@@ -48,14 +48,14 @@ class HampKitAuthTests: XCTestCase {
     
     func testSigninWithEmailPassword_True_Error17009() {
         let exp = self.expectation(description: "Sign in error 17009")
-        HMPAuth.signIn(
+        HMPFirebaseAuth.signIn(
             withEmail: "test@test.com",
             password: "arcanine1",
             onSuccess: { (user) in
                 XCTAssertTrue(false)
                 exp.fulfill()
         },  onError: { (error) in
-            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.wrongPassword)
+            XCTAssertEqual(error as! HMPFirebaseAuth.AuthError, HMPFirebaseAuth.AuthError.wrongPassword)
             exp.fulfill()
         })
         
@@ -71,7 +71,7 @@ class HampKitAuthTests: XCTestCase {
         
         let exp = self.expectation(description: "New user correct")
         
-        HMPAuth.createUser(
+        HMPFirebaseAuth.createUser(
             withEmail: "test\(arc4random_uniform(100)+1)@test.com",
             password: "123456789",
             onSuccess: { (user) in
@@ -93,14 +93,14 @@ class HampKitAuthTests: XCTestCase {
     func testCreateUserWithEmailPassword_Error17007() {
         let exp = self.expectation(description: "New user error 17007")
         
-        HMPAuth.createUser(
+        HMPFirebaseAuth.createUser(
             withEmail: "test@test.com",
             password: "123456789",
             onSuccess: { (user) in
                 XCTAssertFalse(true)
                 exp.fulfill()
         }, onError: { (error) in
-            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.emailAlreadyInUse)
+            XCTAssertEqual(error as! HMPFirebaseAuth.AuthError, HMPFirebaseAuth.AuthError.emailAlreadyInUse)
             exp.fulfill()
         })
         
@@ -114,14 +114,14 @@ class HampKitAuthTests: XCTestCase {
     func testCreateUserWithEmailPassword_Error17026() {
         let exp = self.expectation(description: "New user error 17026")
         
-        HMPAuth.createUser(
+        HMPFirebaseAuth.createUser(
             withEmail: "test1@test.com",
             password: "123",
             onSuccess: { (user) in
                 XCTAssertFalse(true)
                 exp.fulfill()
         }, onError: { (error) in
-            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.weakPassword)
+            XCTAssertEqual(error as! HMPFirebaseAuth.AuthError, HMPFirebaseAuth.AuthError.weakPassword)
             exp.fulfill()
         })
         
@@ -135,14 +135,14 @@ class HampKitAuthTests: XCTestCase {
     func testCreateUserWithEmailPassword_Error17008() {
         let exp = self.expectation(description: "New user error 17008")
         
-        HMPAuth.createUser(
+        HMPFirebaseAuth.createUser(
             withEmail: "test1",
             password: "1232345341",
             onSuccess: { (user) in
                 XCTAssertFalse(true)
                 exp.fulfill()
         }, onError: { (error) in
-            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.invalidEmail)
+            XCTAssertEqual(error as! HMPFirebaseAuth.AuthError, HMPFirebaseAuth.AuthError.invalidEmail)
             exp.fulfill()
         })
         
@@ -158,18 +158,18 @@ class HampKitAuthTests: XCTestCase {
         
         let exp = self.expectation(description: "Sign out correct")
         
-        HMPAuth.signIn(
+        HMPFirebaseAuth.signIn(
             withEmail: "test@test.com",
             password: "arcanine",
             onSuccess: { (user) in
                 XCTAssertEqual(user, self.expectedUser!)
                 exp.fulfill()
                 
-                XCTAssertNotNil(HMPAuth.currentUser())
+                XCTAssertNotNil(HMPFirebaseAuth.currentUser())
                 
-                HMPAuth.signOut(
+                HMPFirebaseAuth.signOut(
                     onSuccess: {
-                        XCTAssertNil(HMPAuth.currentUser())
+                        XCTAssertNil(HMPFirebaseAuth.currentUser())
                 },  onError: { (error) in
                         XCTAssertFalse(true)
                 })
@@ -191,11 +191,11 @@ class HampKitAuthTests: XCTestCase {
         
         let exp = self.expectation(description: "Sign out error 17011")
         
-        HMPAuth.signOut(onSuccess: {
+        HMPFirebaseAuth.signOut(onSuccess: {
             XCTAssertTrue(false)
             exp.fulfill()
         }, onError : { (error) in
-            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.userNotFound)
+            XCTAssertEqual(error as! HMPFirebaseAuth.AuthError, HMPFirebaseAuth.AuthError.userNotFound)
             exp.fulfill()
         })
         

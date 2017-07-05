@@ -1,5 +1,5 @@
 //
-//  HMPAuth.swift
+//  HMPFirebaseAuth.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 4/7/17.
@@ -13,7 +13,7 @@ public typealias SuccessBlockWithUser = ((HMPFirebaseUser) -> ())?
 public typealias ErrorBlock = ((Error) -> ())?
 public typealias SuccessBlock = (() -> ())?
 
-public struct HMPAuth {
+public struct HMPFirebaseAuth {
     
     /// Log in to firebase
     ///
@@ -133,7 +133,7 @@ public struct HMPAuth {
     }
 }
 
-extension HMPAuth {
+extension HMPFirebaseAuth {
     /// Check if manager is configured.
     /// - If isn't configured, fire assert
     private static func managerConfiguredChecker() {
@@ -141,7 +141,7 @@ extension HMPAuth {
     }
 }
 
-extension HMPAuth {
+extension HMPFirebaseAuth {
     public static func currentUser() -> HMPFirebaseUser?{
         guard let user = Auth.auth().currentUser else { return nil }
         
@@ -149,7 +149,7 @@ extension HMPAuth {
     }
 }
 
-extension HMPAuth {
+extension HMPFirebaseAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
     public enum AuthError : Swift.Error, CustomStringConvertible, Equatable {
