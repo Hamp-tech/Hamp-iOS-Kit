@@ -19,7 +19,7 @@ public protocol DatabaseConnectorDelegate : class {
 
 public class HampFirebaseDatabaseConnector <T : HampFirebaseObject> {
     //MARK: Public Properties
-    public var delegate : DatabaseConnectorDelegate?
+    public weak var delegate : DatabaseConnectorDelegate?
     public private(set) var name : String
     public private(set) var connected = false
     
@@ -30,12 +30,18 @@ public class HampFirebaseDatabaseConnector <T : HampFirebaseObject> {
     private var changedHandler : DatabaseHandle?
     private var movedHandler : DatabaseHandle?
     private var valueHandler : DatabaseHandle?
-    private var tableName : String!
     
     
     /// Create new databaseConnector
     public init() {
         self.name = T.tableName
+    }
+    
+    /// Create a new databaseConnector
+    ///
+    /// - Parameter path: path to table
+    fileprivate init(path : String) {
+        self.name = path
     }
 }
 
@@ -61,23 +67,39 @@ extension HampFirebaseDatabaseConnector {
         }
     }
     
+    /// Observe a collection of events
+    ///
+    /// - Parameter types: collection of events
+    public func observe(of
+        types : [DatabaseEvent]) {
+        types.forEach { type in observe(of: type) }
+    }
+    
+    /// Get all objects of table with tableName
+    ///
+    /// - Parameters:
+    ///   - type: Type of observer
+    ///   - onSuccess: success block with all table objects
     public func observeSingleEvent(
         of type : DatabaseEvent,
         onSuccess : @escaping ([HampFirebaseObject]) -> ()) {
         
         databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
-            var lockers = [HampLocker]()
+            var objects = [HampLocker]()
             
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let restDict = child.value as? [String: Any] else { continue }
-                let locker = HampLocker(identifier: child.key, properties: restDict)
-                lockers.append(locker)
+                let object = HampLocker(identifier: child.key, properties: restDict)
+                objects.append(object)
             }
             
-           onSuccess(lockers)
+           onSuccess(objects)
         }
     }
     
+    /// Remove an observer
+    ///
+    /// - Parameter type: observer type
     public func remove(
         of type : DatabaseEvent) {
         
@@ -99,6 +121,14 @@ extension HampFirebaseDatabaseConnector {
     }
 }
 
+extension HampFirebaseDatabaseConnector {
+    //MARK: Class functions
+    public func child(childID : String) -> HampFirebaseDatabaseConnector {
+        let childPath = "\(name)/\(childID)"
+        return HampFirebaseDatabaseConnector<T>(path: childPath)
+    }
+}
+
 private extension HampFirebaseDatabaseConnector {
     //MARK: Private API
     //https://stackoverflow.com/questions/24320347/shall-we-always-use-unowned-self-inside-closure-in-swift
@@ -108,8 +138,9 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child added event
     private func observeChildAdded() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childAdded) { (snapshot) in
-//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key)
-//            self.delegate?.connector(connector: self, didAddedNewObject: obj)
+            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
+            self.delegate?.connector(connector: self, didAddedNewObject: obj)
+            
         }
     }
     
@@ -118,8 +149,8 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child removed event
     private func observeChildRemove() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childRemoved, with: { (snapshot) in
-//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
-//            self.delegate?.connector(connector: self, didRemoveObject: obj)
+            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
+            self.delegate?.connector(connector: self, didRemoveObject: obj)
         })
     }
     
@@ -128,8 +159,8 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child changed event
     private func observeChildChanged() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
-//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
-//            self.delegate?.connector(connector: self, didChangedObject: obj)
+            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
+            self.delegate?.connector(connector: self, didChangedObject: obj)
         })
     }
     
@@ -138,8 +169,8 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child changed event
     private func observeChildMoved() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childMoved, with: { (snapshot) in
-//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
-//            self.delegate?.connector(connector: self, didMovedObject: obj)
+            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
+            self.delegate?.connector(connector: self, didMovedObject: obj)
         })
     }
     
@@ -147,9 +178,9 @@ private extension HampFirebaseDatabaseConnector {
     ///
     /// - Returns: database handler linked with child value event
     private func observeValue() -> DatabaseHandle {
-        return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
-//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
-//            self.delegate?.connector(connector: self, fireEventObject: obj)
+        return databaseReference.child(name).observe(DataEventType.value, with: { (snapshot) in
+            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
+            self.delegate?.connector(connector: self, fireEventObject: obj)
         })
     }
 }
