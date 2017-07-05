@@ -131,7 +131,7 @@ extension HMPAuth {
 extension HMPAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
-    public enum AuthError : Swift.Error, CustomStringConvertible {
+    public enum AuthError : Swift.Error, CustomStringConvertible, Equatable {
         case userDisabled
         case emailAlreadyInUse
         case invalidEmail
@@ -206,6 +206,9 @@ extension HMPAuth {
             }
         }
         
+        public static func ==(lhs: AuthError, rhs: AuthError) -> Bool {
+            return lhs.code == rhs.code
+        }
     }
 }
 
