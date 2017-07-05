@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E03FEF51F0D3E3000A62431 /* HampKitAuthErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */; };
 		4E2356091F0A8C21006F7161 /* HMPEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */; };
 		4E23560B1F0A93C8006F7161 /* HampKitEnviromentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */; };
 		4E4D03711F0BCB2200660330 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		29A29BE8B8B5A81E5374D121 /* Pods-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HampKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitAuthErrorsTests.swift; sourceTree = "<group>"; };
 		4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPEnvirontment.swift; path = ../Sources/HMPEnvirontment.swift; sourceTree = "<group>"; };
 		4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitEnviromentTests.swift; sourceTree = "<group>"; };
 		4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */,
 				4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */,
 				4ECFBB171F0BE2070097BC91 /* HampKitAuthTests.swift */,
+				4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */,
 			);
 			path = HampKitTests;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				4EE2866C1F0AA63C001F1071 /* HMPManager.swift in Sources */,
 				4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */,
 				4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */,
+				4E03FEF51F0D3E3000A62431 /* HampKitAuthErrorsTests.swift in Sources */,
 				4E7D19971F04860E00231234 /* HMPFile.swift in Sources */,
 				4EB3C9901F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */,
 				4EE2866B1F0AA600001F1071 /* HampKitManagerTests.swift in Sources */,
