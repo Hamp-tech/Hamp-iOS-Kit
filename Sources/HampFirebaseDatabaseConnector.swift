@@ -63,10 +63,18 @@ extension HampFirebaseDatabaseConnector {
     
     public func observeSingleEvent(
         of type : DatabaseEvent,
-        objects : ([HampFirebaseObject]?) -> ()) {
+        onSuccess : @escaping ([HampFirebaseObject]) -> ()) {
         
         databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
-            //TODO: Implement
+            var lockers = [HampLocker]()
+            
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                guard let restDict = child.value as? [String: Any] else { continue }
+                let locker = HampLocker(identifier: child.key, properties: restDict)
+                lockers.append(locker)
+            }
+            
+           onSuccess(lockers)
         }
     }
     
