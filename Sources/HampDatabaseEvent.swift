@@ -1,5 +1,5 @@
 //
-//  HMPDatabaseEvent.swift
+//  HampDatabaseEvent.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 5/7/17.

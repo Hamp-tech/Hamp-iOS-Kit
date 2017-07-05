@@ -1,5 +1,5 @@
 //
-//  HMPFirebaseFilesProvider.swift
+//  HampFirebaseFilesProvider.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 3/7/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HMPFirebaseFilesProvider {
+public struct HampFirebaseFilesProvider {
     /// Returns a "production" environment getting the default firebase plist name
     ///
     ///

@@ -1,5 +1,5 @@
 //
-//  HMPEnvirontment.swift
+//  HampEnvirontment.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 3/7/17.

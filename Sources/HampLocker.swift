@@ -1,5 +1,5 @@
 //
-//  HMPLocker.swift
+//  HampLocker.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 5/7/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HMPLocker : HMPFirebaseObject {
+public struct HampLocker : HampFirebaseObject {
     public var identifier: String
     public var booked : Bool
     public var lockerID : String

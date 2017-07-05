@@ -21,64 +21,64 @@ class HampKitAuthErrorsTests: XCTestCase {
     }
     
     func testError17005() {
-        let error = HMPFirebaseAuth.AuthError.userDisabled
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17005))
+        let error = HampFirebaseAuth.AuthError.userDisabled
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17005))
         XCTAssertEqual(error.code, 17005)
         XCTAssertEqual(error.description, "17005")
     }
     
     func testError17007() {
-        let error = HMPFirebaseAuth.AuthError.emailAlreadyInUse
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17007))
+        let error = HampFirebaseAuth.AuthError.emailAlreadyInUse
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17007))
         XCTAssertEqual(error.code, 17007)
         XCTAssertEqual(error.description, "17007")
     }
     
     func testError17008() {
-        let error = HMPFirebaseAuth.AuthError.invalidEmail
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17008))
+        let error = HampFirebaseAuth.AuthError.invalidEmail
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17008))
         XCTAssertEqual(error.code, 17008)
         XCTAssertEqual(error.description, "17008")
     }
     
     func testError17009() {
-        let error = HMPFirebaseAuth.AuthError.wrongPassword
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17009))
+        let error = HampFirebaseAuth.AuthError.wrongPassword
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17009))
         XCTAssertEqual(error.code, 17009)
         XCTAssertEqual(error.description, "17009")
     }
     
     func testError17011() {
-        let error = HMPFirebaseAuth.AuthError.userNotFound
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17011))
+        let error = HampFirebaseAuth.AuthError.userNotFound
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17011))
         XCTAssertEqual(error.code, 17011)
         XCTAssertEqual(error.description, "17011")
     }
     
     func testError17014() {
-        let error = HMPFirebaseAuth.AuthError.recentLogin
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17014))
+        let error = HampFirebaseAuth.AuthError.recentLogin
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17014))
         XCTAssertEqual(error.code, 17014)
         XCTAssertEqual(error.description, "17014")
     }
     
     func testError17020() {
-        let error = HMPFirebaseAuth.AuthError.networkError
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17020))
+        let error = HampFirebaseAuth.AuthError.networkError
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17020))
         XCTAssertEqual(error.code, 17020)
         XCTAssertEqual(error.description, "17020")
     }
     
     func testError17026() {
-        let error = HMPFirebaseAuth.AuthError.weakPassword
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17026))
+        let error = HampFirebaseAuth.AuthError.weakPassword
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17026))
         XCTAssertEqual(error.code, 17026)
         XCTAssertEqual(error.description, "17026")
     }
     
     func testError17999() {
-        let error = HMPFirebaseAuth.AuthError.unknown
-        XCTAssertEqual(error, HMPFirebaseAuth.AuthError(rawValue: 17123))
+        let error = HampFirebaseAuth.AuthError.unknown
+        XCTAssertEqual(error, HampFirebaseAuth.AuthError(rawValue: 17123))
         XCTAssertEqual(error.code, 17999)
         XCTAssertEqual(error.description, "17999")
     }

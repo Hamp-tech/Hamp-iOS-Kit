@@ -1,5 +1,5 @@
 //
-//  HMPManagerTests.swift
+//  HampManagerTests.swift
 //  HampKitTests
 //
 //  Created by Joan Molinas Ramon on 3/7/17.
@@ -20,9 +20,9 @@ class HampKitManagerTests: XCTestCase {
     }
     
     func testSingleton_True() {
-        let manager = HMPFirebaseManager.sharedManager!
+        let manager = HampFirebaseManager.sharedManager!
         let env = manager.environtment
-        XCTAssertEqual(env, try! HMPFirebaseFilesProvider.defaultEnvirontment())
+        XCTAssertEqual(env, try! HampFirebaseFilesProvider.defaultEnvirontment())
         XCTAssertFalse(manager.configured)
     }
     

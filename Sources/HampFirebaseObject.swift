@@ -1,5 +1,5 @@
 //
-//  HMPFirebaseObject.swift
+//  HampFirebaseObject.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 5/7/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol HMPFirebaseObject {
+public protocol HampFirebaseObject {
     /// Properties
     var identifier : String { get }
     

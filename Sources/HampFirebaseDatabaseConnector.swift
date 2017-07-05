@@ -1,5 +1,5 @@
 //
-//  HMPFirebaseDatabaseConnector.swift
+//  HampFirebaseDatabaseConnector.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 5/7/17.
@@ -10,14 +10,14 @@ import Foundation
 import Firebase
 
 public protocol DatabaseConnectorDelegate : class {
-    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didAddedNewObject object: T)
-    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didRemoveObject object: T)
-    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didChangedObject object: T)
-    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didMovedObject object: T)
-    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, fireEventObject object: T)
+    func connector<T>(connector : HampFirebaseDatabaseConnector<T>, didAddedNewObject object: T)
+    func connector<T>(connector : HampFirebaseDatabaseConnector<T>, didRemoveObject object: T)
+    func connector<T>(connector : HampFirebaseDatabaseConnector<T>, didChangedObject object: T)
+    func connector<T>(connector : HampFirebaseDatabaseConnector<T>, didMovedObject object: T)
+    func connector<T>(connector : HampFirebaseDatabaseConnector<T>, fireEventObject object: T)
 }
 
-public class HMPFirebaseDatabaseConnector <T : HMPFirebaseObject> {
+public class HampFirebaseDatabaseConnector <T : HampFirebaseObject> {
     //MARK: Public Properties
     public var delegate : DatabaseConnectorDelegate?
     public private(set) var name : String
@@ -40,7 +40,7 @@ public class HMPFirebaseDatabaseConnector <T : HMPFirebaseObject> {
     }
 }
 
-extension HMPFirebaseDatabaseConnector {
+extension HampFirebaseDatabaseConnector {
     //MARK: Public API
     
     /// Observe firebase events
@@ -64,7 +64,7 @@ extension HMPFirebaseDatabaseConnector {
     
     public func observeSingleEvent(
         of type : DatabaseEvent,
-        objects : ([HMPFirebaseObject]?) -> ()) {
+        objects : ([HampFirebaseObject]?) -> ()) {
         
         databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
             //TODO: Implement
@@ -92,7 +92,7 @@ extension HMPFirebaseDatabaseConnector {
     }
 }
 
-private extension HMPFirebaseDatabaseConnector {
+private extension HampFirebaseDatabaseConnector {
     //MARK: Private API
     //https://stackoverflow.com/questions/24320347/shall-we-always-use-unowned-self-inside-closure-in-swift
     
@@ -101,7 +101,7 @@ private extension HMPFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child added event
     private func observeChildAdded() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childAdded) { (snapshot) in
-//            let obj = HMPFirebaseDatabaseObject(identifier: snapshot.key)
+//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key)
 //            self.delegate?.connector(connector: self, didAddedNewObject: obj)
         }
     }
@@ -111,7 +111,7 @@ private extension HMPFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child removed event
     private func observeChildRemove() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childRemoved, with: { (snapshot) in
-//            let obj = HMPFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
+//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
 //            self.delegate?.connector(connector: self, didRemoveObject: obj)
         })
     }
@@ -121,7 +121,7 @@ private extension HMPFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child changed event
     private func observeChildChanged() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
-//            let obj = HMPFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
+//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
 //            self.delegate?.connector(connector: self, didChangedObject: obj)
         })
     }
@@ -131,7 +131,7 @@ private extension HMPFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child changed event
     private func observeChildMoved() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childMoved, with: { (snapshot) in
-//            let obj = HMPFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
+//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
 //            self.delegate?.connector(connector: self, didMovedObject: obj)
         })
     }
@@ -141,7 +141,7 @@ private extension HMPFirebaseDatabaseConnector {
     /// - Returns: database handler linked with child value event
     private func observeValue() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
-//            let obj = HMPFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
+//            let obj = HampFirebaseDatabaseObject(identifier: snapshot.key, object: snapshot.value)
 //            self.delegate?.connector(connector: self, fireEventObject: obj)
         })
     }

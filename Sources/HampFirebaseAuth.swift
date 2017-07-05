@@ -1,5 +1,5 @@
 //
-//  HMPFirebaseAuth.swift
+//  HampFirebaseAuth.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 4/7/17.
@@ -9,11 +9,11 @@
 import Foundation
 import Firebase
 
-public typealias SuccessBlockWithUser = ((HMPFirebaseUser) -> ())?
+public typealias SuccessBlockWithUser = ((HampFirebaseUser) -> ())?
 public typealias ErrorBlock = ((Error) -> ())?
 public typealias SuccessBlock = (() -> ())?
 
-public struct HMPFirebaseAuth {
+public struct HampFirebaseAuth {
     
     /// Log in to firebase
     ///
@@ -38,7 +38,7 @@ public struct HMPFirebaseAuth {
             } else {
                 Auth.auth().addStateDidChangeListener({ (auth, user) in
                     if let user = user {
-                        let u = HMPFirebaseUser(uid: user.uid, email: user.email!)
+                        let u = HampFirebaseUser(uid: user.uid, email: user.email!)
                         onSuccess?(u)
                     }
                 })
@@ -68,7 +68,7 @@ public struct HMPFirebaseAuth {
                 let authError = AuthError(rawValue: code)
                 onError?(authError)
             } else {
-                let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
+                let user = HampFirebaseUser(uid: user!.uid, email: user!.email!)
                 onSuccess?(user)
             }
         }
@@ -126,30 +126,30 @@ public struct HMPFirebaseAuth {
                 let authError = AuthError(rawValue: code)
                 onError?(authError)
             } else {
-                let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
+                let user = HampFirebaseUser(uid: user!.uid, email: user!.email!)
                 onSuccess?(user)
             }
         }
     }
 }
 
-extension HMPFirebaseAuth {
+extension HampFirebaseAuth {
     /// Check if manager is configured.
     /// - If isn't configured, fire assert
     private static func managerConfiguredChecker() {
-        assert(HMPFirebaseManager.sharedManager!.configured, "Connect HMPFirebaseManager")
+        assert(HampFirebaseManager.sharedManager!.configured, "Connect HampFirebaseManager")
     }
 }
 
-extension HMPFirebaseAuth {
-    public static func currentUser() -> HMPFirebaseUser?{
+extension HampFirebaseAuth {
+    public static func currentUser() -> HampFirebaseUser?{
         guard let user = Auth.auth().currentUser else { return nil }
         
-        return HMPFirebaseUser(uid: user.uid, email: user.email!)
+        return HampFirebaseUser(uid: user.uid, email: user.email!)
     }
 }
 
-extension HMPFirebaseAuth {
+extension HampFirebaseAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
     public enum AuthError : Swift.Error, CustomStringConvertible, Equatable {

@@ -1,5 +1,5 @@
 //
-//  HMPFirebaseUser.swift
+//  HampFirebaseUser.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 4/7/17.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct HMPFirebaseUser {
+public struct HampFirebaseUser {
     //MARK: Properties
     var uid : String
     var email : String
 }
 
-extension HMPFirebaseUser : Equatable {
-    public static func ==(lhs: HMPFirebaseUser, rhs: HMPFirebaseUser) -> Bool {
+extension HampFirebaseUser : Equatable {
+    public static func ==(lhs: HampFirebaseUser, rhs: HampFirebaseUser) -> Bool {
         return lhs.uid == rhs.uid && lhs.email == rhs.email
     }
     
