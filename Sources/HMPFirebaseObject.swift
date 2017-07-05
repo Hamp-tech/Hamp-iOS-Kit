@@ -9,8 +9,13 @@
 import Foundation
 
 public protocol HMPFirebaseObject {
+    /// Properties
     var identifier : String { get }
-    var object : Any? { get set }
     
-    init(identifier : String, object : Any?) 
+    /// Abstract constructor to create a firebase object
+    ///
+    /// - Parameter identifier: object identifier
+    init(identifier : String)
 }
+
+

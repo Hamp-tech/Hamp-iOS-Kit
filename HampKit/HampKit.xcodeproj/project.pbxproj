@@ -29,7 +29,6 @@
 		4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */; };
 		4EFD28351F0D459A005AB098 /* HMPFirebaseDatabaseConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD28341F0D459A005AB098 /* HMPFirebaseDatabaseConnector.swift */; };
 		4EFD283B1F0D53A7005AB098 /* HMPFirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD283A1F0D53A7005AB098 /* HMPFirebaseObject.swift */; };
-		4EFD283D1F0D53E1005AB098 /* HMPFirebaseDatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD283C1F0D53E1005AB098 /* HMPFirebaseDatabaseObject.swift */; };
 		7A4DA6F8D8FCD7054E9F1560 /* Pods_HampKit_HampKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE8D9D0465669BA02232D74 /* Pods_HampKit_HampKitTests.framework */; };
 		E04B20A9F4F99841943FDFB6 /* Pods_HampKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */; };
 /* End PBXBuildFile section */
@@ -67,7 +66,6 @@
 		4EE2866A1F0AA600001F1071 /* HampKitManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitManagerTests.swift; sourceTree = "<group>"; };
 		4EFD28341F0D459A005AB098 /* HMPFirebaseDatabaseConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseDatabaseConnector.swift; path = ../Sources/HMPFirebaseDatabaseConnector.swift; sourceTree = "<group>"; };
 		4EFD283A1F0D53A7005AB098 /* HMPFirebaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMPFirebaseObject.swift; path = ../Sources/HMPFirebaseObject.swift; sourceTree = "<group>"; };
-		4EFD283C1F0D53E1005AB098 /* HMPFirebaseDatabaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseDatabaseObject.swift; path = ../Sources/HMPFirebaseDatabaseObject.swift; sourceTree = "<group>"; };
 		6CB9AC343DA4BE670916D2C1 /* Pods-HampKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		860AD15CD5553611C2383A9F /* Pods-HampKit-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		92CA31753B318C7843B71695 /* Pods-HampKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit/Pods-HampKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */,
 				4EFD28341F0D459A005AB098 /* HMPFirebaseDatabaseConnector.swift */,
 				4EFD283A1F0D53A7005AB098 /* HMPFirebaseObject.swift */,
-				4EFD283C1F0D53E1005AB098 /* HMPFirebaseDatabaseObject.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 				4EB3C98D1F0BB68800183EFB /* HMPFirebaseAuth.swift in Sources */,
 				4EFD283B1F0D53A7005AB098 /* HMPFirebaseObject.swift in Sources */,
 				4E5B08E61F047BA500236A9E /* HMPFile.swift in Sources */,
-				4EFD283D1F0D53E1005AB098 /* HMPFirebaseDatabaseObject.swift in Sources */,
 				4E93D2041F0AA59C00442673 /* HMPFirebaseFilesProvider.swift in Sources */,
 				4E2356091F0A8C21006F7161 /* HMPEnvirontment.swift in Sources */,
 				4E93D2001F0AA1BF00442673 /* HMPFirebaseManager.swift in Sources */,
