@@ -16,8 +16,8 @@ class HampKitAuthTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        if !(HMPManager.sharedManager?.configured)! {
-            HMPManager.sharedManager?.connect()
+        if !(HMPFirebaseManager.sharedManager?.configured)! {
+            HMPFirebaseManager.sharedManager?.connect()
         }
         expectedUser = HMPFirebaseUser(uid: "EdsmCnKNbte96H927URdTeOYVH62", email: "test@test.com")
     }

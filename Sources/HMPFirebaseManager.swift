@@ -1,5 +1,5 @@
 //
-//  HMPManager.swift
+//  HMPFirebaseManager.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 3/7/17.
@@ -9,11 +9,11 @@
 import Foundation
 import Firebase
 
-public struct HMPManager {
+public struct HMPFirebaseManager {
     // MARK: Class properties
     
     /// Singleton with a default configuration:
-    public static var sharedManager = try? HMPManager(environtment : HMPFirebaseFilesProvider.defaultEnvirontment())
+    public static var sharedManager = try? HMPFirebaseManager(environtment : HMPFirebaseFilesProvider.defaultEnvirontment())
     
     // MARK: Properties
     public private(set) var environtment : HMPEnvironment

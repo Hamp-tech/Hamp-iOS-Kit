@@ -137,7 +137,7 @@ extension HMPFirebaseAuth {
     /// Check if manager is configured.
     /// - If isn't configured, fire assert
     private static func managerConfiguredChecker() {
-        assert(HMPManager.sharedManager!.configured, "Connect HMPManager")
+        assert(HMPFirebaseManager.sharedManager!.configured, "Connect HMPFirebaseManager")
     }
 }
 
