@@ -9,8 +9,9 @@
 import Foundation
 import Firebase
 
-public typealias SuccessBlock = ((HMPFirebaseUser) -> ())?
+public typealias SuccessBlockWithUser = ((HMPFirebaseUser) -> ())?
 public typealias ErrorBlock = ((Error) -> ())?
+public typealias SuccessBlock = (() -> ())?
 
 public struct HMPAuth {
     
@@ -24,13 +25,12 @@ public struct HMPAuth {
     public static func signIn(
         withEmail email: String,
         password: String,
-        onSuccess: SuccessBlock = nil,
+        onSuccess: SuccessBlockWithUser = nil,
         onError: ErrorBlock = nil) {
         
         managerConfiguredChecker()
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            print(user as Any)
             if let e = error, let eBlock = onError {
                 let code = (e as NSError).code
                 let authError = AuthError(rawValue: code)
@@ -49,11 +49,11 @@ public struct HMPAuth {
     ///   - password: password to log in
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurred
-    public static func signUp(
+    public static func createUser(
         withEmail email: String,
         password: String,
-        onSuccess: SuccessBlock,
-        onError: ErrorBlock) {
+        onSuccess: SuccessBlockWithUser = nil,
+        onError: ErrorBlock = nil) {
         
         managerConfiguredChecker()
         
@@ -65,8 +65,8 @@ public struct HMPAuth {
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurredd
     public static func signOut(
-        onSuccess: SuccessBlock,
-        onError: ErrorBlock) {
+        onSuccess: SuccessBlock = nil,
+        onError: ErrorBlock = nil) {
         
         managerConfiguredChecker()
         
@@ -80,8 +80,8 @@ public struct HMPAuth {
     ///   - onError: block called if error ocurredd
     public static func singInWithFacebook(
         accessToken: String,
-        onSuccess: SuccessBlock,
-        onError: ErrorBlock) {
+        onSuccess: SuccessBlockWithUser = nil,
+        onError: ErrorBlock = nil) {
         
         managerConfiguredChecker()
         
