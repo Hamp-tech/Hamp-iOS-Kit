@@ -35,8 +35,8 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertEqual(user, self.expectedUser!)
                 exp.fulfill()
         },  onError: { (error) in
-                XCTAssertTrue(false)
-                exp.fulfill()
+            XCTAssertTrue(false)
+            exp.fulfill()
         })
         
         waitForExpectations(timeout: 10) { (error) in
@@ -55,8 +55,8 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertTrue(false)
                 exp.fulfill()
         },  onError: { (error) in
-                XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.wrongPassword)
-                exp.fulfill()
+            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.wrongPassword)
+            exp.fulfill()
         })
         
         waitForExpectations(timeout: 10) { (error) in
@@ -79,8 +79,8 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertTrue(user.email.count > 0)
                 exp.fulfill()
         }, onError: { (error) in
-                XCTAssertFalse(true)
-                exp.fulfill()
+            XCTAssertFalse(true)
+            exp.fulfill()
         })
         
         waitForExpectations(timeout: 10) { (error) in
@@ -133,7 +133,7 @@ class HampKitAuthTests: XCTestCase {
     }
     
     func testCreateUserWithEmailPassword_Error17008() {
-        let exp = self.expectation(description: "New user error 17026 17008")
+        let exp = self.expectation(description: "New user error 17008")
         
         HMPAuth.createUser(
             withEmail: "test1",
@@ -152,5 +152,60 @@ class HampKitAuthTests: XCTestCase {
             }
         }
     }
+    
+    func testSignOut_AllValid() {
+        //Execute sign in first
+        
+        let exp = self.expectation(description: "Sign out correct")
+        
+        HMPAuth.signIn(
+            withEmail: "test@test.com",
+            password: "arcanine",
+            onSuccess: { (user) in
+                XCTAssertEqual(user, self.expectedUser!)
+                exp.fulfill()
+                
+                XCTAssertNotNil(HMPAuth.currentUser())
+                
+                HMPAuth.signOut(
+                    onSuccess: {
+                        XCTAssertNil(HMPAuth.currentUser())
+                },  onError: { (error) in
+                        XCTAssertFalse(true)
+                })
+        }, onError: { (error) in
+            XCTAssertTrue(false)
+            exp.fulfill()
+        })
+        
+        
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testSignOut_Error17011() {
+        
+        let exp = self.expectation(description: "Sign out error 17011")
+        
+        HMPAuth.signOut(onSuccess: {
+            XCTAssertTrue(false)
+            exp.fulfill()
+        }, onError : { (error) in
+            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.userNotFound)
+            exp.fulfill()
+        })
+        
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
+
 
