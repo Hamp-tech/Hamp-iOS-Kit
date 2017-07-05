@@ -28,18 +28,103 @@ class HampKitAuthTests: XCTestCase {
     }
     
     func testSigninWithEmailPassword_True_AllValid() {
-        let exp = self.expectation(description: "myExpectation")
-        
+        let exp = self.expectation(description: "Sign in correct")
         HMPAuth.signIn(
             withEmail: "test@test.com",
             password: "arcanine",
             onSuccess: { (user) in
                 XCTAssertEqual(user, self.expectedUser!)
                 exp.fulfill()
-        },
-            onError: { (error) in
+        },  onError: { (error) in
                 XCTAssertTrue(false)
                 exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testCreateUserWithEmailPassword_AllValid() {
+        //If fire onErrorBlock, run again the test
+        
+        let exp = self.expectation(description: "New user correct ")
+        
+        HMPAuth.createUser(
+            withEmail: "test\(arc4random_uniform(100)+1)@test.com",
+            password: "123456789",
+            onSuccess: { (user) in
+                XCTAssertTrue(user.uid.count > 0)
+                XCTAssertTrue(user.email.count > 0)
+                exp.fulfill()
+        }, onError: { (error) in
+                XCTAssertFalse(true)
+                exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testCreateUserWithEmailPassword_Error17007() {
+        let exp = self.expectation(description: "New user correct ")
+        
+        HMPAuth.createUser(
+            withEmail: "test@test.com",
+            password: "123456789",
+            onSuccess: { (user) in
+                XCTAssertFalse(true)
+                exp.fulfill()
+        }, onError: { (error) in
+            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.emailAlreadyInUse)
+            exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testCreateUserWithEmailPassword_Error17026() {
+        let exp = self.expectation(description: "New user correct ")
+        
+        HMPAuth.createUser(
+            withEmail: "test1@test.com",
+            password: "123",
+            onSuccess: { (user) in
+                XCTAssertFalse(true)
+                exp.fulfill()
+        }, onError: { (error) in
+            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.weakPassword)
+            exp.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testCreateUserWithEmailPassword_Error17008() {
+        let exp = self.expectation(description: "New user correct ")
+        
+        HMPAuth.createUser(
+            withEmail: "test1",
+            password: "1232345341",
+            onSuccess: { (user) in
+                XCTAssertFalse(true)
+                exp.fulfill()
+        }, onError: { (error) in
+            XCTAssertEqual(error as! HMPAuth.AuthError, HMPAuth.AuthError.invalidEmail)
+            exp.fulfill()
         })
         
         waitForExpectations(timeout: 10) { (error) in
