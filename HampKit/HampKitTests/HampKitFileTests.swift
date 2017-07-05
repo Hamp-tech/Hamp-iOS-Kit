@@ -20,31 +20,31 @@ class HampKitFileTests: XCTestCase {
     }
     
     func testConstructor_True() {
-        let file = try? HMPFile(filename: "Info", ofType: "plist")
+        let file = try? HampFile(filename: "Info", ofType: "plist")
         XCTAssertEqual("Info.plist", file!.filename)
         XCTAssertEqual(file?.filepath, mainBundlePath())
         XCTAssertEqual(file!.route, mainBundlePath() + "/Info.plist")
     }
     
     func testThrow_True_FileMissing() {
-        XCTAssertThrowsError(try HMPFile(filename: "info", ofType: "plist")) { error in
-            XCTAssertEqual(error as? HMPFile.FileError, HMPFile.FileError.missingFileError)
+        XCTAssertThrowsError(try HampFile(filename: "info", ofType: "plist")) { error in
+            XCTAssertEqual(error as? HampFile.FileError, HampFile.FileError.missingFileError)
         }
     }
     
     func testThrow_False_FileMissing() {
-        XCTAssertNoThrow(try HMPFile(filename: "Info", ofType: "plist"))
+        XCTAssertNoThrow(try HampFile(filename: "Info", ofType: "plist"))
     }
     
     func testEquatable_True_SameFiles() {
-        let f1 = try? HMPFile(filename: "Info", ofType: "plist")
-        let f2 = try? HMPFile(filename: "Info", ofType: "plist")
+        let f1 = try? HampFile(filename: "Info", ofType: "plist")
+        let f2 = try? HampFile(filename: "Info", ofType: "plist")
         XCTAssertTrue(f1 == f2)
     }
     
     func testEquatable_False_DifferentFiles() {
-        let f1 = try? HMPFile(filename: "Info", ofType: "plist")
-        let f2 = try? HMPFile(filename: "info", ofType: "plist")
+        let f1 = try? HampFile(filename: "Info", ofType: "plist")
+        let f2 = try? HampFile(filename: "info", ofType: "plist")
         XCTAssertFalse(f1 == f2)
     }
         

@@ -14,8 +14,8 @@ public struct HMPFirebaseFilesProvider {
     ///
     /// - Returns: Environment with a default firebase plist name
     /// - Throws: File missing
-    public static func defaultEnvirontment() throws -> HMPEnvironment {
-        let file = try HMPFile(filename: "GoogleService-Info", ofType: "plist")
-        return HMPEnvironment(name: "Production", file: file)
+    public static func defaultEnvirontment() throws -> HampEnvironment {
+        let file = try HampFile(filename: "GoogleService-Info", ofType: "plist")
+        return HampEnvironment(name: "Production", file: file)
     }
 }

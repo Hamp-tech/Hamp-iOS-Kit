@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        HMPManager.sharedManager?.connect()
+        HMPFirebaseManager.sharedManager?.connect()
+        HMPFirebaseAuth.signIn(withEmail: "test@test.com", password: "arcanine")
+        HMPFirebaseDatabaseConnector<HMPLocker>(name: "locker").observeSingleEvent(of: DatabaseEvent.value) { (objects) in
+            
+        }
         return true
     }
 

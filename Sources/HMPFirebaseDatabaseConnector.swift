@@ -9,15 +9,15 @@
 import Foundation
 import Firebase
 
-public protocol DatabaseConnectorDelegate {
-    func connector(connector : HMPFirebaseDatabaseConnector, didAddedNewObject object: HMPFirebaseObject)
-    func connector(connector : HMPFirebaseDatabaseConnector, didRemoveObject object: HMPFirebaseObject)
-    func connector(connector : HMPFirebaseDatabaseConnector, didChangedObject object: HMPFirebaseObject)
-    func connector(connector : HMPFirebaseDatabaseConnector, didMovedObject object: HMPFirebaseObject)
-    func connector(connector : HMPFirebaseDatabaseConnector, fireEventObject object: HMPFirebaseObject)
+public protocol DatabaseConnectorDelegate : class {
+    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didAddedNewObject object: T)
+    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didRemoveObject object: T)
+    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didChangedObject object: T)
+    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, didMovedObject object: T)
+    func connector<T>(connector : HMPFirebaseDatabaseConnector<T>, fireEventObject object: T)
 }
 
-public class HMPFirebaseDatabaseConnector {
+public class HMPFirebaseDatabaseConnector <T : HMPFirebaseObject> {
     //MARK: Public Properties
     public var delegate : DatabaseConnectorDelegate?
     public private(set) var name : String
@@ -47,7 +47,7 @@ extension HMPFirebaseDatabaseConnector {
     ///
     /// - Parameter type: event to observe
     public func observe(
-        of type : Event) {
+        of type : DatabaseEvent) {
         switch type {
         case .added:
             addedHandler = observeChildAdded()
@@ -63,7 +63,7 @@ extension HMPFirebaseDatabaseConnector {
     }
     
     public func observeSingleEvent(
-        of type : Event,
+        of type : DatabaseEvent,
         objects : ([HMPFirebaseObject]?) -> ()) {
         
         databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
@@ -72,7 +72,7 @@ extension HMPFirebaseDatabaseConnector {
     }
     
     public func remove(
-        of type : Event) {
+        of type : DatabaseEvent) {
         
         var handle : DatabaseHandle?
         switch type {
@@ -147,30 +147,3 @@ private extension HMPFirebaseDatabaseConnector {
     }
 }
 
-extension HMPFirebaseDatabaseConnector {
-    public enum Event {
-        case added
-        case removed
-        case changed
-        case moved
-        case value
-        
-        fileprivate func firebaseEvent() -> DataEventType {
-            var handler : DataEventType
-            switch self {
-            case .added:
-                handler = .childAdded
-            case .removed:
-                handler = .childRemoved
-            case .changed:
-                handler = .childChanged
-            case .moved:
-                handler = .childMoved
-            case .value:
-                handler = .value
-            }
-            
-            return handler
-        }
-    }
-}

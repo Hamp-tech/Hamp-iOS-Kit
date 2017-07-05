@@ -1,5 +1,5 @@
 //
-//  HMPFile.swift
+//  HampFile.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 29/6/17.
@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-public struct HMPFile {
+public struct HampFile {
     // MARK: Public propertes
     public private(set) var filename : String
     public private(set) var filepath : String
@@ -32,7 +32,7 @@ public struct HMPFile {
     }
 }
 
-extension HMPFile {
+extension HampFile {
     
     /// Errors indicating the different problems finding a file
     ///
@@ -42,8 +42,8 @@ extension HMPFile {
     }
 }
 
-extension HMPFile : Equatable {
-    public static func ==(lhs: HMPFile, rhs: HMPFile) -> Bool {
+extension HampFile : Equatable {
+    public static func ==(lhs: HampFile, rhs: HampFile) -> Bool {
         return lhs.route == rhs.route
     }
 }

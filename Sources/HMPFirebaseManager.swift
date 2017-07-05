@@ -16,11 +16,11 @@ public struct HMPFirebaseManager {
     public static var sharedManager = try? HMPFirebaseManager(environtment : HMPFirebaseFilesProvider.defaultEnvirontment())
     
     // MARK: Properties
-    public private(set) var environtment : HMPEnvironment
+    public private(set) var environtment : HampEnvironment
     public private(set) var configured : Bool
     
     // MARK: Constructor
-    init(environtment : HMPEnvironment) {
+    init(environtment : HampEnvironment) {
         self.environtment = environtment
         self.configured = false
     }

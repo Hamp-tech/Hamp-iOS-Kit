@@ -27,15 +27,15 @@ class HampKitManagerTests: XCTestCase {
     }
     
     func testConstructor_True() {
-        let env = HMPEnvironment(name: "Development", file: try! HMPFile(filename: "GoogleService-Info", ofType: "plist"))
-        let manager = HMPFirebaseManager(environtment: env)
+        let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"))
+        let manager = HampFirebaseManager(environtment: env)
         XCTAssertEqual(env, manager.environtment)
         XCTAssertFalse(manager.configured)
     }
     
     func testConnect() {
-        let env = HMPEnvironment(name: "Development", file: try! HMPFile(filename: "GoogleService-Info", ofType: "plist"))
-        var manager = HMPFirebaseManager(environtment: env)
+        let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"))
+        var manager = HampFirebaseManager(environtment: env)
         manager.connect()
         XCTAssertTrue(manager.configured)
         

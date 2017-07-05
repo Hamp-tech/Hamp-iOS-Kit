@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class HMPEnvironment {
+public class HampEnvironment {
     
     // MARK: Properties
     public private(set) var name : String
-    public private(set) var file : HMPFile
+    public private(set) var file : HampFile
     
     
     // MARK: Constructor
@@ -22,14 +22,14 @@ public class HMPEnvironment {
     /// - Parameters:
     ///   - name: environtment name
     ///   - file: firebase file path
-    public init(name : String, file : HMPFile) {
+    public init(name : String, file : HampFile) {
         self.name = name
         self.file = file
     }
 }
 
-extension HMPEnvironment : Equatable {
-    public static func ==(lhs: HMPEnvironment, rhs: HMPEnvironment) -> Bool {
+extension HampEnvironment : Equatable {
+    public static func ==(lhs: HampEnvironment, rhs: HampEnvironment) -> Bool {
         return lhs.name == rhs.name && lhs.file == rhs.file
     }
 }

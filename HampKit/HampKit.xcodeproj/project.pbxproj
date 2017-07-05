@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		4E03FEF51F0D3E3000A62431 /* HampKitAuthErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */; };
-		4E2356091F0A8C21006F7161 /* HMPEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */; };
+		4E2356091F0A8C21006F7161 /* HampEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HampEnvironment.swift */; };
 		4E23560B1F0A93C8006F7161 /* HampKitEnviromentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */; };
 		4E4D03711F0BCB2200660330 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */; };
 		4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08C11F04776A00236A9E /* AppDelegate.swift */; };
 		4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B08C81F04776A00236A9E /* Assets.xcassets */; };
-		4E5B08E61F047BA500236A9E /* HMPFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HMPFile.swift */; };
-		4E7D19971F04860E00231234 /* HMPFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HMPFile.swift */; };
+		4E5B08E61F047BA500236A9E /* HampFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HampFile.swift */; };
+		4E7D19971F04860E00231234 /* HampFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HampFile.swift */; };
 		4E881E371F0484EE00DB700E /* HampKitFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E881E361F0484EE00DB700E /* HampKitFileTests.swift */; };
-		4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */; };
+		4E93D1FE1F0A9F1600442673 /* HampEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HampEnvironment.swift */; };
 		4E93D2001F0AA1BF00442673 /* HMPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D1FF1F0AA1BF00442673 /* HMPFirebaseManager.swift */; };
 		4E93D2041F0AA59C00442673 /* HMPFirebaseFilesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */; };
+		4EA98A6F1F0D646000EC3A69 /* HMPLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A6E1F0D646000EC3A69 /* HMPLocker.swift */; };
+		4EA98A711F0D665F00EC3A69 /* HMPDatabaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A701F0D665F00EC3A69 /* HMPDatabaseEvent.swift */; };
 		4EB3C98D1F0BB68800183EFB /* HMPFirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98C1F0BB68800183EFB /* HMPFirebaseAuth.swift */; };
 		4EB3C98F1F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */; };
 		4EB3C9901F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */; };
@@ -47,19 +49,21 @@
 		29A29BE8B8B5A81E5374D121 /* Pods-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HampKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitAuthErrorsTests.swift; sourceTree = "<group>"; };
-		4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPEnvirontment.swift; path = ../Sources/HMPEnvirontment.swift; sourceTree = "<group>"; };
+		4E2356081F0A8C21006F7161 /* HampEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampEnvironment.swift; path = ../Sources/HampEnvironment.swift; sourceTree = "<group>"; };
 		4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitEnviromentTests.swift; sourceTree = "<group>"; };
 		4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E5B08BE1F04776900236A9E /* HampKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HampKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5B08C11F04776A00236A9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E5B08C81F04776A00236A9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E5B08CD1F04776A00236A9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E5B08E51F047BA500236A9E /* HMPFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFile.swift; path = ../Sources/HMPFile.swift; sourceTree = "<group>"; };
+		4E5B08E51F047BA500236A9E /* HampFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampFile.swift; path = ../Sources/HampFile.swift; sourceTree = "<group>"; };
 		4E881E341F0484ED00DB700E /* HampKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HampKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E881E361F0484EE00DB700E /* HampKitFileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitFileTests.swift; sourceTree = "<group>"; };
 		4E881E381F0484EE00DB700E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E93D1FF1F0AA1BF00442673 /* HMPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseManager.swift; path = ../Sources/HMPFirebaseManager.swift; sourceTree = "<group>"; };
 		4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseFilesProvider.swift; path = ../Sources/HMPFirebaseFilesProvider.swift; sourceTree = "<group>"; };
+		4EA98A6E1F0D646000EC3A69 /* HMPLocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPLocker.swift; path = ../Sources/HMPLocker.swift; sourceTree = "<group>"; };
+		4EA98A701F0D665F00EC3A69 /* HMPDatabaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPDatabaseEvent.swift; path = ../Sources/HMPDatabaseEvent.swift; sourceTree = "<group>"; };
 		4EB3C98C1F0BB68800183EFB /* HMPFirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseAuth.swift; path = ../Sources/HMPFirebaseAuth.swift; sourceTree = "<group>"; };
 		4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMPFirebaseUser.swift; path = ../Sources/HMPFirebaseUser.swift; sourceTree = "<group>"; };
 		4ECFBB171F0BE2070097BC91 /* HampKitAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitAuthTests.swift; sourceTree = "<group>"; };
@@ -138,14 +142,16 @@
 		4E5B08E71F047BA900236A9E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4E5B08E51F047BA500236A9E /* HMPFile.swift */,
-				4E2356081F0A8C21006F7161 /* HMPEnvirontment.swift */,
+				4E5B08E51F047BA500236A9E /* HampFile.swift */,
+				4E2356081F0A8C21006F7161 /* HampEnvironment.swift */,
 				4E93D1FF1F0AA1BF00442673 /* HMPFirebaseManager.swift */,
 				4E93D2031F0AA59C00442673 /* HMPFirebaseFilesProvider.swift */,
 				4EB3C98C1F0BB68800183EFB /* HMPFirebaseAuth.swift */,
 				4EB3C98E1F0BB78F00183EFB /* HMPFirebaseUser.swift */,
 				4EFD28341F0D459A005AB098 /* HMPFirebaseDatabaseConnector.swift */,
 				4EFD283A1F0D53A7005AB098 /* HMPFirebaseObject.swift */,
+				4EA98A6E1F0D646000EC3A69 /* HMPLocker.swift */,
+				4EA98A701F0D665F00EC3A69 /* HMPDatabaseEvent.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -389,11 +395,13 @@
 				4EB3C98F1F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */,
 				4EB3C98D1F0BB68800183EFB /* HMPFirebaseAuth.swift in Sources */,
 				4EFD283B1F0D53A7005AB098 /* HMPFirebaseObject.swift in Sources */,
-				4E5B08E61F047BA500236A9E /* HMPFile.swift in Sources */,
+				4E5B08E61F047BA500236A9E /* HampFile.swift in Sources */,
+				4EA98A711F0D665F00EC3A69 /* HMPDatabaseEvent.swift in Sources */,
 				4E93D2041F0AA59C00442673 /* HMPFirebaseFilesProvider.swift in Sources */,
-				4E2356091F0A8C21006F7161 /* HMPEnvirontment.swift in Sources */,
+				4E2356091F0A8C21006F7161 /* HampEnvironment.swift in Sources */,
 				4E93D2001F0AA1BF00442673 /* HMPFirebaseManager.swift in Sources */,
 				4EFD28351F0D459A005AB098 /* HMPFirebaseDatabaseConnector.swift in Sources */,
+				4EA98A6F1F0D646000EC3A69 /* HMPLocker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,9 +413,9 @@
 				4EB3C9911F0BB79700183EFB /* HMPFirebaseAuth.swift in Sources */,
 				4EE2866C1F0AA63C001F1071 /* HMPFirebaseManager.swift in Sources */,
 				4EE2866D1F0AA63C001F1071 /* HMPFirebaseFilesProvider.swift in Sources */,
-				4E93D1FE1F0A9F1600442673 /* HMPEnvirontment.swift in Sources */,
+				4E93D1FE1F0A9F1600442673 /* HampEnvironment.swift in Sources */,
 				4E03FEF51F0D3E3000A62431 /* HampKitAuthErrorsTests.swift in Sources */,
-				4E7D19971F04860E00231234 /* HMPFile.swift in Sources */,
+				4E7D19971F04860E00231234 /* HampFile.swift in Sources */,
 				4EB3C9901F0BB78F00183EFB /* HMPFirebaseUser.swift in Sources */,
 				4EE2866B1F0AA600001F1071 /* HampKitManagerTests.swift in Sources */,
 				4E881E371F0484EE00DB700E /* HampKitFileTests.swift in Sources */,
