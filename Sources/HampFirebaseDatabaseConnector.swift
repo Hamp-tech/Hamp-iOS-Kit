@@ -21,15 +21,15 @@ public class HampFirebaseDatabaseConnector <T : HampFirebaseObject> {
     //MARK: Public Properties
     public weak var delegate : DatabaseConnectorDelegate?
     public private(set) var name : String
-    public private(set) var connected = false
+    public private(set) var observing = false
     
     //MARK: Private Properties
     private var databaseReference = Database.database().reference()
-    private var addedHandler : DatabaseHandle?
-    private var removedHandler : DatabaseHandle?
-    private var changedHandler : DatabaseHandle?
-    private var movedHandler : DatabaseHandle?
-    private var valueHandler : DatabaseHandle?
+    private var addedhandle : DatabaseHandle?
+    private var removedhandle : DatabaseHandle?
+    private var changedhandle : DatabaseHandle?
+    private var movedhandle : DatabaseHandle?
+    private var valuehandle : DatabaseHandle?
     
     
     /// Create new databaseConnector
@@ -55,16 +55,18 @@ extension HampFirebaseDatabaseConnector {
         of type : DatabaseEvent) {
         switch type {
         case .added:
-            addedHandler = observeChildAdded()
+            addedhandle = observeChildAdded()
         case .removed:
-            removedHandler = observeChildRemove()
+            removedhandle = observeChildRemove()
         case .changed:
-            changedHandler = observeChildChanged()
+            changedhandle = observeChildChanged()
         case .moved:
-            movedHandler = observeChildMoved()
+            movedhandle = observeChildMoved()
         case .value:
-            valueHandler = observeValue()
+            valuehandle = observeValue()
         }
+        
+        observing = addedhandle != nil
     }
     
     /// Observe a collection of events
@@ -103,26 +105,35 @@ extension HampFirebaseDatabaseConnector {
     public func remove(
         of type : DatabaseEvent) {
         
-        var handle : DatabaseHandle?
-        switch type {
-        case .added:
-            handle = addedHandler
-        case .removed:
-            handle = removedHandler
-        case .changed:
-            handle = changedHandler
-        case .moved:
-            handle = movedHandler
-        case .value:
-            handle = valueHandler
+        func resethandle(handle : inout DatabaseHandle?) {
+            databaseReference.removeObserver(withHandle: handle!)
+            handle = nil
         }
         
-        if let h = handle { databaseReference.removeObserver(withHandle: h) }
+        switch type {
+        case .added:
+            resethandle(handle: &addedhandle)
+        case .removed:
+            resethandle(handle: &removedhandle)
+        case .changed:
+            resethandle(handle: &changedhandle)
+        case .moved:
+            resethandle(handle: &movedhandle)
+        case .value:
+            resethandle(handle: &valuehandle)
+        }
+    
+        observing =
+            addedhandle != nil
+            || removedhandle != nil
+            || changedhandle != nil
+            || movedhandle != nil
+            || valuehandle != nil
     }
 }
 
 extension HampFirebaseDatabaseConnector {
-    //MARK: Class functions
+    //MARK: Create child
     public func child(childID : String) -> HampFirebaseDatabaseConnector {
         let childPath = "\(name)/\(childID)"
         return HampFirebaseDatabaseConnector<T>(path: childPath)
@@ -135,7 +146,7 @@ private extension HampFirebaseDatabaseConnector {
     
     /// Observe child added events on firebase
     ///
-    /// - Returns: database handler linked with child added event
+    /// - Returns: database handle linked with child added event
     private func observeChildAdded() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childAdded) { (snapshot) in
             let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
@@ -146,7 +157,7 @@ private extension HampFirebaseDatabaseConnector {
     
     /// Observe child removed events on firebase
     ///
-    /// - Returns: database handler linked with child removed event
+    /// - Returns: database handle linked with child removed event
     private func observeChildRemove() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childRemoved, with: { (snapshot) in
             let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
@@ -156,7 +167,7 @@ private extension HampFirebaseDatabaseConnector {
     
     /// Observe child changed events on firebase
     ///
-    /// - Returns: database handler linked with child changed event
+    /// - Returns: database handle linked with child changed event
     private func observeChildChanged() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
             let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
@@ -166,7 +177,7 @@ private extension HampFirebaseDatabaseConnector {
     
     /// Observe child changed events on firebase
     ///
-    /// - Returns: database handler linked with child changed event
+    /// - Returns: database handle linked with child changed event
     private func observeChildMoved() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childMoved, with: { (snapshot) in
             let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
@@ -176,7 +187,7 @@ private extension HampFirebaseDatabaseConnector {
     
     /// Observe value events on firebase
     ///
-    /// - Returns: database handler linked with child value event
+    /// - Returns: database handle linked with child value event
     private func observeValue() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.value, with: { (snapshot) in
             let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
