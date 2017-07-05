@@ -35,9 +35,14 @@ public struct HMPAuth {
                 let code = (e as NSError).code
                 let authError = AuthError(rawValue: code)
                 eBlock(authError)
-            } else if let sBlock = onSuccess {
-                let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
-                sBlock(user)
+            } else {
+                Auth.auth().addStateDidChangeListener({ (auth, user) in
+                    if let user = user {
+                        let u = HMPFirebaseUser(uid: user.uid, email: user.email!)
+                        onSuccess?(u)
+                    }
+                })
+                
             }
         }
     }
@@ -58,13 +63,13 @@ public struct HMPAuth {
         managerConfiguredChecker()
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if let e = error, let eBlock = onError {
+            if let e = error {
                 let code = (e as NSError).code
                 let authError = AuthError(rawValue: code)
-                eBlock(authError)
-            } else if let sBlock = onSuccess {
+                onError?(authError)
+            } else {
                 let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
-                sBlock(user)
+                onSuccess?(user)
             }
         }
         
@@ -81,12 +86,21 @@ public struct HMPAuth {
         
         managerConfiguredChecker()
         
+        guard let _ = currentUser() else {
+            onError?(AuthError.userNotFound)
+            return
+        }
+        
         do {
             try Auth.auth().signOut()
+            Auth.auth().addStateDidChangeListener({ (auth, user) in
+                onSuccess?()
+            })
         } catch let signOutError as NSError {
-            if let eBlock = onError { eBlock(AuthError.init(rawValue: signOutError.code))}
+            onError?(AuthError.init(rawValue: signOutError.code))
         } catch {
-            if let eBlock = onError {eBlock(AuthError.unknown) }
+            onError?(AuthError.unknown)
+            
         }
         
     }
@@ -107,16 +121,15 @@ public struct HMPAuth {
         
         let facebookCredentials = FacebookAuthProvider.credential(withAccessToken: accessToken)
         Auth.auth().signIn(with: facebookCredentials) { (user, error) in
-            if let e = error, let eBlock = onError {
+            if let e = error {
                 let code = (e as NSError).code
                 let authError = AuthError(rawValue: code)
-                eBlock(authError)
-            } else if let sBlock = onSuccess {
+                onError?(authError)
+            } else {
                 let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
-                sBlock(user)
+                onSuccess?(user)
             }
         }
-        
     }
 }
 
@@ -125,6 +138,14 @@ extension HMPAuth {
     /// - If isn't configured, fire assert
     private static func managerConfiguredChecker() {
         assert(HMPManager.sharedManager!.configured, "Connect HMPManager")
+    }
+}
+
+extension HMPAuth {
+    public static func currentUser() -> HMPFirebaseUser?{
+        guard let user = Auth.auth().currentUser else { return nil }
+        
+        return HMPFirebaseUser(uid: user.uid, email: user.email!)
     }
 }
 
