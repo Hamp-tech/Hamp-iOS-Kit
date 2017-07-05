@@ -57,6 +57,17 @@ public struct HMPAuth {
         
         managerConfiguredChecker()
         
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if let e = error, let eBlock = onError {
+                let code = (e as NSError).code
+                let authError = AuthError(rawValue: code)
+                eBlock(authError)
+            } else if let sBlock = onSuccess {
+                let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
+                sBlock(user)
+            }
+        }
+        
     }
     
     /// Sign out on firebase
@@ -70,8 +81,17 @@ public struct HMPAuth {
         
         managerConfiguredChecker()
         
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            if let eBlock = onError { eBlock(AuthError.init(rawValue: signOutError.code))}
+        } catch {
+            if let eBlock = onError {eBlock(AuthError.unknown) }
+        }
+        
     }
     
+    //TODO: Tests
     /// Log in to firebase
     ///
     /// - Parameters:
@@ -84,6 +104,18 @@ public struct HMPAuth {
         onError: ErrorBlock = nil) {
         
         managerConfiguredChecker()
+        
+        let facebookCredentials = FacebookAuthProvider.credential(withAccessToken: accessToken)
+        Auth.auth().signIn(with: facebookCredentials) { (user, error) in
+            if let e = error, let eBlock = onError {
+                let code = (e as NSError).code
+                let authError = AuthError(rawValue: code)
+                eBlock(authError)
+            } else if let sBlock = onSuccess {
+                let user = HMPFirebaseUser(uid: user!.uid, email: user!.email!)
+                sBlock(user)
+            }
+        }
         
     }
 }
