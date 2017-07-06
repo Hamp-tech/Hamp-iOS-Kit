@@ -15,15 +15,21 @@ public protocol HampFirebaseObject {
     
     /// Abstract constructor to create a firebase object
     ///
-    /// - Parameter identifier: object identifier
-    init(identifier : String)
-    
-    /// Abstract constructor to create a firebase object
-    ///
     /// - Parameters:
     ///   - identifier: object identifier
     ///   - properties: dictionary with object properties
-    init(identifier : String, properties : Dictionary<String, Any>?)
+    /// - Throws: Error if identifier is empty or missing properties
+    init(identifier : String, properties : Dictionary<String, Any>?) throws 
+    
+    /// Check if dictionary contains required properties
+    ///
+    /// - Throws: Error if missing properties
+    func checkParameterProperties() throws
 }
+
+public enum HampFirebaseObjectError : Swift.Error {
+    case missingProperties
+}
+
 
 

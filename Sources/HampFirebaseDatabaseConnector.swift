@@ -66,7 +66,7 @@ extension HampFirebaseDatabaseConnector {
             valuehandle = observeValue()
         }
         
-        observing = addedhandle != nil
+        observing = true
     }
     
     /// Observe a collection of events
@@ -91,8 +91,9 @@ extension HampFirebaseDatabaseConnector {
             
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let restDict = child.value as? [String: Any] else { continue }
-                let object = T(identifier: child.key, properties: restDict)
-                objects.append(object)
+                if  let object = try? T(identifier: child.key, properties: restDict) {
+                    objects.append(object)
+                }
             }
             
            onSuccess(objects)
@@ -149,9 +150,9 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handle linked with child added event
     private func observeChildAdded() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childAdded) { (snapshot) in
-            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
-            self.delegate?.connector(connector: self, didAddedNewObject: obj)
-            
+            if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
+                self.delegate?.connector(connector: self, didAddedNewObject: obj)
+            }
         }
     }
     
@@ -160,8 +161,9 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handle linked with child removed event
     private func observeChildRemove() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childRemoved, with: { (snapshot) in
-            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
-            self.delegate?.connector(connector: self, didRemoveObject: obj)
+            if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
+                self.delegate?.connector(connector: self, didRemoveObject: obj)
+            }
         })
     }
     
@@ -170,8 +172,9 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handle linked with child changed event
     private func observeChildChanged() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
-            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
-            self.delegate?.connector(connector: self, didChangedObject: obj)
+            if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
+                self.delegate?.connector(connector: self, didChangedObject: obj)
+            }
         })
     }
     
@@ -180,8 +183,9 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handle linked with child changed event
     private func observeChildMoved() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.childMoved, with: { (snapshot) in
-            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
-            self.delegate?.connector(connector: self, didMovedObject: obj)
+            if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
+                self.delegate?.connector(connector: self, didMovedObject: obj)
+            }
         })
     }
     
@@ -190,8 +194,9 @@ private extension HampFirebaseDatabaseConnector {
     /// - Returns: database handle linked with child value event
     private func observeValue() -> DatabaseHandle {
         return databaseReference.child(name).observe(DataEventType.value, with: { (snapshot) in
-            let obj = T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any]) )
-            self.delegate?.connector(connector: self, fireEventObject: obj)
+            if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
+                self.delegate?.connector(connector: self, fireEventObject: obj)
+            }
         })
     }
 }

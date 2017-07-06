@@ -15,40 +15,43 @@ public struct HampLocker : HampFirebaseObject {
     
     //MARK: Properties
     public var identifier: String
-    public var booked : Bool
-    public var lockerID : String
-    public var secretKey : String
+    public var booked : Bool!
+    public var lockerID : String!
+    public var secretKey : String!
     
     //MARK: Constructors
-    public init(identifier : String) {
-        self.init(
-            identifier: identifier,
-            booked: false,
-            lockerID: "",
-            secretKey: "")
-    }
-    
     public init(identifier : String,
-                booked : Bool = false,
-                lockerID : String = "",
-                secretKey : String = "") {
+                booked : Bool?,
+                lockerID : String?,
+                secretKey : String?) throws {
         self.identifier = identifier
         self.booked = booked
         self.lockerID = lockerID
         self.secretKey = secretKey
         
+        try checkParameterProperties()
     }
     
-    public init(identifier: String, properties: Dictionary<String, Any>?) {
-        if let ps = properties {
-            self.init(
-                identifier: identifier,
-                booked: ps[Constants.Locker.booked] as! Bool,
-                lockerID: ps[Constants.Locker.lockerID] as! String,
-                secretKey: ps[Constants.Locker.secretKey] as! String)
-        } else {
-            self.init(identifier: identifier)
+    public init(identifier: String, properties: Dictionary<String, Any>?) throws {
+        try self.init(
+            identifier: identifier,
+            booked: properties?[Constants.Locker.booked] as? Bool,
+            lockerID: properties?[Constants.Locker.lockerID] as? String,
+            secretKey: properties?[Constants.Locker.secretKey] as? String)
+    }
+    
+    public func checkParameterProperties() throws {
+        guard
+            identifier.count > 0,
+            let _ = booked,
+            let l = lockerID,
+            let s = secretKey,
+            l.count > 0,
+            s.count > 0 else {
+                throw HampFirebaseObjectError.missingProperties
         }
+        
     }
 }
+
 
