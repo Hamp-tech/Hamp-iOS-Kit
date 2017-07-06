@@ -17,7 +17,7 @@ public protocol DatabaseConnectorDelegate : class {
     func connector<T>(connector : HampFirebaseDatabaseConnector<T>, fireEventObject object: T)
 }
 
-public class HampFirebaseDatabaseConnector <T : HampFirebaseObject> {
+public class HampFirebaseDatabaseConnector <T : HampDatabaseObject> {
     //MARK: Public Properties
     public weak var delegate : DatabaseConnectorDelegate?
     public private(set) var name : String
@@ -84,7 +84,7 @@ extension HampFirebaseDatabaseConnector {
     ///   - onSuccess: success block with all table objects
     public func observeSingleEvent(
         of type : DatabaseEvent,
-        onSuccess : @escaping ([HampFirebaseObject]) -> ()) {
+        onSuccess : @escaping ([HampDatabaseObject]) -> ()) {
         
         databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
             var objects = [T]()

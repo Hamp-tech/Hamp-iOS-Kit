@@ -1,5 +1,5 @@
 //
-//  HampFirebaseObject.swift
+//  HampDatabaseObject.swift
 //  HampKit
 //
 //  Created by Joan Molinas Ramon on 5/7/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol HampFirebaseObject {
+public protocol HampDatabaseObject {
     /// Properties
     var identifier : String { get }
     static var tableName : String { get }

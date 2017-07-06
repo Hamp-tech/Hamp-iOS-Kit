@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct HampLocker : HampFirebaseObject {
+public struct HampLocker : HampDatabaseObject {
     
     //MARK: Static properties
     public static var tableName: String = Constants.FirebaseTableNames.lockers
