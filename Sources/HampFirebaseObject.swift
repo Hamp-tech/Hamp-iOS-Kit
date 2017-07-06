@@ -23,7 +23,7 @@ public protocol HampFirebaseObject {
     
     /// Check if dictionary contains required properties
     ///
-    /// - Throws: Error if missing properties
+    /// - Throws: Error if missing parameters
     func checkParameterProperties() throws
 }
 

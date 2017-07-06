@@ -22,7 +22,7 @@ class HampKitManagerTests: XCTestCase {
     func testSingleton_True() {
         let manager = HampFirebaseManager.sharedManager!
         let env = manager.environtment
-        XCTAssertEqual(env, try! HampFirebaseFilesProvider.defaultEnvirontment())
+        XCTAssertEqual(env, try! HampEnvirontmentsProvider.productionEnvirontment())
         XCTAssertFalse(manager.configured)
     }
     

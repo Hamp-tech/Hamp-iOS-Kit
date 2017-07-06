@@ -13,7 +13,7 @@ public struct HampFirebaseManager {
     // MARK: Class properties
     
     /// Singleton with a default configuration:
-    public static var sharedManager = try? HampFirebaseManager(environtment : HampFirebaseFilesProvider.defaultEnvirontment())
+    public static var sharedManager = try? HampFirebaseManager(environtment : HampEnvirontmentsProvider.productionEnvirontment())
     
     // MARK: Properties
     public private(set) var environtment : HampEnvironment
