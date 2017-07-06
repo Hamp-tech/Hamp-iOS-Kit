@@ -36,7 +36,8 @@ class HampKitManagerTests: XCTestCase {
     func testConnect() {
         let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"))
         var manager = HampFirebaseManager(environtment: env)
-        manager.connect()
+        XCTAssertNoThrow(try manager.connect())
+        XCTAssertThrowsError(try manager.connect())
         XCTAssertTrue(manager.configured)
         
     }

@@ -16,9 +16,10 @@ class HampKitAuthTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        if !(HampFirebaseManager.sharedManager?.configured)! {
-            HampFirebaseManager.sharedManager?.connect()
-        }
+        
+        do {
+            try HampFirebaseManager.sharedManager?.connect()
+        } catch  { }
         expectedUser = HampFirebaseUser(uid: "EdsmCnKNbte96H927URdTeOYVH62", email: "test@test.com")
     }
     

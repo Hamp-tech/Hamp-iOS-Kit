@@ -28,9 +28,19 @@ public struct HampFirebaseManager {
     // MARK: Public API
 
     /// Connect to firebase
-    public mutating func connect() {
+    public mutating func connect() throws {
+        if let _ = FirebaseApp.app() {
+            throw ManagerError.alreadyConfigured
+        }
+        
         let options = FirebaseOptions.init(contentsOfFile: environtment.file.route)
         FirebaseApp.configure(options: options!)
         configured = true
+    }
+}
+
+extension HampFirebaseManager {
+    public enum ManagerError : Swift.Error {
+        case alreadyConfigured
     }
 }
