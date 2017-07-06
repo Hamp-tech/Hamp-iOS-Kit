@@ -87,11 +87,11 @@ extension HampFirebaseDatabaseConnector {
         onSuccess : @escaping ([HampFirebaseObject]) -> ()) {
         
         databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
-            var objects = [HampLocker]()
+            var objects = [T]()
             
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let restDict = child.value as? [String: Any] else { continue }
-                let object = HampLocker(identifier: child.key, properties: restDict)
+                let object = T(identifier: child.key, properties: restDict)
                 objects.append(object)
             }
             

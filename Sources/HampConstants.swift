@@ -9,10 +9,13 @@
 import Foundation
 
 internal struct Constants {
+    
+    /// Firebase table names
     public struct FirebaseTableNames {
-        static let lockersTableName = "lockers"
+        static let lockers = "lockers"
     }
     
+    /// Keys for locker model
     public struct Locker {
         static let booked = "booked"
         static let lockerID = "lockerID"

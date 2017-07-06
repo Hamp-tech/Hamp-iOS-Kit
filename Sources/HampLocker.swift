@@ -11,7 +11,7 @@ import Foundation
 public struct HampLocker : HampFirebaseObject {
     
     //MARK: Static properties
-    public static var tableName: String = Constants.FirebaseTableNames.lockersTableName
+    public static var tableName: String = Constants.FirebaseTableNames.lockers
     
     //MARK: Properties
     public var identifier: String
