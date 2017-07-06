@@ -20,16 +20,8 @@ class HampKitLockerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testConstructor_OnlyIdentifier() {
-        let locker = HampLocker(identifier: "1234")
-        XCTAssertEqual(locker.identifier, "1234")
-        XCTAssertFalse(locker.booked)
-        XCTAssertEqual(locker.lockerID, "")
-        XCTAssertEqual(locker.secretKey, "")
-    }
-    
     func testConstructor_properties_bookedFalse() {
-        let locker = HampLocker(identifier: "1234", booked: false, lockerID: "1234", secretKey: "1234")
+        let locker = try! HampLocker(identifier: "1234", booked: false, lockerID: "1234", secretKey: "1234")
         XCTAssertEqual(locker.identifier, "1234")
         XCTAssertFalse(locker.booked)
         XCTAssertEqual(locker.lockerID, "1234")
@@ -37,7 +29,7 @@ class HampKitLockerTests: XCTestCase {
     }
     
     func testConstructor_properties_bookedTrue() {
-        let locker = HampLocker(identifier: "1234", booked: true, lockerID: "1234", secretKey: "1234")
+        let locker = try! HampLocker(identifier: "1234", booked: true, lockerID: "1234", secretKey: "1234")
         XCTAssertEqual(locker.identifier, "1234")
         XCTAssertTrue(locker.booked)
         XCTAssertEqual(locker.lockerID, "1234")
@@ -49,7 +41,7 @@ class HampKitLockerTests: XCTestCase {
         dict[Constants.Locker.booked] = true
         dict[Constants.Locker.lockerID] = "1234"
         dict[Constants.Locker.secretKey] = "1234"
-        let locker = HampLocker(identifier: "1234", properties: dict)
+        let locker = try! HampLocker(identifier: "1234", properties: dict)
         
         XCTAssertEqual(locker.identifier, "1234")
         XCTAssertTrue(locker.booked)
@@ -59,10 +51,12 @@ class HampKitLockerTests: XCTestCase {
     
     func testConstructor_propertiesFromNilDictionary() {
         let dict : [String : Any]? = nil
-        let locker = HampLocker(identifier: "1234", properties: dict)
-        
-        XCTAssertEqual(locker.identifier, "1234")
+        XCTAssertThrowsError(try HampLocker(identifier: "1234", properties: dict))
     }
     
-    
+    func testConstructor_assertThrow() {
+        var dict = [String : Any]()
+        dict[Constants.Locker.booked] = true
+        XCTAssertThrowsError(try HampLocker(identifier: "1234", properties: dict))
+    }
 }
