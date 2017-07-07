@@ -20,7 +20,7 @@ public protocol DatabaseConnectorDelegate : class {
 public class HampFirebaseDatabaseConnector <T : HampDatabaseObject> {
     //MARK: Public Properties
     public weak var delegate : DatabaseConnectorDelegate?
-    public private(set) var name : String
+    public private(set) var path : String
     public private(set) var observing = false
     
     //MARK: Private Properties
@@ -34,14 +34,14 @@ public class HampFirebaseDatabaseConnector <T : HampDatabaseObject> {
     
     /// Create new databaseConnector
     public init() {
-        self.name = T.tableName
+        self.path = T.tableName
     }
     
     /// Create a new databaseConnector
     ///
     /// - Parameter path: path to table
     fileprivate init(path : String) {
-        self.name = path
+        self.path = path
     }
 }
 
@@ -86,7 +86,7 @@ extension HampFirebaseDatabaseConnector {
         of type : DatabaseEvent,
         onSuccess : @escaping ([HampDatabaseObject]) -> ()) {
         
-        databaseReference.child(name).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
+        databaseReference.child(path).observeSingleEvent(of: type.firebaseEvent()) { (snapshot) in
             var objects = [T]()
             
             for child in snapshot.children.allObjects as! [DataSnapshot] {
@@ -136,7 +136,7 @@ extension HampFirebaseDatabaseConnector {
 extension HampFirebaseDatabaseConnector {
     //MARK: Create child
     public func child(childID : String) -> HampFirebaseDatabaseConnector {
-        let childPath = "\(name)/\(childID)"
+        let childPath = "\(path)/\(childID)"
         return HampFirebaseDatabaseConnector<T>(path: childPath)
     }
 }
@@ -149,7 +149,7 @@ private extension HampFirebaseDatabaseConnector {
     ///
     /// - Returns: database handle linked with child added event
     private func observeChildAdded() -> DatabaseHandle {
-        return databaseReference.child(name).observe(DataEventType.childAdded) { (snapshot) in
+        return databaseReference.child(path).observe(DataEventType.childAdded) { (snapshot) in
             if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
                 self.delegate?.connector(connector: self, didAddedNewObject: obj)
             }
@@ -160,7 +160,7 @@ private extension HampFirebaseDatabaseConnector {
     ///
     /// - Returns: database handle linked with child removed event
     private func observeChildRemove() -> DatabaseHandle {
-        return databaseReference.child(name).observe(DataEventType.childRemoved, with: { (snapshot) in
+        return databaseReference.child(path).observe(DataEventType.childRemoved, with: { (snapshot) in
             if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
                 self.delegate?.connector(connector: self, didRemoveObject: obj)
             }
@@ -171,7 +171,7 @@ private extension HampFirebaseDatabaseConnector {
     ///
     /// - Returns: database handle linked with child changed event
     private func observeChildChanged() -> DatabaseHandle {
-        return databaseReference.child(name).observe(DataEventType.childChanged, with: { (snapshot) in
+        return databaseReference.child(path).observe(DataEventType.childChanged, with: { (snapshot) in
             if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
                 self.delegate?.connector(connector: self, didChangedObject: obj)
             }
@@ -182,7 +182,7 @@ private extension HampFirebaseDatabaseConnector {
     ///
     /// - Returns: database handle linked with child changed event
     private func observeChildMoved() -> DatabaseHandle {
-        return databaseReference.child(name).observe(DataEventType.childMoved, with: { (snapshot) in
+        return databaseReference.child(path).observe(DataEventType.childMoved, with: { (snapshot) in
             if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
                 self.delegate?.connector(connector: self, didMovedObject: obj)
             }
@@ -193,7 +193,7 @@ private extension HampFirebaseDatabaseConnector {
     ///
     /// - Returns: database handle linked with child value event
     private func observeValue() -> DatabaseHandle {
-        return databaseReference.child(name).observe(DataEventType.value, with: { (snapshot) in
+        return databaseReference.child(path).observe(DataEventType.value, with: { (snapshot) in
             if let obj = try? T(identifier: snapshot.key, properties: (snapshot.value as? [String: Any])) {
                 self.delegate?.connector(connector: self, fireEventObject: obj)
             }
