@@ -10,6 +10,7 @@
 		4E03FEF51F0D3E3000A62431 /* HampKitAuthErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */; };
 		4E2356091F0A8C21006F7161 /* HampEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2356081F0A8C21006F7161 /* HampEnvironment.swift */; };
 		4E23560B1F0A93C8006F7161 /* HampKitEnviromentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */; };
+		4E4599511F101DC500CD2402 /* HampKitDatabaseConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4599501F101DC500CD2402 /* HampKitDatabaseConnectorTests.swift */; };
 		4E4D03711F0BCB2200660330 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */; };
 		4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08C11F04776A00236A9E /* AppDelegate.swift */; };
 		4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B08C81F04776A00236A9E /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitAuthErrorsTests.swift; sourceTree = "<group>"; };
 		4E2356081F0A8C21006F7161 /* HampEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampEnvironment.swift; path = ../Sources/HampEnvironment.swift; sourceTree = "<group>"; };
 		4E23560A1F0A93C8006F7161 /* HampKitEnviromentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitEnviromentTests.swift; sourceTree = "<group>"; };
+		4E4599501F101DC500CD2402 /* HampKitDatabaseConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitDatabaseConnectorTests.swift; sourceTree = "<group>"; };
 		4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E5B08BE1F04776900236A9E /* HampKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HampKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5B08C11F04776A00236A9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				4ECFBB171F0BE2070097BC91 /* HampKitAuthTests.swift */,
 				4E03FEF41F0D3E3000A62431 /* HampKitAuthErrorsTests.swift */,
 				4E74D95E1F0E4FC00033407C /* HampKitLockerTests.swift */,
+				4E4599501F101DC500CD2402 /* HampKitDatabaseConnectorTests.swift */,
 			);
 			path = HampKitTests;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				4EE2866B1F0AA600001F1071 /* HampKitManagerTests.swift in Sources */,
 				4E881E371F0484EE00DB700E /* HampKitFileTests.swift in Sources */,
 				4E23560B1F0A93C8006F7161 /* HampKitEnviromentTests.swift in Sources */,
+				4E4599511F101DC500CD2402 /* HampKitDatabaseConnectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

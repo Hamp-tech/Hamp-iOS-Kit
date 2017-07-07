@@ -109,27 +109,28 @@ extension HampFirebaseDatabaseConnector {
         func resethandle(handle : inout DatabaseHandle?) {
             databaseReference.removeObserver(withHandle: handle!)
             handle = nil
+            observing =
+                addedhandle != nil
+                || removedhandle != nil
+                || changedhandle != nil
+                || movedhandle != nil
+                || valuehandle != nil
         }
         
         switch type {
-        case .added:
+        case .added where addedhandle != nil:
             resethandle(handle: &addedhandle)
-        case .removed:
+        case .removed where removedhandle != nil:
             resethandle(handle: &removedhandle)
-        case .changed:
+        case .changed where changedhandle != nil:
             resethandle(handle: &changedhandle)
-        case .moved:
+        case .moved where movedhandle != nil:
             resethandle(handle: &movedhandle)
-        case .value:
+        case .value where valuehandle != nil:
             resethandle(handle: &valuehandle)
+        default:
+            break
         }
-    
-        observing =
-            addedhandle != nil
-            || removedhandle != nil
-            || changedhandle != nil
-            || movedhandle != nil
-            || valuehandle != nil
     }
 }
 
