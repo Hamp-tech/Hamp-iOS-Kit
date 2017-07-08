@@ -22,5 +22,10 @@ internal struct Constants {
         static let secretKey = "secretKey"
     }
     
+    public struct Regex {
+        static let visa = "^4[0-9]{12}(?:[0-9]{3})?$"
+        static let cvv = "^([0-9]{3})$"
+    }
+    
     
 }
