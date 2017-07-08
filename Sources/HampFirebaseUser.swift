@@ -18,6 +18,4 @@ extension HampFirebaseUser : Equatable {
     public static func ==(lhs: HampFirebaseUser, rhs: HampFirebaseUser) -> Bool {
         return lhs.uid == rhs.uid && lhs.email == rhs.email
     }
-    
-    
 }

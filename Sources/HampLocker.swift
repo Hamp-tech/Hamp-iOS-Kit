@@ -14,13 +14,13 @@ public struct HampLocker : HampDatabaseObject {
     public static var tableName: String = Constants.FirebaseTableNames.lockers
     
     //MARK: Properties
-    public var identifier: String
+    public var identifier: String?
     public var booked : Bool!
     public var lockerID : String!
     public var secretKey : String!
     
     //MARK: Constructors
-    public init(identifier : String,
+    public init(identifier : String?,
                 booked : Bool?,
                 lockerID : String?,
                 secretKey : String?) throws {
@@ -32,7 +32,7 @@ public struct HampLocker : HampDatabaseObject {
         try checkParameterProperties()
     }
     
-    public init(identifier: String, properties: Dictionary<String, Any>?) throws {
+    public init(identifier: String?, properties: Dictionary<String, Any>?) throws {
         try self.init(
             identifier: identifier,
             booked: properties?[Constants.Locker.booked] as? Bool,
@@ -42,10 +42,11 @@ public struct HampLocker : HampDatabaseObject {
     
     public func checkParameterProperties() throws {
         guard
-            identifier.count > 0,
+            let i = identifier,
             let _ = booked,
             let l = lockerID,
             let s = secretKey,
+            i.count > 0,
             l.count > 0,
             s.count > 0 else {
                 throw HampFirebaseObjectError.missingProperties

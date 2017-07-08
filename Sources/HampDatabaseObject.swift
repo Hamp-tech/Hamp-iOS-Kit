@@ -10,7 +10,7 @@ import Foundation
 
 public protocol HampDatabaseObject {
     /// Properties
-    var identifier : String { get }
+    var identifier : String? { get }
     static var tableName : String { get }
     
     /// Abstract constructor to create a firebase object
@@ -19,7 +19,7 @@ public protocol HampDatabaseObject {
     ///   - identifier: object identifier
     ///   - properties: dictionary with object properties
     /// - Throws: Error if identifier is empty or missing properties
-    init(identifier : String, properties : Dictionary<String, Any>?) throws 
+    init(identifier : String?, properties : Dictionary<String, Any>?) throws 
     
     /// Check if dictionary contains required properties
     ///
