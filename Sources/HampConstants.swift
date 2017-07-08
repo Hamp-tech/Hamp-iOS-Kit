@@ -22,6 +22,14 @@ internal struct Constants {
         static let secretKey = "secretKey"
     }
     
+    /// Credit card constants
+    public struct CreditCard {
+        static let number = "number"
+        static let month = "month"
+        static let year = "year"
+        static let cvv = "cvv"
+    }
+    
     public struct Regex {
         static let visa = "^4[0-9]{12}(?:[0-9]{3})?$"
         static let cvv = "^([0-9]{3})$"
