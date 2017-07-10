@@ -43,11 +43,9 @@ public struct HampLocker : HampDatabaseObject {
     //MARK: HampObject protocol
     public func validate() throws {
         guard
-            let i = identifier,
             let _ = booked,
             let l = lockerID,
             let s = secretKey,
-            i.count > 0,
             l.count > 0,
             s.count > 0 else {
                 throw HampFirebaseObjectError.missingProperties

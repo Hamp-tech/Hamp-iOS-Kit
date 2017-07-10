@@ -40,6 +40,9 @@
 		4E95E6511F13BDD700515629 /* HampTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6501F13BDD700515629 /* HampTransaction.swift */; };
 		4E95E6521F13BDD700515629 /* HampTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6501F13BDD700515629 /* HampTransaction.swift */; };
 		4E95E6541F13C2B600515629 /* HampKitTransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6531F13C2B600515629 /* HampKitTransactionTests.swift */; };
+		4E95E6561F13CBD300515629 /* HampBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6551F13CBD300515629 /* HampBooking.swift */; };
+		4E95E6571F13CBD300515629 /* HampBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6551F13CBD300515629 /* HampBooking.swift */; };
+		4E95E6591F13CC7A00515629 /* HampKitBookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6581F13CC7A00515629 /* HampKitBookingTests.swift */; };
 		4EA98A6F1F0D646000EC3A69 /* HampLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A6E1F0D646000EC3A69 /* HampLocker.swift */; };
 		4EA98A711F0D665F00EC3A69 /* HampDatabaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A701F0D665F00EC3A69 /* HampDatabaseEvent.swift */; };
 		4EA98A731F0D7AB000EC3A69 /* HampConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A721F0D7AB000EC3A69 /* HampConstants.swift */; };
@@ -96,6 +99,8 @@
 		4E95E64D1F13BAB600515629 /* HampJSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampJSONManager.swift; path = ../Sources/HampJSONManager.swift; sourceTree = "<group>"; };
 		4E95E6501F13BDD700515629 /* HampTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampTransaction.swift; path = ../Sources/HampTransaction.swift; sourceTree = "<group>"; };
 		4E95E6531F13C2B600515629 /* HampKitTransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitTransactionTests.swift; sourceTree = "<group>"; };
+		4E95E6551F13CBD300515629 /* HampBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampBooking.swift; path = ../Sources/HampBooking.swift; sourceTree = "<group>"; };
+		4E95E6581F13CC7A00515629 /* HampKitBookingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitBookingTests.swift; sourceTree = "<group>"; };
 		4EA98A6E1F0D646000EC3A69 /* HampLocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampLocker.swift; path = ../Sources/HampLocker.swift; sourceTree = "<group>"; };
 		4EA98A701F0D665F00EC3A69 /* HampDatabaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampDatabaseEvent.swift; path = ../Sources/HampDatabaseEvent.swift; sourceTree = "<group>"; };
 		4EA98A721F0D7AB000EC3A69 /* HampConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampConstants.swift; path = ../Sources/HampConstants.swift; sourceTree = "<group>"; };
@@ -227,6 +232,7 @@
 				4E95E6471F13B7A300515629 /* HampOrder.swift */,
 				4E95E64A1F13B8A500515629 /* HampObject.swift */,
 				4E95E6501F13BDD700515629 /* HampTransaction.swift */,
+				4E95E6551F13CBD300515629 /* HampBooking.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				4E4599571F11156300CD2402 /* HampKitRegexTests.swift */,
 				4E45995B1F111E8F00CD2402 /* HampKitCreditCardTests.swift */,
 				4E95E6531F13C2B600515629 /* HampKitTransactionTests.swift */,
+				4E95E6581F13CC7A00515629 /* HampKitBookingTests.swift */,
 			);
 			path = HampKitTests;
 			sourceTree = "<group>";
@@ -480,6 +487,7 @@
 				4E5B08E61F047BA500236A9E /* HampFile.swift in Sources */,
 				4E4599561F1111DD00CD2402 /* HampRegex.swift in Sources */,
 				4EA98A711F0D665F00EC3A69 /* HampDatabaseEvent.swift in Sources */,
+				4E95E6561F13CBD300515629 /* HampBooking.swift in Sources */,
 				4E93D2041F0AA59C00442673 /* HampEnvirontmentsProvider.swift in Sources */,
 				4E2356091F0A8C21006F7161 /* HampEnvironment.swift in Sources */,
 				4E95E64B1F13B8A500515629 /* HampObject.swift in Sources */,
@@ -502,6 +510,7 @@
 				4E74D9621F0E4FD10033407C /* HampLocker.swift in Sources */,
 				4E74D9631F0E4FD10033407C /* HampDatabaseEvent.swift in Sources */,
 				4E95E6521F13BDD700515629 /* HampTransaction.swift in Sources */,
+				4E95E6571F13CBD300515629 /* HampBooking.swift in Sources */,
 				4E95E6541F13C2B600515629 /* HampKitTransactionTests.swift in Sources */,
 				4E74D9641F0E4FD10033407C /* HampConstants.swift in Sources */,
 				4E74D95F1F0E4FC00033407C /* HampKitLockerTests.swift in Sources */,
@@ -509,6 +518,7 @@
 				4EB3C9911F0BB79700183EFB /* HampFirebaseAuth.swift in Sources */,
 				4E95E6491F13B7A300515629 /* HampOrder.swift in Sources */,
 				4EE2866C1F0AA63C001F1071 /* HampFirebaseManager.swift in Sources */,
+				4E95E6591F13CC7A00515629 /* HampKitBookingTests.swift in Sources */,
 				4E4599581F11156300CD2402 /* HampKitRegexTests.swift in Sources */,
 				4E45995C1F111E8F00CD2402 /* HampKitCreditCardTests.swift in Sources */,
 				4EE2866D1F0AA63C001F1071 /* HampEnvirontmentsProvider.swift in Sources */,
