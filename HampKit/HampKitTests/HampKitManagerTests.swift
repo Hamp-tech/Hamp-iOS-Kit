@@ -27,14 +27,14 @@ class HampKitManagerTests: XCTestCase {
     }
     
     func testConstructor_True() {
-        let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"))
+        let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"), apiURL : "https://hampapi.herokuapp.com/api/v1")
         let manager = HampFirebaseManager(environtment: env)
         XCTAssertEqual(env, manager.environtment)
         XCTAssertFalse(manager.configured)
     }
     
     func testConnect() {
-        let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"))
+        let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"), apiURL : "https://hampapi.herokuapp.com/api/v1")
         var manager = HampFirebaseManager(environtment: env)
         XCTAssertNoThrow(try manager.connect())
         XCTAssertThrowsError(try manager.connect())

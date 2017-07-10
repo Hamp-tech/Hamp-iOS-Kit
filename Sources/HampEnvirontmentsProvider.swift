@@ -15,7 +15,12 @@ public struct HampEnvirontmentsProvider {
     /// - Returns: Environment with a default firebase plist name
     /// - Throws: File missing
     public static func productionEnvirontment() throws -> HampEnvironment {
-        let file = try HampFile(filename: "GoogleService-Info", ofType: "plist")
-        return HampEnvironment(name: "Production", file: file)
+        let file = try HampFile(filename: Constants.productionFirebaseFileName, ofType: "plist")
+        return HampEnvironment(name: "Production", file: file, apiURL: Constants.productionAPIURL)
+    }
+    
+    public static func developmentEnvirontment() throws -> HampEnvironment {
+        let file = try HampFile(filename: Constants.developmentFirebaseFileName, ofType: "plist")
+        return HampEnvironment(name: "Development", file: file, apiURL: Constants.developmentAPIURL)
     }
 }

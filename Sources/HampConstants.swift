@@ -10,6 +10,14 @@ import Foundation
 
 internal struct Constants {
     
+    ///API URLs
+    public static let productionAPIURL = "https://hampapi.herokuapp.com/api/v1"
+    public static let developmentAPIURL = "https://hampapi.herokuapp.com/api/v1"
+    
+    ///Firebase files names
+    public static let productionFirebaseFileName = "GoogleService-Info"
+    public static let developmentFirebaseFileName = "GoogleServie-Dev-Info"
+    
     /// Firebase table names
     public struct FirebaseTableNames {
         static let lockers = "lockers"
