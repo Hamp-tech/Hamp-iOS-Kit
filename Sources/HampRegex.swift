@@ -20,7 +20,7 @@ public struct HampRegex {
         do {
             try regularExpression = NSRegularExpression(pattern: pattern)
         } catch let regexError as NSError {
-            throw RegexError.foo(message: regexError.localizedDescription)
+            throw RegexError.wrongPattern(message: regexError.localizedDescription)
         } catch {
             throw RegexError.unknown
         }
@@ -39,7 +39,7 @@ public struct HampRegex {
 
 extension HampRegex {
     enum RegexError : Swift.Error {
-        case foo(message : String)
+        case wrongPattern(message : String)
         case unknown
     }
 }
