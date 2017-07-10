@@ -1,5 +1,5 @@
 //
-//  HampCreditCardTests.swift
+//  HampKitCreditCardTests.swift
 //  HampKitTests
 //
 //  Created by Joan Molinas Ramon on 8/7/17.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import HampKit
 
-class HampCreditCardTests: XCTestCase {
+class HampKitCreditCardTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
