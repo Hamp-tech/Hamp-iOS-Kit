@@ -27,7 +27,6 @@ class HampKitTransactionTests: XCTestCase {
         XCTAssertEqual(transaction.identifier, "123")
         XCTAssertEqual(transaction.userID, "123")
         XCTAssertEqual(transaction.cardID, "123")
-        print(transaction.json)
     }
     
     func testConstructor_dictionary() {

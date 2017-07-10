@@ -24,7 +24,8 @@ class HampKitBookingTests: XCTestCase {
         let transaction = try! HampTransaction(identifier: nil, userID: "123", cardID: "123", order: HampOrder(smallBag: 1))
         let locker = try! HampLocker(identifier: "123", booked: false, lockerID: "123", secretKey: "1234")
         let booking = HampBooking(transaction: transaction, locker: locker)
-        print(booking.json)
+        XCTAssertEqual(booking.transaction.identifier, transaction.identifier)
+        XCTAssertEqual(booking.locker.identifier, locker.identifier)
         
     }
     
