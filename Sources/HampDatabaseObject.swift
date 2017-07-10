@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol HampDatabaseObject {
+public protocol HampDatabaseObject : Codable {
     /// Properties
     var identifier : String? { get }
     static var tableName : String { get }
