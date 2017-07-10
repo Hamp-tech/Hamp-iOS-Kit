@@ -19,6 +19,11 @@ public struct HampEnvirontmentsProvider {
         return HampEnvironment(name: "Production", file: file, apiURL: Constants.productionAPIURL)
     }
     
+    /// Returns a "production" environment getting the default firebase plist name
+    ///
+    ///
+    /// - Returns: Environment with a default firebase plist name
+    /// - Throws: File missing
     public static func developmentEnvirontment() throws -> HampEnvironment {
         let file = try HampFile(filename: Constants.developmentFirebaseFileName, ofType: "plist")
         return HampEnvironment(name: "Development", file: file, apiURL: Constants.developmentAPIURL)

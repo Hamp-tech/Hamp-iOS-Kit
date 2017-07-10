@@ -11,29 +11,30 @@ import Foundation
 internal struct Constants {
     
     ///API URLs
-    public static let productionAPIURL = "https://hampapi.herokuapp.com/api/v1"
-    public static let developmentAPIURL = "https://hampapi.herokuapp.com/api/v1"
+    internal static let productionAPIURL = "https://hampapi.herokuapp.com/api/v1"
+    internal static let developmentAPIURL = "https://hampapi.herokuapp.com/api/v1"
     
     ///Firebase files names
-    public static let productionFirebaseFileName = "GoogleService-Info"
-    public static let developmentFirebaseFileName = "GoogleServie-Dev-Info"
+    internal static let productionFirebaseFileName = "GoogleService-Info"
+    internal static let developmentFirebaseFileName = "GoogleServie-Dev-Info"
     
     /// Firebase table names
-    public struct FirebaseTableNames {
+    internal struct FirebaseTableNames {
         static let lockers = "lockers"
         static let creditCards = "credit_cards"
         static let transactions = "transactions"
+        static let users = "users"
     }
     
     /// Keys for locker properties names
-    public struct Locker {
+    internal struct Locker {
         static let booked = "booked"
         static let lockerID = "lockerID"
         static let secretKey = "secretKey"
     }
     
     /// Credit card properties names
-    public struct CreditCard {
+    internal struct CreditCard {
         static let number = "number"
         static let month = "month"
         static let year = "year"
@@ -41,14 +42,29 @@ internal struct Constants {
     }
     
     
-    public struct Transaction {
+    /// Transaction properties names
+    internal struct Transaction {
         static let userID = "userID"
         static let cardID = "cardID"
         static let order = "order"
     }
     
+    /// User properties names
+    internal struct User {
+        static let name = "name"
+        static let surname = "surname"
+        static let mail = "mail"
+        static let phone = "phone"
+        static let birthday = "birthday"
+        static let gender = "gender"
+        static let tokenFCM = "tokenFCM"
+        static let language = "language"
+        static let OS = "OS"
+        static let signupDate = "signupDate"
+    }
+    
     /// Regex
-    public struct Regex {
+    internal struct Regex {
         static let visa = "^4[0-9]{12}(?:[0-9]{3})?$"
         static let cvv = "^([0-9]{3})$"
     }
