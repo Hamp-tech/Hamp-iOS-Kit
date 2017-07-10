@@ -10,7 +10,8 @@ import Foundation
 
 public struct HampCreditCard : HampDatabaseObject {
     
-    public static var tableName: String = ""
+    //MARK: Class properties
+    public static var tableName: String = Constants.FirebaseTableNames.creditCards
     
     //MARK: Properties
     public var identifier: String?
@@ -31,7 +32,7 @@ public struct HampCreditCard : HampDatabaseObject {
         self.year = year
         self.cvv = cvv
         
-        try checkParameterProperties()
+        try validate()
     }
     
     public init(identifier: String? = nil, properties: Dictionary<String, Any>?) throws {
@@ -43,7 +44,8 @@ public struct HampCreditCard : HampDatabaseObject {
             cvv: properties?[Constants.CreditCard.cvv] as? String)
     }
     
-    public func checkParameterProperties() throws {
+    //MARK: HampObject protocol
+    public func validate() throws {
         guard
             let n = number,
             let m = month,

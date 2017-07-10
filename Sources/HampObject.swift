@@ -8,7 +8,12 @@
 
 import Foundation
 
-public protocol HampObject : Codable { }
+public protocol HampObject : Codable {
+    /// Check if dictionary contains required properties
+    ///
+    /// - Throws: Error if missing parameters
+    func validate() throws
+}
 
 extension HampObject {
     var json : String {

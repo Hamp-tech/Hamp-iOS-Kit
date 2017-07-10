@@ -43,4 +43,7 @@ public struct HampOrder : HampObject {
     public func orderAmount() -> UInt8 {
         return 1
     }
+    
+    //MARK: HampObject protocol
+    public func validate() throws {}
 }

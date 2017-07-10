@@ -29,7 +29,7 @@ public struct HampLocker : HampDatabaseObject {
         self.lockerID = lockerID
         self.secretKey = secretKey
         
-        try checkParameterProperties()
+        try validate()
     }
     
     public init(identifier: String?, properties: Dictionary<String, Any>?) throws {
@@ -40,7 +40,8 @@ public struct HampLocker : HampDatabaseObject {
             secretKey: properties?[Constants.Locker.secretKey] as? String)
     }
     
-    public func checkParameterProperties() throws {
+    //MARK: HampObject protocol
+    public func validate() throws {
         guard
             let i = identifier,
             let _ = booked,
@@ -54,5 +55,6 @@ public struct HampLocker : HampDatabaseObject {
         
     }
 }
+
 
 
