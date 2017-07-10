@@ -9,3 +9,15 @@
 import Foundation
 
 public protocol HampObject : Codable { }
+
+extension HampObject {
+    var json : String {
+        if let encoded = try? HampJSONManager.sharedEncoder.encode(self) {
+            if let json = String(data : encoded, encoding : .utf8) {
+               return json
+            }
+        }
+        
+        return ""
+    }
+}

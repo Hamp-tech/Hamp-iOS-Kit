@@ -35,6 +35,8 @@
 		4E95E6491F13B7A300515629 /* HampOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6471F13B7A300515629 /* HampOrder.swift */; };
 		4E95E64B1F13B8A500515629 /* HampObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E64A1F13B8A500515629 /* HampObject.swift */; };
 		4E95E64C1F13B8A500515629 /* HampObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E64A1F13B8A500515629 /* HampObject.swift */; };
+		4E95E64E1F13BAB600515629 /* HampJSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E64D1F13BAB600515629 /* HampJSONManager.swift */; };
+		4E95E64F1F13BAB600515629 /* HampJSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E64D1F13BAB600515629 /* HampJSONManager.swift */; };
 		4EA98A6F1F0D646000EC3A69 /* HampLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A6E1F0D646000EC3A69 /* HampLocker.swift */; };
 		4EA98A711F0D665F00EC3A69 /* HampDatabaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A701F0D665F00EC3A69 /* HampDatabaseEvent.swift */; };
 		4EA98A731F0D7AB000EC3A69 /* HampConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA98A721F0D7AB000EC3A69 /* HampConstants.swift */; };
@@ -88,6 +90,7 @@
 		4E93D2031F0AA59C00442673 /* HampEnvirontmentsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampEnvirontmentsProvider.swift; path = ../Sources/HampEnvirontmentsProvider.swift; sourceTree = "<group>"; };
 		4E95E6471F13B7A300515629 /* HampOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampOrder.swift; path = ../Sources/HampOrder.swift; sourceTree = "<group>"; };
 		4E95E64A1F13B8A500515629 /* HampObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampObject.swift; path = ../Sources/HampObject.swift; sourceTree = "<group>"; };
+		4E95E64D1F13BAB600515629 /* HampJSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampJSONManager.swift; path = ../Sources/HampJSONManager.swift; sourceTree = "<group>"; };
 		4EA98A6E1F0D646000EC3A69 /* HampLocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampLocker.swift; path = ../Sources/HampLocker.swift; sourceTree = "<group>"; };
 		4EA98A701F0D665F00EC3A69 /* HampDatabaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampDatabaseEvent.swift; path = ../Sources/HampDatabaseEvent.swift; sourceTree = "<group>"; };
 		4EA98A721F0D7AB000EC3A69 /* HampConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampConstants.swift; path = ../Sources/HampConstants.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		4E4599541F11118000CD2402 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4E95E64D1F13BAB600515629 /* HampJSONManager.swift */,
 				4E4599551F1111DD00CD2402 /* HampRegex.swift */,
 				4E4599591F111B2800CD2402 /* Date+Utils.swift */,
 			);
@@ -477,6 +481,7 @@
 				4EA98A731F0D7AB000EC3A69 /* HampConstants.swift in Sources */,
 				4EFD28351F0D459A005AB098 /* HampFirebaseDatabaseConnector.swift in Sources */,
 				4EA98A6F1F0D646000EC3A69 /* HampLocker.swift in Sources */,
+				4E95E64E1F13BAB600515629 /* HampJSONManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +504,7 @@
 				4EE2866D1F0AA63C001F1071 /* HampEnvirontmentsProvider.swift in Sources */,
 				4E93D1FE1F0A9F1600442673 /* HampEnvironment.swift in Sources */,
 				4E03FEF51F0D3E3000A62431 /* HampKitAuthErrorsTests.swift in Sources */,
+				4E95E64F1F13BAB600515629 /* HampJSONManager.swift in Sources */,
 				4E95E64C1F13B8A500515629 /* HampObject.swift in Sources */,
 				4E7D19971F04860E00231234 /* HampFile.swift in Sources */,
 				4EB3C9901F0BB78F00183EFB /* HampFirebaseUser.swift in Sources */,
