@@ -10,6 +10,13 @@ import Foundation
 
 import Foundation
 
+/// Set correct formats for:
+/// - phone: +34 xxx xxx xxx
+/// - mail: xx@xx.xx
+/// - birthday: ISO8601
+/// - gender: M, F or U
+/// - language: iOS
+/// - signupDate: ISO8601
 public struct HampUser : HampDatabaseObject {
     
     //MARK: Class properties
