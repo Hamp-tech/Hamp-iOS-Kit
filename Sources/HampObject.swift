@@ -26,3 +26,21 @@ extension HampObject {
         return ""
     }
 }
+
+extension HampObject {
+    func propertiesDictionary() -> [String : Any] {
+        let selfReflectabled = Mirror(reflecting: self)
+        var dict = [String : Any]()
+        for (name, value) in selfReflectabled.children {
+            guard let name = name else { continue }
+        
+            let propertyReflectabled = Mirror(reflecting: value)
+            if propertyReflectabled.displayStyle == .optional, propertyReflectabled.children.count > 0 {
+                dict[name] = Mirror.unwrap(obj: value) as? String
+            } else if propertyReflectabled.displayStyle != .optional { // avoid nil value
+                dict[name] = value
+            }
+        }
+    return dict
+    }
+}

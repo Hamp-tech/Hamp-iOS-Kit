@@ -7,6 +7,7 @@ target 'HampKit' do
     pod 'Firebase/Database'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+    pod 'Alamofire', '~> 4.4'
 
   target 'HampKitTests' do
       pod 'Firebase/Auth'
