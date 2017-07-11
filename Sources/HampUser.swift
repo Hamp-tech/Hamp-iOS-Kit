@@ -32,7 +32,7 @@ public struct HampUser : HampDatabaseObject {
     public var gender: String?
     public var tokenFCM: String?
     public var language: String?
-    public var OS: String?
+    public var os: String?
     public var signupDate: String?
     
     //MARK: Constructors
@@ -56,7 +56,7 @@ public struct HampUser : HampDatabaseObject {
         self.gender = gender
         self.tokenFCM = tokenFCM
         self.language = language
-        self.OS = OS
+        self.os = OS
         self.signupDate = signupDate
         try validate()
     }
@@ -76,4 +76,21 @@ public struct HampUser : HampDatabaseObject {
     }
     
     public func validate() throws {}
+}
+
+extension HampUser {
+    enum CodingKeys: String, CodingKey {
+        case identifier = "firebaseID"
+        case name
+        case surname
+        case mail
+        case phone
+        case birthday
+        case gender
+        case tokenFCM
+        case language
+        case os
+        case signupDate
+    }
+
 }

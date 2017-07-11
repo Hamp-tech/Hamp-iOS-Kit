@@ -20,7 +20,7 @@ class HampKitManagerTests: XCTestCase {
     }
     
     func testSingleton_True() {
-        let manager = HampFirebaseManager.sharedManager!
+        let manager = HampFirebaseManager.productionManager!
         let env = manager.environtment
         XCTAssertEqual(env, try! HampEnvirontmentsProvider.productionEnvirontment())
         XCTAssertFalse(manager.configured)
@@ -35,7 +35,7 @@ class HampKitManagerTests: XCTestCase {
     
     func testConnect() {
         let env = HampEnvironment(name: "Development", file: try! HampFile(filename: "GoogleService-Info", ofType: "plist"), apiURL : "https://hampapi.herokuapp.com/api/v1")
-        var manager = HampFirebaseManager(environtment: env)
+        let manager = HampFirebaseManager(environtment: env)
         XCTAssertNoThrow(try manager.connect())
         XCTAssertThrowsError(try manager.connect())
         XCTAssertTrue(manager.configured)

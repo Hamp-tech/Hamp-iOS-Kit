@@ -9,26 +9,20 @@
 import Foundation
 import Firebase
 
-public struct HampFirebaseManager {
-    // MARK: Class properties
-    
-    /// Singleton with a default configuration:
-    public static var sharedManager = try? HampFirebaseManager(environtment : HampEnvirontmentsProvider.productionEnvirontment())
-    
-    // MARK: Properties
+public class HampFirebaseManager {
+    //MARK: Properties
     public private(set) var environtment : HampEnvironment
     public private(set) var configured : Bool
     
-    // MARK: Constructor
+    //MARK: Constructor
     init(environtment : HampEnvironment) {
         self.environtment = environtment
         self.configured = false
     }
     
     // MARK: Public API
-
     /// Connect to firebase
-    public mutating func connect() throws {
+    public func connect() throws {
         if let _ = FirebaseApp.app() {
             throw ManagerError.alreadyConfigured
         }
@@ -37,6 +31,15 @@ public struct HampFirebaseManager {
         FirebaseApp.configure(options: options!)
         configured = true
     }
+}
+
+extension HampFirebaseManager {
+    //MARK: Different environtments
+    ///Singleton with a production configuration:
+    public static let productionManager = try? HampFirebaseManager(environtment : HampEnvirontmentsProvider.productionEnvirontment())
+    
+    /// Singleton with a development configuration
+    public static let developmentManager = try? HampFirebaseManager(environtment : HampEnvirontmentsProvider.developmentEnvirontment())
 }
 
 extension HampFirebaseManager {

@@ -18,7 +18,7 @@ class HampKitAuthTests: XCTestCase {
         super.setUp()
         
         do {
-            try HampFirebaseManager.sharedManager?.connect()
+            try HampFirebaseManager.productionManager?.connect()
         } catch  { }
         expectedUser = HampFirebaseUser(uid: "EdsmCnKNbte96H927URdTeOYVH62", email: "test@test.com")
     }

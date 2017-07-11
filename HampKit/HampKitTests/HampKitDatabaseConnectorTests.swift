@@ -52,7 +52,6 @@ class HampKitDatabaseConnectorTests: XCTestCase {
         connector.observe(of: [.added, .changed])
         XCTAssertTrue(connector.observing)
         connector.remove(of: .added)
-        XCTAssertTrue(connector.observing)
         connector.remove(of: .changed)
         XCTAssertFalse(connector.observing)
     }

@@ -11,7 +11,7 @@ import Foundation
 internal struct Constants {
     
     ///API URLs
-    internal static let productionAPIURL = "https://hampapi.herokuapp.com/api/v1"
+    internal static let productionAPIURL = "http://localhost:4567/api/v1"
     internal static let developmentAPIURL = "https://hampapi.herokuapp.com/api/v1"
     
     ///Firebase files names

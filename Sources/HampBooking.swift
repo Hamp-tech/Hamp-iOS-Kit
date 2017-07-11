@@ -9,8 +9,6 @@
 import Foundation
 
 public struct HampBooking : HampObject {
-    
-    
     //MARK: Properties
     public var transaction : HampTransaction
     public var locker : HampLocker

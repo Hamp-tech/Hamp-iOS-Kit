@@ -39,7 +39,7 @@ class HampKitUserTests: XCTestCase {
         XCTAssertEqual(user.gender, "M")
         XCTAssertEqual(user.tokenFCM, "123")
         XCTAssertEqual(user.language, "es-Ca")
-        XCTAssertEqual(user.OS, "iOS")
+        XCTAssertEqual(user.os, "iOS")
     }
     
     func testConstructor_dictionary() {
