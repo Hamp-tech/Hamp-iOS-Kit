@@ -9,11 +9,10 @@
 import Foundation
 import Alamofire
 
-public class HampServerManager {
-    ///MARK: Typealias
-    public typealias SuccessBlock<T : HampObject> = ((HampHTTPResponse<T>) -> ())?
-    public typealias ErrorBlock = (() -> ())?
-    
+public typealias ServerSuccess<T : HampObject> = ((HampHTTPResponse<T>) -> ())?
+public typealias ServerError = (() -> ())?
+
+internal class HampServerManager {
     //MARK: Properties
     public private(set) var environtment : HampEnvironment
     
@@ -22,14 +21,14 @@ public class HampServerManager {
         self.environtment = environtment
     }
     
-    private func request<T>(_ type : T.Type,
-                                url: String,
+    internal func request<T>(_ type : T.Type,
+                                path: String,
                                 method : HTTPMethod,
-                                parameters : [String : Any],
-                                onSuccess: SuccessBlock<T>,
-                                onError: ErrorBlock) {
-        var url = url
-        url.append("?gangway=7B3nPECsrty0vuZi7J74kSMVmHKljxK")
+                                parameters : [String : Any]?,
+                                onSuccess: ServerSuccess<T>,
+                                onError: ServerError) {
+        let url = environtment.apiURL + path + "?gangway=7B3nPECsrty0vuZi7J74kSMVmHKljxK"
+        
         Alamofire
             .request(url,method: method, parameters: parameters, encoding: JSONEncoding.default)
             .response { (response) in
@@ -44,29 +43,21 @@ public class HampServerManager {
     }
 }
 extension HampServerManager {
-    //MARK: Different environtments
+    //MARK:
     /// Production environtment
     public static let productionEnvirontment = try! HampEnvirontmentsProvider.productionEnvirontment()
     
     /// Development environtment
     public static let developmentEnvirontment = try! HampEnvirontmentsProvider.developmentEnvirontment()
-}
-
-
-extension HampServerManager {
-    public func createUser(by user: HampUser,
-                           onSuccess: SuccessBlock<HampUser>,
-                           onError: ErrorBlock) {
-        
-        let urlString = environtment.apiURL + "/users"
-        let par = user.propertiesDictionary()
     
-        self.request(HampUser.self,
-                     url: urlString,
-                     method: .post,
-                     parameters: par,
-                     onSuccess: onSuccess,
-                     onError: onError)
-    }
+    /// Used by sharedManager
+    /// Needs to be configured if external class uses sharedManager
+    public static var defaultEnvirontment : HampEnvironment?
+    
+    /// Singleton used to access by external classes.
+    /// Uses defaultEnvirontment to create singleton class
+    public static let sharedManager = { () -> HampServerManager in
+        precondition(HampServerManager.defaultEnvirontment != nil, "Assign default environtment first!")
+        return HampServerManager(environtment: HampServerManager.defaultEnvirontment!)
+    }()
 }
-
