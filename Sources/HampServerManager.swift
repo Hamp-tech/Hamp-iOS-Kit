@@ -21,17 +21,8 @@ public class HampServerManager {
     public init(environtment: HampEnvironment) {
         self.environtment = environtment
     }
-}
-
-extension HampServerManager {
-    //MARK: Different environtments
-    ///Singleton with a production configuration:
-    public static let productionManager = try? HampServerManager(environtment : HampEnvirontmentsProvider.productionEnvirontment())
     
-    /// Singleton with a development configuration
-    public static let developmentManager = try? HampServerManager(environtment : HampEnvirontmentsProvider.developmentEnvirontment())
-    
-    fileprivate func request<T>(_ type : T.Type,
+    private func request<T>(_ type : T.Type,
                                 url: String,
                                 method : HTTPMethod,
                                 parameters : [String : Any],
@@ -52,6 +43,15 @@ extension HampServerManager {
         }
     }
 }
+extension HampServerManager {
+    //MARK: Different environtments
+    /// Production environtment
+    public static let productionEnvirontment = try! HampEnvirontmentsProvider.productionEnvirontment()
+    
+    /// Development environtment
+    public static let developmentEnvirontment = try! HampEnvirontmentsProvider.developmentEnvirontment()
+}
+
 
 extension HampServerManager {
     public func createUser(by user: HampUser,
