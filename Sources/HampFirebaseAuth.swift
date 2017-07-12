@@ -9,9 +9,10 @@
 import Foundation
 import Firebase
 
-public typealias SuccessBlockWithUser = ((HampFirebaseUser) -> ())?
-public typealias ErrorBlock = ((Error) -> ())?
-public typealias SuccessBlock = (() -> ())?
+public typealias AuthSuccessWithUser = ((HampFirebaseUser) -> ())?
+public typealias AuthSuccess = (() -> ())?
+public typealias AuthError = ((Error) -> ())?
+
 
 public struct HampFirebaseAuth {
     
@@ -25,15 +26,15 @@ public struct HampFirebaseAuth {
     public static func signIn(
         withEmail email: String,
         password: String,
-        onSuccess: SuccessBlockWithUser = nil,
-        onError: ErrorBlock = nil) {
+        onSuccess: AuthSuccessWithUser = nil,
+        onError: AuthError = nil) {
         
         managerConfiguredChecker()
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let e = error, let eBlock = onError {
                 let code = (e as NSError).code
-                let authError = AuthError(rawValue: code)
+                let authError = AuthResponseError(rawValue: code)
                 eBlock(authError)
             } else {
                 Auth.auth().addStateDidChangeListener({ (auth, user) in
@@ -57,15 +58,15 @@ public struct HampFirebaseAuth {
     public static func createUser(
         withEmail email: String,
         password: String,
-        onSuccess: SuccessBlockWithUser = nil,
-        onError: ErrorBlock = nil) {
+        onSuccess: AuthSuccessWithUser = nil,
+        onError: AuthError = nil) {
         
         managerConfiguredChecker()
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let e = error {
                 let code = (e as NSError).code
-                let authError = AuthError(rawValue: code)
+                let authError = AuthResponseError(rawValue: code)
                 onError?(authError)
             } else {
                 let user = HampFirebaseUser(uid: user!.uid, email: user!.email!)
@@ -81,13 +82,13 @@ public struct HampFirebaseAuth {
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurredd
     public static func signOut(
-        onSuccess: SuccessBlock = nil,
-        onError: ErrorBlock = nil) {
+        onSuccess: AuthSuccess = nil,
+        onError: AuthError = nil) {
         
         managerConfiguredChecker()
         
         guard let _ = currentUser() else {
-            onError?(AuthError.userNotFound)
+            onError?(AuthResponseError.userNotFound)
             return
         }
         
@@ -97,9 +98,9 @@ public struct HampFirebaseAuth {
                 onSuccess?()
             })
         } catch let signOutError as NSError {
-            onError?(AuthError.init(rawValue: signOutError.code))
+            onError?(AuthResponseError(rawValue: signOutError.code))
         } catch {
-            onError?(AuthError.unknown)
+            onError?(AuthResponseError.unknown)
             
         }
         
@@ -114,8 +115,8 @@ public struct HampFirebaseAuth {
     ///   - onError: block called if error ocurredd
     public static func singInWithFacebook(
         accessToken: String,
-        onSuccess: SuccessBlockWithUser = nil,
-        onError: ErrorBlock = nil) {
+        onSuccess: AuthSuccessWithUser = nil,
+        onError: AuthError = nil) {
         
         managerConfiguredChecker()
         
@@ -123,7 +124,7 @@ public struct HampFirebaseAuth {
         Auth.auth().signIn(with: facebookCredentials) { (user, error) in
             if let e = error {
                 let code = (e as NSError).code
-                let authError = AuthError(rawValue: code)
+                let authError = AuthResponseError(rawValue: code)
                 onError?(authError)
             } else {
                 let user = HampFirebaseUser(uid: user!.uid, email: user!.email!)
@@ -152,7 +153,7 @@ extension HampFirebaseAuth {
 extension HampFirebaseAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
-    public enum AuthError : Swift.Error, CustomStringConvertible, Equatable {
+    public enum AuthResponseError : Swift.Error, CustomStringConvertible, Equatable {
         case userDisabled
         case emailAlreadyInUse
         case invalidEmail
@@ -227,7 +228,7 @@ extension HampFirebaseAuth {
             }
         }
         
-        public static func ==(lhs: AuthError, rhs: AuthError) -> Bool {
+        public static func ==(lhs: AuthResponseError, rhs: AuthResponseError) -> Bool {
             return lhs.code == rhs.code
         }
     }
