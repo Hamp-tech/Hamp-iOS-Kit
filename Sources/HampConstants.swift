@@ -26,6 +26,11 @@ internal struct Constants {
         static let users = "users"
     }
     
+    internal struct ServerPaths {
+        static let user = "/users/"
+        static let creditCards = user + ":id/cards"
+    }
+    
     /// Keys for locker properties names
     internal struct Locker {
         static let booked = "booked"
