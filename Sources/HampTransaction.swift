@@ -21,7 +21,7 @@ public struct HampTransaction : HampDatabaseObject {
     
     
     //MARK: Constructor
-    public init(identifier: String?,
+    public init(identifier: String? = nil,
                 userID: String?,
                 cardID: String?,
                 order: HampOrder?) throws {

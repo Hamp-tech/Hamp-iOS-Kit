@@ -32,7 +32,7 @@ public struct HampLocker : HampDatabaseObject {
         try validate()
     }
     
-    public init(identifier: String?, properties: Dictionary<String, Any>?) throws {
+    public init(identifier: String? = nil, properties: Dictionary<String, Any>?) throws {
         try self.init(
             identifier: identifier,
             booked: properties?[Constants.Locker.booked] as? Bool,

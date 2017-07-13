@@ -21,7 +21,7 @@ public struct HampCreditCard : HampDatabaseObject {
     public var cvv : String!
     
     //MARK: Constructors
-    public init(identifier : String?,
+    public init(identifier : String? = nil,
                 number : String?,
                 month : String?,
                 year : String?,

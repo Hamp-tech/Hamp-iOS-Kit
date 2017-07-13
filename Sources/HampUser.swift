@@ -36,7 +36,7 @@ public struct HampUser : HampDatabaseObject {
     public var signupDate: String?
     
     //MARK: Constructors
-    public init(identifier: String?,
+    public init(identifier: String? = nil,
                 name: String,
                 surname: String,
                 mail: String,
