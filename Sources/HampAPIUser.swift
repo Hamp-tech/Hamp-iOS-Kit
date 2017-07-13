@@ -18,7 +18,7 @@ internal protocol APIUser : API {
 public final class HampAPIUser : APIUser {
     typealias T = HampUser
     /// Properties
-    fileprivate static let path = "/users/"
+    private static let path = Constants.ServerPaths.user
     
     /// Request to create a new user on hamp server
     ///
@@ -27,6 +27,7 @@ public final class HampAPIUser : APIUser {
     ///   - onSuccess: called if created was successfully
     ///   - onError: called if an error occurred
     static func create(object: HampDatabaseObject,
+                       parent: HampDatabaseObject? = nil, 
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
@@ -48,6 +49,7 @@ public final class HampAPIUser : APIUser {
     ///   - onSuccess: called if updated was successfully
     ///   - onError: called if an error ocurred
     static func update(object: HampObject,
+                       parent: HampDatabaseObject? = nil,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
@@ -61,6 +63,13 @@ public final class HampAPIUser : APIUser {
                      parameters: properties,
                      onSuccess: onSuccess,
                      onError: onError)
+    }
+    
+    static func remove(object: HampDatabaseObject,
+                       parent: HampDatabaseObject? = nil,
+                       onSuccess: ((HampHTTPResponse<HampUser>) -> ())?,
+                       onError: ServerError) {
+        assertionFailure("Needs to be implemented on server")
     }
     
     /// Unsubscribe an user

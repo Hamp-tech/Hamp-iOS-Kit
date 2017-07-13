@@ -55,6 +55,7 @@
 		4E7EAD541F17FE2D0052BD92 /* HampKitTransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6531F13C2B600515629 /* HampKitTransactionTests.swift */; };
 		4E7EAD551F17FE2D0052BD92 /* HampKitBookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6581F13CC7A00515629 /* HampKitBookingTests.swift */; };
 		4E7EAD561F17FE2D0052BD92 /* HampKitUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8B535D1F14334600DA9E64 /* HampKitUserTests.swift */; };
+		4E7EAD581F1813130052BD92 /* HampAPICreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EAD571F1813130052BD92 /* HampAPICreditCard.swift */; };
 		4E93D2001F0AA1BF00442673 /* HampFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D1FF1F0AA1BF00442673 /* HampFirebaseManager.swift */; };
 		4E93D2041F0AA59C00442673 /* HampEnvirontmentsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2031F0AA59C00442673 /* HampEnvirontmentsProvider.swift */; };
 		4E95E6481F13B7A300515629 /* HampOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E6471F13B7A300515629 /* HampOrder.swift */; };
@@ -108,6 +109,7 @@
 		4E5B08E51F047BA500236A9E /* HampFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampFile.swift; path = ../Sources/HampFile.swift; sourceTree = "<group>"; };
 		4E6BC4E81F162BD300080F60 /* HampAPIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampAPIUser.swift; path = ../Sources/HampAPIUser.swift; sourceTree = "<group>"; };
 		4E74D95E1F0E4FC00033407C /* HampKitLockerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitLockerTests.swift; sourceTree = "<group>"; };
+		4E7EAD571F1813130052BD92 /* HampAPICreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HampAPICreditCard.swift; path = ../Sources/HampAPICreditCard.swift; sourceTree = "<group>"; };
 		4E881E341F0484ED00DB700E /* HampKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HampKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E881E361F0484EE00DB700E /* HampKitFileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitFileTests.swift; sourceTree = "<group>"; };
 		4E881E381F0484EE00DB700E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				4E40CFC11F152E600038AB05 /* HampServerManager.swift */,
 				4E6BC4E81F162BD300080F60 /* HampAPIUser.swift */,
+				4E7EAD571F1813130052BD92 /* HampAPICreditCard.swift */,
 				4ED791441F1658CD007224AC /* HampAPI.swift */,
 			);
 			name = Server;
@@ -531,6 +534,7 @@
 				4EA98A731F0D7AB000EC3A69 /* HampConstants.swift in Sources */,
 				4EFD28351F0D459A005AB098 /* HampFirebaseDatabaseConnector.swift in Sources */,
 				4EA98A6F1F0D646000EC3A69 /* HampLocker.swift in Sources */,
+				4E7EAD581F1813130052BD92 /* HampAPICreditCard.swift in Sources */,
 				4E95E64E1F13BAB600515629 /* HampJSONManager.swift in Sources */,
 				4E2016921F141D7600167C30 /* HampUser.swift in Sources */,
 				4E6BC4E91F162BD300080F60 /* HampAPIUser.swift in Sources */,
@@ -702,6 +706,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = U9QF88MGC2;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = HampKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -719,6 +724,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = U9QF88MGC2;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = HampKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
