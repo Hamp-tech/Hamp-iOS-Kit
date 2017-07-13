@@ -35,7 +35,7 @@ public struct HampFirebaseAuth {
             if let e = error, let eBlock = onError {
                 let code = (e as NSError).code
                 let authError = AuthResponseError(rawValue: code)
-                eBlock(authError)
+                eBlock(authError!)
             } else {
                 Auth.auth().addStateDidChangeListener({ (auth, user) in
                     if let user = user {
@@ -67,7 +67,7 @@ public struct HampFirebaseAuth {
             if let e = error {
                 let code = (e as NSError).code
                 let authError = AuthResponseError(rawValue: code)
-                onError?(authError)
+                onError?(authError!)
             } else {
                 let user = HampFirebaseUser(uid: user!.uid, email: user!.email!)
                 onSuccess?(user)
@@ -98,7 +98,7 @@ public struct HampFirebaseAuth {
                 onSuccess?()
             })
         } catch let signOutError as NSError {
-            onError?(AuthResponseError(rawValue: signOutError.code))
+            onError?(AuthResponseError(rawValue: signOutError.code)!)
         } catch {
             onError?(AuthResponseError.unknown)
             
@@ -125,7 +125,7 @@ public struct HampFirebaseAuth {
             if let e = error {
                 let code = (e as NSError).code
                 let authError = AuthResponseError(rawValue: code)
-                onError?(authError)
+                onError?(authError!)
             } else {
                 let user = HampFirebaseUser(uid: user!.uid, email: user!.email!)
                 onSuccess?(user)
@@ -153,56 +153,20 @@ extension HampFirebaseAuth {
 extension HampFirebaseAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
-    public enum AuthResponseError : Swift.Error, CustomStringConvertible, Equatable {
-        case userDisabled
-        case emailAlreadyInUse
-        case invalidEmail
-        case wrongPassword
-        case userNotFound
-        case recentLogin
-        case networkError
-        case weakPassword
-        case unknown
-        
-        /// Instance new error by code
-        ///
-        /// - Parameter rawValue: <#rawValue description#>
-        init(rawValue: Int) {
-            switch rawValue {
-            case 17005: self = .userDisabled
-            case 17007: self = .emailAlreadyInUse
-            case 17008: self = .invalidEmail
-            case 17009: self = .wrongPassword
-            case 17011: self = .userNotFound
-            case 17014: self = .recentLogin
-            case 17020: self = .networkError
-            case 17026: self = .weakPassword
-            default: self = .unknown
-            }
-        }
+    public enum AuthResponseError : Int, Swift.Error, CustomStringConvertible, Equatable {
+        case userDisabled = 17005
+        case emailAlreadyInUse = 17007
+        case invalidEmail = 17008
+        case wrongPassword = 17009
+        case userNotFound = 17011
+        case recentLogin = 17014
+        case networkError = 17020
+        case weakPassword = 17026
+        case unknown = 17999
         
         /// Code number for each error
         public var code : Int {
-            switch self {
-            case .userDisabled:
-                return 17005
-            case .emailAlreadyInUse:
-                return 17007
-            case .invalidEmail:
-                return 17008
-            case .wrongPassword:
-                return 17009
-            case .userNotFound:
-                return 17011
-            case .recentLogin:
-                return 17014
-            case .networkError:
-                return 17020
-            case .weakPassword:
-                return 17026
-            case .unknown:
-                return 17999
-            }
+            return self.rawValue
         }
         
         public var description: String {

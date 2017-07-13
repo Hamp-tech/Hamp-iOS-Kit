@@ -56,7 +56,7 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertTrue(false)
                 exp.fulfill()
         },  onError: { (error) in
-            XCTAssertEqual(error as! HampFirebaseAuth.AuthError, HampFirebaseAuth.AuthError.wrongPassword)
+            XCTAssertEqual(error as! HampFirebaseAuth.AuthResponseError, HampFirebaseAuth.AuthResponseError.wrongPassword)
             exp.fulfill()
         })
         
@@ -101,7 +101,7 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertFalse(true)
                 exp.fulfill()
         }, onError: { (error) in
-            XCTAssertEqual(error as! HampFirebaseAuth.AuthError, HampFirebaseAuth.AuthError.emailAlreadyInUse)
+            XCTAssertEqual(error as! HampFirebaseAuth.AuthResponseError, HampFirebaseAuth.AuthResponseError.emailAlreadyInUse)
             exp.fulfill()
         })
         
@@ -122,7 +122,7 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertFalse(true)
                 exp.fulfill()
         }, onError: { (error) in
-            XCTAssertEqual(error as! HampFirebaseAuth.AuthError, HampFirebaseAuth.AuthError.weakPassword)
+            XCTAssertEqual(error as! HampFirebaseAuth.AuthResponseError, HampFirebaseAuth.AuthResponseError.weakPassword)
             exp.fulfill()
         })
         
@@ -143,7 +143,7 @@ class HampKitAuthTests: XCTestCase {
                 XCTAssertFalse(true)
                 exp.fulfill()
         }, onError: { (error) in
-            XCTAssertEqual(error as! HampFirebaseAuth.AuthError, HampFirebaseAuth.AuthError.invalidEmail)
+            XCTAssertEqual(error as! HampFirebaseAuth.AuthResponseError, HampFirebaseAuth.AuthResponseError.invalidEmail)
             exp.fulfill()
         })
         
@@ -196,7 +196,7 @@ class HampKitAuthTests: XCTestCase {
             XCTAssertTrue(false)
             exp.fulfill()
         }, onError : { (error) in
-            XCTAssertEqual(error as! HampFirebaseAuth.AuthError, HampFirebaseAuth.AuthError.userNotFound)
+            XCTAssertEqual(error as! HampFirebaseAuth.AuthResponseError, HampFirebaseAuth.AuthResponseError.userNotFound)
             exp.fulfill()
         })
         
