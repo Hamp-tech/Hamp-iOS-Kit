@@ -42,6 +42,23 @@ internal class HampServerManager {
         }
     }
 }
+
+extension HampServerManager {
+    public enum ServerResponseError : Int, Swift.Error {
+        case noContent = 204
+        case badRequest = 400
+        case unauthorized = 401
+        case notFound = 404
+        case internalError = 500
+        case unknown = 418 //teapot 8)
+        
+        /// Code number for each error
+        public var code : Int {
+            return self.rawValue
+        }
+    }
+}
+
 extension HampServerManager {
     //MARK:
     /// Production environtment
