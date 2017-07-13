@@ -13,5 +13,8 @@ public struct HampBooking : HampObject {
     public var transaction : HampTransaction
     public var locker : HampLocker
     
-    public func validate() throws {}
+    public func validate() throws {
+        try transaction.validate()
+        try locker.validate()
+    }
 }
