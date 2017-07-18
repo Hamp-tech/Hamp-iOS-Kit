@@ -9,7 +9,7 @@
 import Foundation
 
 
-public final class HampAPICreditCard : API {
+public final class HampAPICreditCard : APIExtended {
     typealias T = HampCreditCard
     
     ///Properties
@@ -28,6 +28,7 @@ public final class HampAPICreditCard : API {
         guard let p = parent else {
             preconditionFailure("Pass user to update the credit card as parent")
         }
+        
         guard p is HampUser else {
             preconditionFailure("Parent needs to be user")
         }
@@ -37,7 +38,7 @@ public final class HampAPICreditCard : API {
         }
         
         let properties = object.propertiesDictionary()
-        let creditCardPath = path.replacingOccurrences(of: ":id", with: id)
+        let creditCardPath = String(format: path, id)
         
         HampServerManager
             .sharedManager
@@ -82,7 +83,9 @@ public final class HampAPICreditCard : API {
             preconditionFailure("Cards needs an identifier to be removed")
         }
         
-        let creditCardPath = path.replacingOccurrences(of: ":id", with: id) + "/" + cid
+        //TODO: Canviar
+//        let creditCardPath = path.replacingOccurrences(of: ":id", with: id) + "/" + cid
+        let creditCardPath = String(format: path+"/%@", id, cid)
         
         HampServerManager
             .sharedManager

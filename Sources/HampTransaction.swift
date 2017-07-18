@@ -42,10 +42,8 @@ public struct HampTransaction : HampDatabaseObject {
     //MARK: HampObject protocol
     public func validate() throws {
         guard
-            let u = userID,
             let c = cardID,
             let _ = order,
-            u.count > 0,
             c.count > 0 else {
                 throw HampFirebaseObjectError.missingProperties
                 

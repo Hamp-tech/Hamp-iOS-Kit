@@ -36,7 +36,8 @@ extension HampObject {
         
             let propertyReflectabled = Mirror(reflecting: value)
             if propertyReflectabled.displayStyle == .optional, propertyReflectabled.children.count > 0 {
-                dict[name] = Mirror.unwrap(obj: value) as? String
+                let v = Mirror.unwrap(obj: value)
+                dict[name] = (v is HampObject) ? (v as! HampObject).propertiesDictionary() : v
             } else if propertyReflectabled.displayStyle != .optional { // avoid nil value
                 dict[name] = value
             }

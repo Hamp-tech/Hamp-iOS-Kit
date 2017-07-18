@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-internal protocol APIUser : API {
+internal protocol APIUser : APIExtended {
     static func unsubscribe(identifier: String,
                             onSuccess: ServerSuccess<T>,
                             onError: ServerError)
@@ -53,7 +53,8 @@ public final class HampAPIUser : APIUser {
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
-        let userPath = path + (object as! HampUser).identifier!
+        let userPath = path + "/\((object as! HampUser).identifier!)"
+        
         
         HampServerManager
             .sharedManager

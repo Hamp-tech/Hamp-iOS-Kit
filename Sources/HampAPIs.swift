@@ -8,14 +8,17 @@
 
 import Foundation
 
-internal protocol API {
+internal protocol APIBase {
     associatedtype T : HampObject
     
     static func create(object: HampDatabaseObject,
                        parent: HampDatabaseObject?,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError)
-    
+
+}
+
+internal protocol APIExtended : APIBase {
     static func remove(object: HampDatabaseObject,
                        parent: HampDatabaseObject?,
                        onSuccess: ServerSuccess<T>,
@@ -25,5 +28,4 @@ internal protocol API {
                        parent: HampDatabaseObject?,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError)
-
 }
