@@ -62,10 +62,10 @@ Pod::Spec.new do |s|
     'OTHER_LDFLAGS' => '$(inherited) -ObjC',
   }
 
-  s.dependency 'Firebase/Auth'
-  s.dependency 'Firebase/Database'
-  s.dependency 'Firebase/Core'
-  s.dependency 'Firebase/Messaging'
+  # s.dependency 'Firebase/Auth'
+  # s.dependency 'Firebase/Database'
+  # s.dependency 'Firebase/Core'
+  # s.dependency 'Firebase/Messaging'
   s.dependency 'Alamofire', '~> 4.4'
 
 end
