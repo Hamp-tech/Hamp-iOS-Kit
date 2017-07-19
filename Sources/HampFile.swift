@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseCommunity.FirebaseAuth
 
 public struct HampFile {
     // MARK: Public propertes

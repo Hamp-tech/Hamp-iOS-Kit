@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseCommunity
 
 public protocol DatabaseConnectorDelegate : class {
     func connector<T>(connector : HampFirebaseDatabaseConnector<T>, didAddedNewObject object: T)

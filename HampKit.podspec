@@ -9,16 +9,14 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/Hamp-tech/Hamp-iOS-Kit"
   s.license      = 'MIT'
-  s.author             = { "Hamp" => "joanmramon@gmail.com" }
+  s.author       = { "Hamp" => "joanmramon@gmail.com" }
 
   s.source       = { :git => "https://github.com/Hamp-tech/Hamp-iOS-Kit.git", :tag => s.version }
-  s.source_files  = "Sources/**/*.{swift}"
+  s.source_files = "Sources/**/*.{swift}"
 
-  s.dependency 'Firebase'
-  s.dependency 'Firebase/Auth'
-  s.dependency 'Firebase/Database'
-  s.dependency 'Firebase/Core'
-  s.dependency 'Firebase/Messaging'
+  s.dependency 'FirebaseCommunity'
+  s.dependency 'FirebaseCommunity/Auth'
+  s.dependency 'FirebaseCommunity/Database'
   s.dependency 'Alamofire', '~> 4.4'
 
 end

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseCommunity
 
 public enum DatabaseEvent {
     case added

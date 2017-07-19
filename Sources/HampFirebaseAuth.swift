@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseCommunity
 
 public typealias AuthSuccessWithUser = ((HampFirebaseUser) -> ())?
 public typealias AuthSuccess = (() -> ())?

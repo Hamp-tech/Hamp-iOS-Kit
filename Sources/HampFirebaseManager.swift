@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseCommunity
 
 public class HampFirebaseManager {
     //MARK: Properties
