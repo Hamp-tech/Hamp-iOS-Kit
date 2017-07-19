@@ -9,41 +9,96 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, DatabaseConnectorDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //        try? HampFirebaseManager.productionManager?.connect()
         
-        try? HampFirebaseManager.sharedManager?.connect()
-        HampFirebaseAuth.signIn(withEmail: "test@test.com", password: "arcanine")
-        let order = try! HampLocker(identifier: "123", booked: false, lockerID: "123", secretKey: "123")
-        print(order.json)
+        HampServerManager.defaultEnvirontment = HampServerManager.productionEnvirontment
+        
+        usersRequests()
+        creditCardRequests()
+        bookingRequests()
         
         return true
     }
     
-    func connector<T>(connector: HampFirebaseDatabaseConnector<T>, didAddedNewObject object: T)  {
-        print(object)
+    func usersRequests() {
+        //        let user = try! HampUser(identifier: "-KoqsaNb5E96Xnwv3hwo", name: "joannnn", surname: "molinas", mail: "joan@joan.com", phone: "666555777", birthday: "01/01/1990", gender: "M", tokenFCM: "123", language: "1", OS: "iOS", signupDate: Date().iso8601())
+        
+        //        HampAPIUser.create(object: user, onSuccess: { (response) in
+        //            print(response.code)
+        //            print(response.message)
+        //            print(response.data)
+        //        }, onError: {() in
+        //
+        //        })
+        
+        //        HampAPIUser.update(object: user, onSuccess: { (response) in
+        //            print(response.code)
+        //            print(response.message)
+        //            print(response.data)
+        //        }, onError: { () in
+        //
+        //        })
+        
+        //        HampAPIUser.unsubscribe(identifier: "-KoqsaNb5E96Xnwv3hwo", onSuccess: { (response) in
+        //            print(response.code)
+        //            print(response.message)
+        //            print(response.data)
+        //        }, onError: { () in
+        //
+        //        })
+        
     }
     
-    func connector<T>(connector: HampFirebaseDatabaseConnector<T>, didRemoveObject object: T)  {
-        print(object)
+    func creditCardRequests() {
+//        let user = try! HampUser(identifier: "-KoqsaNb5E96Xnwv3hwo",
+//                                 name: "joannn",
+//                                 surname: "molinas",
+//                                 mail: "joan@joan.com",
+//                                 phone: "666555777")
+
+//        let creditCard = try! HampCreditCard(identifier: "-KoyFpTtDmydIGyYxfNE",
+//                                             number: "4111111111111111",
+//                                             month: "12",
+//                                             year: "21",
+//                                             cvv: "887")
+
+//        HampAPICreditCard.create(object: creditCard, parent: user, onSuccess: { (response) in
+//
+//        }, onError: { () in
+//
+//        })
+//        
+//        HampAPICreditCard.remove(object: creditCard, parent: user, onSuccess: { (response) in
+//
+//        }, onError: {() in
+//
+//        })
     }
     
-    func connector<T>(connector: HampFirebaseDatabaseConnector<T>, didChangedObject object: T) {
-        print(object)
+    func bookingRequests() {
+//        let user = try! HampUser(identifier: "-KoqsaNb5E96Xnwv3hwo",
+//                                 name: "joannn",
+//                                 surname: "molinas",
+//                                 mail: "joan@joan.com",
+//                                 phone: "666555777")
+//
+//        let creditCard = try! HampCreditCard(identifier: "-KoyFpTtDmydIGyYxfNE",
+//                                             number: "4111111111111111",
+//                                             month: "12",
+//                                             year: "21",
+//                                             cvv: "888")
+//        let order = HampOrder(smallBag: 1)
+//
+//        HampAPIBooking.booking(user: user, card: creditCard, order: order, onSuccess: { (response) in
+//
+//        }, onError: { () in
+//
+//        })
     }
-    
-    func connector<T>(connector: HampFirebaseDatabaseConnector<T>, didMovedObject object: T) {
-        print(object)
-    }
-    
-    func connector<T>(connector: HampFirebaseDatabaseConnector<T>, fireEventObject object: T) {
-        print(object)
-    }
-    
     
 }
 
