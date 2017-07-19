@@ -3,17 +3,15 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'HampKit' do
-    pod 'Firebase/Auth'
-    pod 'Firebase/Database'
-    pod 'Firebase/Core'
-    pod 'Firebase/Messaging'
+    pod 'FirebaseCommunity', :git => 'https://github.com/ulidev/firebase-ios-sdk.git'
+    pod 'FirebaseCommunity/Auth', :git => 'https://github.com/ulidev/firebase-ios-sdk.git'
+    pod 'FirebaseCommunity/Database', :git => 'https://github.com/ulidev/firebase-ios-sdk.git'
     pod 'Alamofire', '~> 4.4'
 
   target 'HampKitTests' do
-      pod 'Firebase/Auth'
-      pod 'Firebase/Database'
-      pod 'Firebase/Core'
-      pod 'Firebase/Messaging'
+      pod 'FirebaseCommunity', :git => 'https://github.com/ulidev/firebase-ios-sdk.git'
+      pod 'FirebaseCommunity/Auth', :git => 'https://github.com/ulidev/firebase-ios-sdk.git'
+      pod 'FirebaseCommunity/Database', :git => 'https://github.com/ulidev/firebase-ios-sdk.git'
   end
 
 end
