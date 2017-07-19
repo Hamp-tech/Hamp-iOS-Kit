@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Hamp-tech/Hamp-iOS-Kit.git", :tag => s.version }
   s.source_files  = "Sources/**/*.{swift}"
 
+  s.frameworks = 'Firebase'
   s.dependency 'Firebase/Auth'
   s.dependency 'Firebase/Database'
   s.dependency 'Firebase/Core'
