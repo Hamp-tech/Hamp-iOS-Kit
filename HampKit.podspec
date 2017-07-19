@@ -14,6 +14,27 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Hamp-tech/Hamp-iOS-Kit.git", :tag => s.version }
   s.source_files  = "Sources/**/*.{swift}"
 
+  #All this to link Firebase on the pod
+
+  s.libraries = [
+  'c++', # FirebaseAnalytics.
+  'icucore', # FirebaseDatabase.
+  'sqlite3', # FirebaseAnalytics.
+  'z', # FirebaseAnalytics.
+  ]
+
+  # Specify what frameworks this depends on.
+  s.frameworks = [
+    'AddressBook', # FirebaseAnalytics.
+    'AdSupport', # FirebaseAnalytics.
+    'CFNetwork', # FirebaseDatabase.
+    'CoreGraphics',
+    'SafariServices', # FirebaseAnalytics.
+    'Security', # FirebaseAnalytics, FirebaseAuth, FirebaseDatabase.
+    'StoreKit', # FirebaseAnalytics.
+    'SystemConfiguration', # FirebaseAnalytics, FirebaseDatabase.
+    'UIKit',
+  ]
 
   s.vendored_frameworks = [
       # Firebase Analytics.
@@ -35,6 +56,11 @@ Pod::Spec.new do |s|
       'HampKit/Frameworks/Firebase/Messaging/FirebaseMessaging.framework',
       'HampKit/Frameworks/Firebase/Messaging/GoogleIPhoneUtilities.framework',
   ]
+
+  # LDFLAGS required by Firebase dependencies.
+  s.pod_target_xcconfig = {
+    'OTHER_LDFLAGS' => '$(inherited) -ObjC',
+  }
 
   s.dependency 'Firebase/Auth'
   s.dependency 'Firebase/Database'
