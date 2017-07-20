@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public typealias ServerSuccess<T : HampObject> = ((HampHTTPResponse<T>) -> ())?
-public typealias ServerError = (() -> ())?
+public typealias ServerError = ((Error) -> ())?
 
 internal class HampServerManager {
     //MARK: Properties
@@ -21,6 +21,15 @@ internal class HampServerManager {
         self.environtment = environtment
     }
     
+    /// Make request
+    ///
+    /// - Parameters:
+    ///   - type: Expected server response object
+    ///   - path: request path to add to base URL
+    ///   - method: http method
+    ///   - parameters: parameters to add to request
+    ///   - onSuccess: called if request was successfully
+    ///   - onError: called if an error occurred
     internal func request<T>(_ type : T.Type,
                                 path: String,
                                 method : HTTPMethod,
@@ -33,18 +42,22 @@ internal class HampServerManager {
             .request(url,method: method, parameters: parameters, encoding: JSONEncoding.default)
             .response { (response) in
                 if let _ = response.error {
-                    //Throw http error
+                    onError?(ServerResponseError.unknown)
+                    return
                 }
+                
                 guard let d = response.data else { return }
                 if let hampResponse = try? HampJSONManager.sharedDecoder.decode(HampHTTPResponse<T>.self, from: d) {
-                    onSuccess?(hampResponse)
+                    let error = ServerResponseError(rawValue: hampResponse.code)                    
+                    error != nil ? onError?(error!) : onSuccess?(hampResponse)
+                    
                 }
         }
     }
 }
 
 extension HampServerManager {
-    public enum ServerResponseError : Int, Swift.Error {
+    public enum ServerResponseError : UInt, CustomStringConvertible, Swift.Error {
         case noContent = 204
         case badRequest = 400
         case unauthorized = 401
@@ -53,8 +66,25 @@ extension HampServerManager {
         case unknown = 418 //teapot 8)
         
         /// Code number for each error
-        public var code : Int {
+        public var code : UInt {
             return self.rawValue
+        }
+        
+        public var description: String {
+            switch self {
+            case .noContent:
+                return "Request and is not returning any content"
+            case .badRequest:
+                return "Invalid request parameters, ensure you're sending correct information"
+            case .unauthorized:
+                return "Unauthorized to request"
+            case .notFound:
+                return "Object to request not found"
+            case .internalError:
+                return "An error ocurred on server"
+            case .unknown:
+                return "Unknown error"
+            }
         }
     }
 }

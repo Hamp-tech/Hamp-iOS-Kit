@@ -83,8 +83,6 @@ public final class HampAPICreditCard : APIExtended {
             preconditionFailure("Cards needs an identifier to be removed")
         }
         
-        //TODO: Canviar
-//        let creditCardPath = path.replacingOccurrences(of: ":id", with: id) + "/" + cid
         let creditCardPath = String(format: path+"/%@", id, cid)
         
         HampServerManager

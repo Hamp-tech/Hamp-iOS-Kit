@@ -9,6 +9,10 @@
 import Foundation
 
 extension Mirror {
+    /// Unwrap mirror object
+    ///
+    /// - Parameter obj: object to unwrap
+    /// - Returns: unwrapped object
     public static func unwrap(obj: Any) -> Any {
         let reflected = Mirror(reflecting: obj)
         guard reflected.displayStyle == .optional else { return obj }

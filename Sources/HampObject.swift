@@ -16,6 +16,7 @@ public protocol HampObject : Codable {
 }
 
 extension HampObject {
+    /// Object as JSON Value
     var json : String {
         if let encoded = try? HampJSONManager.sharedEncoder.encode(self) {
             if let json = String(data : encoded, encoding : .utf8) {
@@ -28,6 +29,10 @@ extension HampObject {
 }
 
 extension HampObject {
+    
+    /// Create a dictionary with all non nin properties and their values
+    ///
+    /// - Returns: dictionary with properties
     func propertiesDictionary() -> [String : Any] {
         let selfReflectabled = Mirror(reflecting: self)
         var dict = [String : Any]()
@@ -42,6 +47,6 @@ extension HampObject {
                 dict[name] = value
             }
         }
-    return dict
+        return dict
     }
 }

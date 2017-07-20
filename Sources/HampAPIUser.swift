@@ -66,6 +66,13 @@ public final class HampAPIUser : APIUser {
                      onError: onError)
     }
     
+    /// Remove user
+    ///
+    /// - Parameters:
+    ///   - object: user to remove
+    ///   - parent: nil
+    ///   - onSuccess: called if unsubscribe was succesfully
+    ///   - onError: called if an error occurred
     static func remove(object: HampDatabaseObject,
                        parent: HampDatabaseObject? = nil,
                        onSuccess: ((HampHTTPResponse<HampUser>) -> ())?,
