@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "HampKit"
-  s.version      = "0.0.1"
-  s.summary      = "HampKit encapsulates all requests (server/firebase) in on framework."
+  s.version      = "0.1"
+  s.summary      = "HampKit encapsulates all requests in on framework."
   s.description  = <<-DESC
-                    Swift Kit to manage all connections to firebase and web server
+                    Swift kit to manage all HAMP connections to firebase and web server
                    DESC
 
   s.homepage     = "https://github.com/Hamp-tech/Hamp-iOS-Kit"
