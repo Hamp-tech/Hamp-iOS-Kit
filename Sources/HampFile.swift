@@ -23,27 +23,16 @@ public final class HampFile {
     /// - Throws: throws if file not exists
     public init(filename : String, ofType : String) throws{
         self.filename = filename + "." + ofType
-        self.filepath = Bundle.main.bundlePath
+    
+        let bundle = Bundle(for: type(of: self))
+        self.filepath = bundle.bundlePath
+        self.route = ""
         
-        
-        let podBundle = Bundle(for: type(of: self))
-        
-        if let bundleURL = podBundle.url(forResource: "HampKit", withExtension: "bundle") {
-            if let bundle = Bundle(url: bundleURL) {
-                print(bundle)
-            } else {
-                print("bundle error")
-            }
+        if let bundleFilePath = bundle.url(forResource: filename, withExtension: ofType) {
+            self.route = bundleFilePath.path
         } else {
-            print("bundle url error")
-        }
-        
-        guard let path = Bundle.main.path(forResource: filename, ofType: ofType) else {
             throw FileError.missingFileError
         }
-        
-        self.route = path
-        
     }
 }
 

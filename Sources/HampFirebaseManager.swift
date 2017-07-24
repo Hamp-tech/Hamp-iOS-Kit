@@ -26,8 +26,8 @@ public class HampFirebaseManager {
         if let _ = FirebaseApp.app() {
             throw ManagerError.alreadyConfigured
         }
-        
-        let options = FirebaseOptions.init(contentsOfFile: environtment.file.route)
+    
+        let options = FirebaseOptions(contentsOfFile: environtment.file.route)
         FirebaseApp.configure(options: options!)
         configured = true
     }

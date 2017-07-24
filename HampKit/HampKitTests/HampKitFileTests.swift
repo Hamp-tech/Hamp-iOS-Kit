@@ -52,6 +52,6 @@ class HampKitFileTests: XCTestCase {
 
 extension HampKitFileTests {
     fileprivate func mainBundlePath() -> String {
-       return Bundle.main.bundlePath
+       return Bundle(for: type(of: self)).bundlePath
     }
 }
