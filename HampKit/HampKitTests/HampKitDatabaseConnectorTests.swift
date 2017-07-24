@@ -14,9 +14,7 @@ class HampKitDatabaseConnectorTests: XCTestCase {
     var connector : HampFirebaseDatabaseConnector<HampLocker>!
     override func setUp() {
         super.setUp()
-        
         connector =  HampFirebaseDatabaseConnector<HampLocker>()
-        
     }
     
     func testConstructor_defaultProperties() {

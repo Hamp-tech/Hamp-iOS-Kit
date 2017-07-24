@@ -9,19 +9,34 @@
 import Foundation
 import FirebaseCommunity.FirebaseAuth
 
-public struct HampFile {
+public final class HampFile {
     // MARK: Public propertes
     public private(set) var filename : String
     public private(set) var filepath : String
     public private(set) var route : String
     
-    // MARK: Initializers
-    /// Create a new file struct with the name and extension of the file
+    /// Create a new file with the name and extension of the file
     ///
-    /// - Parameter filename: name of file
+    /// - Parameters:
+    ///   - filename: name of file
+    ///   - ofType: extension of file
+    /// - Throws: throws if file not exists
     public init(filename : String, ofType : String) throws{
         self.filename = filename + "." + ofType
         self.filepath = Bundle.main.bundlePath
+        
+        
+        let podBundle = Bundle(for: type(of: self))
+        
+        if let bundleURL = podBundle.url(forResource: "HampKit", withExtension: "bundle") {
+            if let bundle = Bundle(url: bundleURL) {
+                print(bundle)
+            } else {
+                print("bundle error")
+            }
+        } else {
+            print("bundle url error")
+        }
         
         guard let path = Bundle.main.path(forResource: filename, ofType: ofType) else {
             throw FileError.missingFileError
@@ -33,8 +48,7 @@ public struct HampFile {
 }
 
 extension HampFile {
-    
-    /// Errors indicating the different problems finding a file
+    /// Errors finding a file
     ///
     /// - missingFileError: file doesn't exists
     enum FileError : Swift.Error {
