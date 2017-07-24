@@ -13,7 +13,7 @@
 		4E4599531F10FFF600CD2402 /* HampCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4599521F10FFF600CD2402 /* HampCreditCard.swift */; };
 		4E4599561F1111DD00CD2402 /* HampRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4599551F1111DD00CD2402 /* HampRegex.swift */; };
 		4E45995A1F111B2800CD2402 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4599591F111B2800CD2402 /* Date+Utils.swift */; };
-		4E4D03711F0BCB2200660330 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */; };
+		4E4D4F9C1F2633860063A50C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */; };
 		4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08C11F04776A00236A9E /* AppDelegate.swift */; };
 		4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B08C81F04776A00236A9E /* Assets.xcassets */; };
 		4E5B08E61F047BA500236A9E /* HampFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08E51F047BA500236A9E /* HampFile.swift */; };
@@ -102,7 +102,7 @@
 		4E4599571F11156300CD2402 /* HampKitRegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitRegexTests.swift; sourceTree = "<group>"; };
 		4E4599591F111B2800CD2402 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Utils.swift"; path = "../Sources/Date+Utils.swift"; sourceTree = "<group>"; };
 		4E45995B1F111E8F00CD2402 /* HampKitCreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HampKitCreditCardTests.swift; sourceTree = "<group>"; };
-		4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Assets/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E5B08BE1F04776900236A9E /* HampKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HampKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5B08C11F04776A00236A9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E5B08C81F04776A00236A9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		4E5B08E21F0478C400236A9E /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				4E4D03701F0BCABD00660330 /* GoogleService-Info.plist */,
+				4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */,
 				4E5B08C81F04776A00236A9E /* Assets.xcassets */,
 				4E5B08CD1F04776A00236A9E /* Info.plist */,
 			);
@@ -402,8 +402,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E4D03711F0BCB2200660330 /* GoogleService-Info.plist in Resources */,
 				4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */,
+				4E4D4F9C1F2633860063A50C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
