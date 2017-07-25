@@ -10,7 +10,6 @@ import Foundation
 
 public struct Hamp {
     //MARK: Properties
-    
     /// Environtment to managers
     public static var environtment: HampEnvironment! {
         didSet {

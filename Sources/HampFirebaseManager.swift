@@ -27,13 +27,15 @@ internal final class HampFirebaseManager: HampManager {
     // MARK: Public API
     /// Connect to firebase
     public func connect() throws {
-        if let _ = FirebaseApp.app() {
+        if configured, let _ = FirebaseApp.app() {
             throw ManagerError.alreadyConfigured
         }
-        
-        let options = FirebaseOptions(contentsOfFile: environtment.file.route)
+        let options = FirebaseOptions(contentsOfFile: self.environtment.file.route)
         FirebaseApp.configure(options: options!)
-        configured = true
+//        FirebaseApp.configure()
+        self.configured = true
+        
+        
     }
 }
 
@@ -44,3 +46,4 @@ extension HampFirebaseManager {
         case alreadyConfigured
     }
 }
+
