@@ -14,7 +14,7 @@ public typealias AuthSuccess = (() -> ())?
 public typealias AuthError = ((Error) -> ())?
 
 
-public struct HampFirebaseAuth {
+internal struct HampFirebaseAuth {
     
     /// Log in to firebase
     ///

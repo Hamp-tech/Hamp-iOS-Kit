@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct HampEnvirontmentsProvider {
+internal struct HampEnvirontmentsProvider {
     /// Returns a "production" environment getting the default firebase plist name
     ///
     ///
     /// - Returns: Environment with a default firebase plist name
     /// - Throws: File missing
-    internal static func productionEnvirontment() throws -> HampEnvironment {
+    public static func productionEnvirontment() throws -> HampEnvironment {
         let file = try HampFile(filename: Constants.productionFirebaseFileName, ofType: "plist")
         return HampEnvironment(name: "Production", file: file, apiURL: Constants.productionAPIURL)
     }
@@ -24,7 +24,7 @@ public struct HampEnvirontmentsProvider {
     ///
     /// - Returns: Environment with a default firebase plist name
     /// - Throws: File missing
-    internal static func developmentEnvirontment() throws -> HampEnvironment {
+    public static func developmentEnvirontment() throws -> HampEnvironment {
         let file = try HampFile(filename: Constants.developmentFirebaseFileName, ofType: "plist")
         return HampEnvironment(name: "Development", file: file, apiURL: Constants.developmentAPIURL)
     }
