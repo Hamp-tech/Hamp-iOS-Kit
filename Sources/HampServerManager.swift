@@ -12,8 +12,12 @@ import Alamofire
 public typealias ServerSuccess<T : HampObject> = ((HampHTTPResponse<T>) -> ())?
 public typealias ServerError = ((Error) -> ())?
 
-internal class HampServerManager {
+internal final class HampServerManager: HampManager {
     //MARK: Properties
+    public static var environtment: HampEnvironment = try! HampEnvirontmentsProvider.productionEnvirontment() {
+        didSet { shared = HampServerManager.init(environtment: environtment) }
+    }
+    public static private(set) var shared: HampServerManager?
     public private(set) var environtment : HampEnvironment
     
     //MARK: Constructor
@@ -89,17 +93,4 @@ extension HampServerManager {
             }
         }
     }
-}
-
-extension HampServerManager {
-    
-    /// Environtment to connect
-    public static var environtment : HampEnvironment = try! HampEnvirontmentsProvider.productionEnvirontment() {
-        didSet {
-            shared = HampServerManager.init(environtment: environtment)
-        }
-    }
-    
-    /// Shared instance of server manager
-    public static private(set) var shared: HampServerManager?
 }
