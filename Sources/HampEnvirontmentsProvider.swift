@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal struct HampEnvirontmentsProvider {
+public struct HampEnvirontmentsProvider {
     /// Returns a "production" environment getting the default firebase plist name
     ///
     ///
