@@ -138,7 +138,7 @@ extension HampFirebaseAuth {
     /// Check if manager is configured.
     /// - If isn't configured, fire assert
     private static func managerConfiguredChecker() {
-        assert(HampFirebaseManager.productionManager!.configured, "Connect HampFirebaseManager")
+        assert(HampFirebaseManager.shared!.configured, "Connect HampFirebaseManager")
     }
 }
 

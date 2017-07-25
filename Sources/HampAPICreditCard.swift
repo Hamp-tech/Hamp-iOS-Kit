@@ -41,7 +41,7 @@ public final class HampAPICreditCard : APIExtended {
         let creditCardPath = String(format: path, id)
         
         HampServerManager
-            .sharedManager
+            .shared!
             .request(HampCreditCard.self,
                      path: creditCardPath,
                      method: .post,
@@ -87,7 +87,7 @@ public final class HampAPICreditCard : APIExtended {
         let creditCardPath = String(format: path+"/%@", id, cid)
         
         HampServerManager
-            .sharedManager
+            .shared!
             .request(HampCreditCard.self,
                      path: creditCardPath,
                      method: .delete,

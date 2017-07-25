@@ -34,16 +34,22 @@ public class HampFirebaseManager {
 }
 
 extension HampFirebaseManager {
-    //MARK: Different environtments
-    ///Singleton with a production configuration:
-    public static let productionManager = try? HampFirebaseManager(environtment : HampEnvirontmentsProvider.productionEnvirontment())
     
-    /// Singleton with a development configuration
-    public static let developmentManager = try? HampFirebaseManager(environtment : HampEnvirontmentsProvider.developmentEnvirontment())
-}
-
-extension HampFirebaseManager {
+    //MARK: Error
     public enum ManagerError : Swift.Error {
         case alreadyConfigured
     }
+}
+
+extension HampFirebaseManager {
+    
+    /// Environtment to connect
+    public static var environtment: HampEnvironment = try! HampEnvirontmentsProvider.productionEnvirontment() {
+        didSet {
+            shared = HampFirebaseManager.init(environtment: environtment)
+        }
+    }
+    
+    /// Shared instance of server manager
+    public static private(set) var shared: HampFirebaseManager?
 }

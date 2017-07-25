@@ -20,6 +20,26 @@ public final class HampAPIUser : APIUser {
     /// Properties
     private static let path = Constants.ServerPaths.user
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - identifier: <#identifier description#>
+    ///   - onSuccess: <#onSuccess description#>
+    ///   - onError: <#onError description#>
+    static func get(by identifier: String,
+                    onSuccess: ServerSuccess<T>,
+                    onError: ServerError) {
+        let userPath = "\(path)/\(identifier)"
+        HampServerManager
+            .shared!
+            .request(HampUser.self,
+                     path: userPath,
+                     method: .get,
+                     parameters: nil,
+                     onSuccess: onSuccess,
+                     onError: onError)
+    }
+    
     /// Request to create a new user on hamp server
     ///
     /// - Parameters:
@@ -32,7 +52,7 @@ public final class HampAPIUser : APIUser {
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
         HampServerManager
-            .sharedManager
+            .shared!
             .request(HampUser.self,
                      path: path,
                      method: HTTPMethod.post,
@@ -57,7 +77,7 @@ public final class HampAPIUser : APIUser {
         
         
         HampServerManager
-            .sharedManager
+            .shared!
             .request(HampUser.self,
                      path: userPath,
                      method: .put,
@@ -91,7 +111,7 @@ public final class HampAPIUser : APIUser {
                             onError: ServerError) {
         let userPath = path + identifier
         HampServerManager
-            .sharedManager
+            .shared!
             .request(HampUser.self,
                      path: userPath,
                      method: .delete,

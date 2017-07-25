@@ -41,7 +41,7 @@ public final class HampAPIBooking {
         let params = transaction?.propertiesDictionary()
         
         HampServerManager
-            .sharedManager
+            .shared!
             .request(HampBooking.self,
                      path: bookingPath,
                      method: .post,

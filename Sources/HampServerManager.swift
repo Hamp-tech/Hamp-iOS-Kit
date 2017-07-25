@@ -57,6 +57,8 @@ internal class HampServerManager {
 }
 
 extension HampServerManager {
+    
+    //MARK: Error
     public enum ServerResponseError : UInt, CustomStringConvertible, Swift.Error {
         case noContent = 204
         case badRequest = 400
@@ -90,21 +92,14 @@ extension HampServerManager {
 }
 
 extension HampServerManager {
-    //MARK:
-    /// Production environtment
-    public static let productionEnvirontment = try! HampEnvirontmentsProvider.productionEnvirontment()
     
-    /// Development environtment
-    public static let developmentEnvirontment = try! HampEnvirontmentsProvider.developmentEnvirontment()
+    /// Environtment to connect
+    public static var environtment : HampEnvironment = try! HampEnvirontmentsProvider.productionEnvirontment() {
+        didSet {
+            shared = HampServerManager.init(environtment: environtment)
+        }
+    }
     
-    /// Used by sharedManager
-    /// Needs to be configured if external class uses sharedManager
-    public static var defaultEnvirontment : HampEnvironment?
-    
-    /// Singleton used to access by external classes.
-    /// Uses defaultEnvirontment to create singleton class
-    public static let sharedManager = { () -> HampServerManager in
-        precondition(HampServerManager.defaultEnvirontment != nil, "Assign default environtment first!")
-        return HampServerManager(environtment: HampServerManager.defaultEnvirontment!)
-    }()
+    /// Shared instance of server manager
+    public static private(set) var shared: HampServerManager?
 }
