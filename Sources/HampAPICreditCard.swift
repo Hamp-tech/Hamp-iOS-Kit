@@ -51,11 +51,12 @@ public final class HampAPICreditCard : APIExtended {
         
     }
     
-    @available(*, unavailable)
     static func update(object: HampObject,
                        parent: HampDatabaseObject? = nil,
                        onSuccess: ServerSuccess<T>,
-                       onError: ServerError) { }
+                       onError: ServerError) {
+        assertionFailure("Not available update credit cards")
+    }
     
     /// Remove the user credit card
     ///
