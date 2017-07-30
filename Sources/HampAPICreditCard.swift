@@ -9,7 +9,7 @@
 import Foundation
 
 
-public final class HampAPICreditCard : APIExtended {
+internal final class HampAPICreditCard : APIExtended {
     typealias T = HampCreditCard
     
     ///Properties

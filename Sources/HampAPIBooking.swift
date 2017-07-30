@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class HampAPIBooking {
+internal final class HampAPIBooking {
     
     ///Properties
     static let path = Constants.ServerPaths.booking

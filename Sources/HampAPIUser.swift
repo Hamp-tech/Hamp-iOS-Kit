@@ -15,7 +15,7 @@ internal protocol APIUser : APIExtended {
                             onError: ServerError)
 }
 
-public final class HampAPIUser : APIUser {
+internal final class HampAPIUser : APIUser {
     typealias T = HampUser
     /// Properties
     private static let path = Constants.ServerPaths.user
