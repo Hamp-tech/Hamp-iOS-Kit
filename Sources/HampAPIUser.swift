@@ -9,23 +9,17 @@
 import Foundation
 import Alamofire
 
-internal protocol APIUser : APIExtended {
-    static func unsubscribe(identifier: String,
-                            onSuccess: ServerSuccess<T>,
-                            onError: ServerError)
-}
-
-internal final class HampAPIUser : APIUser {
+internal final class HampAPIUser: APIUser {
     typealias T = HampUser
     /// Properties
     private static let path = Constants.ServerPaths.user
     
-    /// <#Description#>
+    /// Get user with parameter identifier
     ///
     /// - Parameters:
-    ///   - identifier: <#identifier description#>
-    ///   - onSuccess: <#onSuccess description#>
-    ///   - onError: <#onError description#>
+    ///   - identifier: user identifier
+    ///   - onSuccess: called if all was successfull
+    ///   - onError: called if an error occurred
     static func get(by identifier: String,
                     onSuccess: ServerSuccess<T>,
                     onError: ServerError) {
@@ -47,7 +41,6 @@ internal final class HampAPIUser : APIUser {
     ///   - onSuccess: called if created was successfully
     ///   - onError: called if an error occurred
     static func create(object: HampDatabaseObject,
-                       parent: HampDatabaseObject? = nil, 
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
@@ -59,7 +52,7 @@ internal final class HampAPIUser : APIUser {
                      parameters: properties,
                      onSuccess: onSuccess,
                      onError: onError)
-
+        
     }
     
     /// Update object on hamp server
@@ -69,7 +62,6 @@ internal final class HampAPIUser : APIUser {
     ///   - onSuccess: called if updated was successfully
     ///   - onError: called if an error ocurred
     static func update(object: HampObject,
-                       parent: HampDatabaseObject? = nil,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
@@ -94,8 +86,7 @@ internal final class HampAPIUser : APIUser {
     ///   - onSuccess: called if unsubscribe was succesfully
     ///   - onError: called if an error occurred
     static func remove(object: HampDatabaseObject,
-                       parent: HampDatabaseObject? = nil,
-                       onSuccess: ((HampHTTPResponse<HampUser>) -> ())?,
+                       onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         assertionFailure("Needs to be implemented on server")
     }

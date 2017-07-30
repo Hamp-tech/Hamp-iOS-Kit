@@ -22,6 +22,7 @@ public struct Hamp {
        try HampFirebaseManager.shared!.connect()
     }
 }
+
 extension Hamp {
     
     //MARK: Auth
@@ -44,10 +45,21 @@ extension Hamp {
                 withEmail: mail,
                 password: password,
                 onSuccess: { (firebaseUser) in
-                    HampAPIUser.get(by: firebaseUser.uid,
-                                    onSuccess: onSuccess,
-                                    onError: onError)
+                    HampAPIUser.get(by: firebaseUser.uid, onSuccess: { (response) in
+                        let json = response.data?.json
+                        HampUserDefaultsManager.store(object: json as AnyObject, key: Constants.UserDefaultsKeys.currentUser)
+                        onSuccess?(response)
+                    }, onError: onError)
             },  onError: onError)
+        }
+        
+        /// <#Description#>
+        ///
+        /// - Returns: <#return value description#>
+        public static func user() -> HampUser? {
+            let data = (HampUserDefaultsManager.retrieve(by: Constants.UserDefaultsKeys.currentUser) as! String).data(using: .utf8)
+            let user = try? HampJSONManager.sharedDecoder.decode(HampUser.self, from: data!)
+            return user
         }
     }
 }

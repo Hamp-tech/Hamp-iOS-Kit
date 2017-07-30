@@ -17,6 +17,11 @@ internal struct Constants {
     ///Firebase files names
     internal static let productionFirebaseFileName = "GoogleService-Info"
     internal static let developmentFirebaseFileName = "GoogleServie-Dev-Info"
+
+    internal struct UserDefaultsKeys {
+        private static let base = "com.Hamp.Hamp.UserDefaults."
+        static let currentUser = base + "currentUser"
+    }
     
     /// Firebase table names
     internal struct FirebaseTableNames {

@@ -32,10 +32,7 @@ internal final class HampFirebaseManager: HampManager {
         }
         let options = FirebaseOptions(contentsOfFile: self.environtment.file.route)
         FirebaseApp.configure(options: options!)
-//        FirebaseApp.configure()
         self.configured = true
-        
-        
     }
 }
 
