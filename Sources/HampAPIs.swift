@@ -10,22 +10,52 @@ import Foundation
 
 internal protocol APIBase {
     associatedtype T : HampObject
-    
-    static func create(object: HampDatabaseObject,
-                       parent: HampDatabaseObject?,
-                       onSuccess: ServerSuccess<T>,
-                       onError: ServerError)
-
 }
 
-internal protocol APIExtended : APIBase {
-    static func remove(object: HampDatabaseObject,
-                       parent: HampDatabaseObject?,
+/// User API
+internal protocol APIUser: APIBase {
+    static func get(by identifier: String,
+                    onSuccess: ServerSuccess<T>,
+                    onError: ServerError)
+    
+    static func create(object: HampDatabaseObject,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError)
     
     static func update(object: HampObject,
-                       parent: HampDatabaseObject?,
+                       onSuccess: ServerSuccess<T>,
+                       onError: ServerError)
+    
+    static func unsubscribe(identifier: String,
+                            onSuccess: ServerSuccess<T>,
+                            onError: ServerError)
+    
+    static func remove(object: HampDatabaseObject,
+                       onSuccess: ServerSuccess<T>,
+                       onError: ServerError)
+    
+}
+
+/// Credit card API
+internal protocol APICreditCard: APIBase {
+    
+    static func create(object: HampDatabaseObject,
+                       parent: HampUser,
+                       onSuccess: ServerSuccess<T>,
+                       onError: ServerError)
+   
+    static func remove(object: HampDatabaseObject,
+                       parent: HampUser,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError)
 }
+
+/// Booking API
+internal protocol APIBooking: APIBase {
+    static func booking(user: HampUser,
+                        card: HampCreditCard,
+                        order: HampOrder,
+                        onSuccess: ServerSuccess<T>,
+                        onError: ServerError)
+}
+

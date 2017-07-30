@@ -8,8 +8,8 @@
 
 import Foundation
 
-internal final class HampAPIBooking {
-    
+internal final class HampAPIBooking: APIBooking {
+    typealias T = HampBooking
     ///Properties
     static let path = Constants.ServerPaths.booking
     
@@ -24,7 +24,7 @@ internal final class HampAPIBooking {
     static func booking(user: HampUser,
                         card: HampCreditCard,
                         order: HampOrder,
-                        onSuccess: ServerSuccess<HampBooking>,
+                        onSuccess: ServerSuccess<T>,
                         onError: ServerError) {
         
         guard let uid = user.identifier else {

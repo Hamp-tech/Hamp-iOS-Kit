@@ -9,7 +9,7 @@
 import Foundation
 
 
-internal final class HampAPICreditCard : APIExtended {
+internal final class HampAPICreditCard: APICreditCard {
     typealias T = HampCreditCard
     
     ///Properties
@@ -22,18 +22,11 @@ internal final class HampAPICreditCard : APIExtended {
     ///   - onSuccess: called if create was successfully
     ///   - onError: called if an error ocurred
     static func create(object: HampDatabaseObject,
-                       parent: HampDatabaseObject? = nil,
+                       parent: HampUser,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
-        guard let p = parent else {
-            preconditionFailure("Pass user to update the credit card as parent")
-        }
         
-        guard p is HampUser else {
-            preconditionFailure("Parent needs to be user")
-        }
-        
-        guard let id = p.identifier else {
+        guard let id = parent.identifier else {
             preconditionFailure("User hasn't identifier")
         }
         
@@ -51,13 +44,6 @@ internal final class HampAPICreditCard : APIExtended {
         
     }
     
-    static func update(object: HampObject,
-                       parent: HampDatabaseObject? = nil,
-                       onSuccess: ServerSuccess<T>,
-                       onError: ServerError) {
-        assertionFailure("Not available update credit cards")
-    }
-    
     /// Remove the user credit card
     ///
     /// - Parameters:
@@ -66,17 +52,11 @@ internal final class HampAPICreditCard : APIExtended {
     ///   - onSuccess: called if remove was successfully
     ///   - onError: called if an error occurred
     static func remove(object: HampDatabaseObject,
-                       parent: HampDatabaseObject? = nil,
+                       parent: HampUser,
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
-        guard let p = parent else {
-            preconditionFailure("Pass user to update the credit card as parent")
-        }
-        guard p is HampUser else {
-            preconditionFailure("Parent needs to be user")
-        }
-        
-        guard let id = p.identifier else {
+
+        guard let id = parent.identifier else {
             preconditionFailure("User hasn't identifier")
         }
         
