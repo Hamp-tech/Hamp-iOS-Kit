@@ -76,7 +76,9 @@ extension Hamp {
                                   onSuccess: ServerSuccess<HampUser>,
                                   onError: ServerError) {
             HampFirebaseAuth.createUser(withEmail: user.mail, password: password, onSuccess: { (firebaseUser) in
-                HampAPIUser.create(object: user, onSuccess: { (response) in
+                var userWithID = user
+                userWithID.identifier = firebaseUser.uid
+                HampAPIUser.create(object: userWithID, onSuccess: { (response) in
                     let json = response.data?.json
                     HampUserDefaultsManager.store(object: json as AnyObject, key: Constants.UserDefaultsKeys.currentUser)
                     onSuccess?(response)

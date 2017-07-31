@@ -44,10 +44,11 @@ internal final class HampAPIUser: APIUser {
                        onSuccess: ServerSuccess<T>,
                        onError: ServerError) {
         let properties = object.propertiesDictionary()
+        let userPath = path + "/\((object as! HampUser).identifier!)"
         HampServerManager
             .shared!
             .request(HampUser.self,
-                     path: path,
+                     path: userPath,
                      method: HTTPMethod.post,
                      parameters: properties,
                      onSuccess: onSuccess,

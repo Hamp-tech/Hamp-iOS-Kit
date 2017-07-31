@@ -23,14 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }, onError: {(error) in
 //
 //        })
-        let user = try? HampUser(identifier: "-KqKx9khWMDPJlqZkFca", name: "joannnnnnnnnnn", surname: "molinas", mail: "joan@molinas.com", phone: "666666666", birthday: "05/05/1994", gender: "M", tokenFCM: "123", language: "ca-ES", OS: "iOS", signupDate: "05/05/1994")
-//        Hamp.Auth.signUp(with: user!, password: "arcanine", onSuccess: { (response) in
-//
-//        }, onError: {(error) in
-//
-//        })
+        let user = try? HampUser(identifier: nil, name: "joannnnnnnnnnn", surname: "molinas", mail: "joan@molinas.com", phone: "666666666", birthday: "05/05/1994", gender: "M", tokenFCM: "123", language: "ca-ES", OS: "iOS", signupDate: "05/05/1994")
+        Hamp.Auth.signUp(with: user!, password: "arcanine", onSuccess: { (response) in
+
+        }, onError: {(error) in
+
+        })
         
-        HampAPIUser.update(object: user!, onSuccess: nil, onError: nil)
+//        HampAPIUser.update(object: user!, onSuccess: nil, onError: nil)
         return true
     }
     
