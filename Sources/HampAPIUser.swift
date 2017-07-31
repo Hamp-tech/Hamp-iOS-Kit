@@ -57,6 +57,7 @@ internal final class HampAPIUser: APIUser {
     
     /// Update object on hamp server
     ///
+    /// - Precondition: `identifier` cannot be nil
     /// - Parameters:
     ///   - object: object to update
     ///   - onSuccess: called if updated was successfully
