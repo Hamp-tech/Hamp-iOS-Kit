@@ -40,7 +40,7 @@ extension Hamp {
         public static func signIn(mail: String,
                                   password: String,
                                   onSuccess: ServerSuccess<HampUser>,
-                                  onError: ((Error) -> ())?) {
+                                  onError: ServerError) {
             HampFirebaseAuth.signIn(
                 withEmail: mail,
                 password: password,
@@ -60,6 +60,28 @@ extension Hamp {
             let data = (HampUserDefaultsManager.retrieve(by: Constants.UserDefaultsKeys.currentUser) as! String).data(using: .utf8)
             let user = try? HampJSONManager.sharedDecoder.decode(HampUser.self, from: data!)
             return user
+        }
+        
+        /// Sign up a new user
+        /// · Connect to firebase
+        /// · If connection was successfull, get user from server
+        ///
+        /// - Parameters:
+        ///   - user: user to register
+        ///   - password: password for user
+        ///   - onSuccess: called if all was successfull
+        ///   - onError: called if an error occurred on firebase register or creating user on database
+        public static func signUp(with user: HampUser,
+                                  password: String,
+                                  onSuccess: ServerSuccess<HampUser>,
+                                  onError: ServerError) {
+            HampFirebaseAuth.createUser(withEmail: user.mail, password: password, onSuccess: { (firebaseUser) in
+                HampAPIUser.create(object: user, onSuccess: { (response) in
+                    let json = response.data?.json
+                    HampUserDefaultsManager.store(object: json as AnyObject, key: Constants.UserDefaultsKeys.currentUser)
+                    onSuccess?(response)
+                }, onError: onError)
+            }, onError:onError)
         }
     }
 }
