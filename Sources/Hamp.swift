@@ -78,12 +78,53 @@ extension Hamp {
             HampFirebaseAuth.createUser(withEmail: user.mail, password: password, onSuccess: { (firebaseUser) in
                 var userWithID = user
                 userWithID.identifier = firebaseUser.uid
-                HampAPIUser.create(object: userWithID, onSuccess: { (response) in
-                    let json = response.data?.json
-                    HampUserDefaultsManager.store(object: json as AnyObject, key: Constants.UserDefaultsKeys.currentUser)
-                    onSuccess?(response)
-                }, onError: onError)
+                self.createUser(with: userWithID, onSuccess: onSuccess, onError: onError)
             }, onError:onError)
         }
+        
+        /// Login firebase with Facebook credentials
+        ///
+        /// - Parameters:
+        ///   - accessToken:facebook access token
+        ///   - user: user to store on database
+        ///   - onSuccess: called if all was successfull
+        ///   - onError: called if an error occurred on firebase register or creating user on database
+        public static func facebookLogIn(with accessToken: String,
+                                         user: HampUser,
+                                         onSuccess: ServerSuccess<HampUser>,
+                                         onError: ServerError) {
+            HampFirebaseAuth.singInWithFacebook(accessToken: accessToken, onSuccess: { (firebaseUser) in
+                HampAPIUser.get(by: firebaseUser.uid, onSuccess: { (response) in
+                    if response.code == 200 {
+                        
+                    } else {
+                        
+                    }
+                }, onError: {(error) in
+                    
+                })
+//                var userWithID = user
+//                userWithID.identifier = firebaseUser.uid
+//                self.createUser(with: userWithID, onSuccess: onSuccess, onError: onError)
+            }, onError: onError)
+        }
+    }
+}
+
+private extension Hamp.Auth {
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - user: <#user description#>
+    ///   - onSuccess: <#onSuccess description#>
+    ///   - onError: <#onError description#>
+    static func createUser(with user: HampUser,
+                    onSuccess: ServerSuccess<HampUser>,
+                    onError: ServerError) {
+        HampAPIUser.create(object: user, onSuccess:{ (response) in
+            let json = response.data?.json
+            HampUserDefaultsManager.store(object: json as AnyObject, key: Constants.UserDefaultsKeys.currentUser)
+            onSuccess?(response)
+        }, onError: onError)
     }
 }
