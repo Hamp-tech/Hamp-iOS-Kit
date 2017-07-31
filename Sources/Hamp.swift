@@ -95,29 +95,28 @@ extension Hamp {
                                          onError: ServerError) {
             HampFirebaseAuth.singInWithFacebook(accessToken: accessToken, onSuccess: { (firebaseUser) in
                 HampAPIUser.get(by: firebaseUser.uid, onSuccess: { (response) in
-                    if response.code == 200 {
-                        
+                    onSuccess?(response)
+                }, onError: { (error) in
+                    if let e = error as? HampServerManager.ServerResponseError, e == .notFound {
+                        var userWithID = user
+                        userWithID.identifier = firebaseUser.uid
+                        self.createUser(with: userWithID, onSuccess: onSuccess, onError: onError)
                     } else {
-                        
+                        onError?(error)
                     }
-                }, onError: {(error) in
-                    
                 })
-//                var userWithID = user
-//                userWithID.identifier = firebaseUser.uid
-//                self.createUser(with: userWithID, onSuccess: onSuccess, onError: onError)
             }, onError: onError)
         }
     }
 }
 
 private extension Hamp.Auth {
-    /// <#Description#>
+    /// Create a new user on database
     ///
     /// - Parameters:
-    ///   - user: <#user description#>
-    ///   - onSuccess: <#onSuccess description#>
-    ///   - onError: <#onError description#>
+    ///   - user: user to create
+    ///   - onSuccess: called if all was successfully
+    ///   - onError: called if an error occurred
     static func createUser(with user: HampUser,
                     onSuccess: ServerSuccess<HampUser>,
                     onError: ServerError) {
