@@ -172,23 +172,23 @@ extension HampFirebaseAuth {
         public var description: String {
             switch self {
             case .userDisabled:
-                return "17005"
+                return "User is disabled"
             case .emailAlreadyInUse:
-                return "17007"
+                return "Email already exists"
             case .invalidEmail:
-                return "17008"
+                return "Invalid email"
             case .wrongPassword:
-                return "17009"
+                return "Wrong password"
             case .userNotFound:
-                return "17011"
+                return "User with this credentials doesn't exists"
             case .recentLogin:
-                return "17014"
+                return "You change your email or password 5 minuts or more after signing in"
             case .networkError:
-                return "17020"
+                return "An network error occurred"
             case .weakPassword:
-                return "17026"
+                return "Password is weak"
             case .unknown:
-                return "17999"
+                return "Unknown error"
             }
         }
         

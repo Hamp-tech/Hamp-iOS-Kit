@@ -43,7 +43,10 @@ internal final class HampServerManager: HampManager {
         let url = environtment.apiURL + path + "?gangway=7B3nPECsrty0vuZi7J74kSMVmHKljxK"
         
         Alamofire
-            .request(url,method: method, parameters: parameters, encoding: JSONEncoding.default)
+            .request(url,
+                     method: method,
+                     parameters: parameters, 
+                     encoding: JSONEncoding.default)
             .response { (response) in
                 if let _ = response.error {
                     onError?(ServerResponseError.unknown)
