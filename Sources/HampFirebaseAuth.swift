@@ -11,7 +11,7 @@ import FirebaseCommunity
 
 public typealias AuthSuccessWithUser = ((HampFirebaseUser) -> ())?
 public typealias AuthSuccess = (() -> ())?
-public typealias AuthError = ((Error) -> ())?
+public typealias AuthError = ((HampBaseError) -> ())?
 
 
 internal struct HampFirebaseAuth {
@@ -23,7 +23,7 @@ internal struct HampFirebaseAuth {
     ///   - password: password to log in
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurred
-    public static func signIn(
+    static func signIn(
         withEmail email: String,
         password: String,
         onSuccess: AuthSuccessWithUser = nil,
@@ -55,7 +55,7 @@ internal struct HampFirebaseAuth {
     ///   - password: password to log in
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurred
-    public static func createUser(
+    static func createUser(
         withEmail email: String,
         password: String,
         onSuccess: AuthSuccessWithUser = nil,
@@ -81,7 +81,7 @@ internal struct HampFirebaseAuth {
     /// - Parameters:
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurredd
-    public static func signOut(
+    static func signOut(
         onSuccess: AuthSuccess = nil,
         onError: AuthError = nil) {
         
@@ -113,7 +113,7 @@ internal struct HampFirebaseAuth {
     ///   - accessToken: token retrieved from facebook sdk
     ///   - onSuccess: block called if all was successfull
     ///   - onError: block called if error ocurredd
-    public static func singInWithFacebook(
+    static func singInWithFacebook(
         accessToken: String,
         onSuccess: AuthSuccessWithUser = nil,
         onError: AuthError = nil) {
@@ -153,7 +153,7 @@ extension HampFirebaseAuth {
 extension HampFirebaseAuth {
     /// Errors indicating the different problems authenticating users
     /// https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Enums/FIRAuthErrorCode
-    public enum AuthResponseError : Int, Swift.Error, CustomStringConvertible, Equatable {
+    public enum AuthResponseError : Int, HampBaseError, Equatable {
         case userDisabled = 17005
         case emailAlreadyInUse = 17007
         case invalidEmail = 17008

@@ -10,18 +10,18 @@ import Foundation
 import Alamofire
 
 public typealias ServerSuccess<T : HampObject> = ((HampHTTPResponse<T>) -> ())?
-public typealias ServerError = ((Error) -> ())?
+public typealias ServerError = ((HampBaseError) -> ())?
 
 internal final class HampServerManager: HampManager {
     //MARK: Properties
-    public static var environtment: HampEnvironment = try! HampEnvirontmentsProvider.productionEnvirontment() {
-        didSet { shared = HampServerManager.init(environtment: environtment) }
+    static var environtment: HampEnvironment = try! HampEnvirontmentsProvider.productionEnvirontment() {
+            didSet { shared = HampServerManager.init(environtment: environtment) }
     }
-    public static private(set) var shared: HampServerManager?
-    public private(set) var environtment : HampEnvironment
+    static private(set) var shared: HampServerManager?
+    private(set) var environtment : HampEnvironment
     
     //MARK: Constructor
-    public init(environtment: HampEnvironment) {
+    init(environtment: HampEnvironment) {
         self.environtment = environtment
     }
     
@@ -66,7 +66,7 @@ internal final class HampServerManager: HampManager {
 extension HampServerManager {
     
     //MARK: Error
-    public enum ServerResponseError : UInt, CustomStringConvertible, Swift.Error {
+    public enum ServerResponseError : UInt, HampBaseError {
         case noContent = 204
         case badRequest = 400
         case unauthorized = 401
