@@ -19,14 +19,17 @@ public struct HampCreditCard : HampDatabaseObject {
     public var month : String!
     public var year : String!
     public var cvv : String!
+    public var name: String!
     
     //MARK: Constructors
     public init(identifier : String? = nil,
                 number : String?,
+                name: String?,
                 month : String?,
                 year : String?,
                 cvv : String?) throws {
         self.identifier = identifier
+        self.name = name
         self.number = number
         self.month = month
         self.year = year
@@ -39,6 +42,7 @@ public struct HampCreditCard : HampDatabaseObject {
         try self.init(
             identifier: identifier,
             number: properties?[Constants.CreditCard.number] as? String,
+            name: properties?[Constants.CreditCard.name] as? String,
             month: properties?[Constants.CreditCard.month] as? String,
             year: properties?[Constants.CreditCard.year] as? String,
             cvv: properties?[Constants.CreditCard.cvv] as? String)
@@ -50,9 +54,14 @@ public struct HampCreditCard : HampDatabaseObject {
             let n = number,
             let m = month,
             let y = year,
+            let na = name,
             let c = cvv else {
                 throw HampFirebaseObjectError.missingProperties
                 
+        }
+        
+        guard na.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count > 0 else {
+            throw CreditCardError.invalidName
         }
         
         guard (try! HampRegex(pattern: Constants.Regex.visa)).parse(input: String(n)) else {
@@ -80,6 +89,7 @@ public struct HampCreditCard : HampDatabaseObject {
 extension HampCreditCard {
     enum CreditCardError : Swift.Error, CustomStringConvertible {
         case invalidNumber
+        case invalidName
         case invalidMonth
         case invalidYear
         case invalidCVV
@@ -88,6 +98,8 @@ extension HampCreditCard {
             switch self {
             case .invalidNumber:
                 return "invalid number"
+            case .invalidName:
+                return "invalid name"
             case .invalidMonth:
                 return "invalid month"
             case .invalidYear:

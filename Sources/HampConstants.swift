@@ -47,6 +47,7 @@ internal struct Constants {
     /// Credit card properties names
     internal struct CreditCard {
         static let number = "number"
+        static let name = "name"
         static let month = "month"
         static let year = "year"
         static let cvv = "cvv"
