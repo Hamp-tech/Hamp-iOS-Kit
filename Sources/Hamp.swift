@@ -57,7 +57,9 @@ extension Hamp {
         ///
         /// - Returns: User logged, nil otherwise
         public static func user() -> HampUser? {
-            let data = (HampUserDefaultsManager.retrieve(by: Constants.UserDefaultsKeys.currentUser) as! String).data(using: .utf8)
+            let obj = HampUserDefaultsManager.retrieve(by: Constants.UserDefaultsKeys.currentUser)
+            guard let u = obj as? String else { return nil}
+            let data = u.data(using: .utf8)
             let user = try? HampJSONManager.sharedDecoder.decode(HampUser.self, from: data!)
             return user
         }
