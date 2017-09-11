@@ -21,6 +21,16 @@ class HampKitCreditCardTests: XCTestCase {
         super.tearDown()
     }
     
+    func testConstructor_properties_emptyCard() {
+        let creditCard = HampCreditCard.init()
+        XCTAssertNil(creditCard.identifier)
+        XCTAssertNil(creditCard.number)
+        XCTAssertNil(creditCard.name)
+        XCTAssertNil(creditCard.month)
+        XCTAssertNil(creditCard.year)
+        XCTAssertNil(creditCard.cvv)
+    }
+    
     func testConstructor_properties() {
         let creditCard = try! HampCreditCard(identifier: "123",
                                              number: "4111111111111111",
