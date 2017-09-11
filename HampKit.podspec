@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HampKit"
-  s.version      = "0.2"
+  s.version      = "0.3"
   s.summary      = "HampKit encapsulates all requests in on framework."
   s.description  = <<-DESC
                     Swift kit to manage all HAMP connections to firebase and web server
@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.dependency 'FirebaseCommunity'
   s.dependency 'FirebaseCommunity/Auth'
   s.dependency 'FirebaseCommunity/Database'
-  s.dependency 'Alamofire', :git => 'https://github.com/ulidev/Alamofire.git', '~> 4.4'
+  s.dependency 'Alamofire', :git => 'https://github.com/ulidev/Alamofire.git'
 end
