@@ -11,13 +11,15 @@ import Foundation
 public struct HampBooking : HampObject {
     //MARK: Properties
     public var transaction : HampTransaction
-    public var locker : HampLocker
+    public var delivery_locker : HampLocker
+    public var collection_locker : HampLocker
     
     /// Validate
     ///
     /// - Throws: throw if transaction or locker is not valid
     public func validate() throws {
         try transaction.validate()
-        try locker.validate()
+        try delivery_locker.validate()
+        try collection_locker.validate()
     }
 }
