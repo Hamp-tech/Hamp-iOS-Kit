@@ -95,7 +95,7 @@ public struct HampCreditCard : HampDatabaseObject {
     }
 }
 
-extension HampCreditCard {
+public extension HampCreditCard {
     enum CreditCardError : Swift.Error, CustomStringConvertible {
         case invalidNumber
         case invalidName
@@ -103,7 +103,7 @@ extension HampCreditCard {
         case invalidYear
         case invalidCVV
         
-        var description: String {
+        public var description: String {
             switch self {
             case .invalidNumber:
                 return "invalid number"
