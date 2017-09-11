@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.dependency 'FirebaseCommunity'
   s.dependency 'FirebaseCommunity/Auth'
   s.dependency 'FirebaseCommunity/Database'
-  s.dependency 'Alamofire', :git => 'https://github.com/ulidev/Alamofire.git'
+  s.dependency 'Alamofire'
 end
