@@ -36,12 +36,28 @@ public struct HampOrder : HampObject {
         self.blanket = blanket
     }
     
-    //TODO: Implement dynamic order
-    /// Get the price of the order
+    /// Description of services hired
     ///
-    /// - Returns: price
-    public func orderAmount() -> UInt8 {
-        return 1
+    /// - Returns: Array with of services hired
+    public func servicesHired() -> Array<String> {
+        var arr = Array<String>.init()
+        
+        if smallBag > 0 { arr.append("Small bag") }
+        if bigBag > 0 { arr.append("Big bag") }
+        if curtain > 0 { arr.append("Curtain") }
+        if cushion > 0 { arr.append("Cushion") }
+        if quilt > 0 { arr.append("Quilt") }
+        if sofaCover > 0 { arr.append("Sofa cover") }
+        if blanket > 0 { arr.append("Blanket") }
+        
+        return arr
+    }
+    
+    /// Number of services hired
+    ///
+    /// - Returns: number of services hired
+    public func numberOfServicesHired() -> Int {
+        return servicesHired().count
     }
     
     //MARK: HampObject protocol
