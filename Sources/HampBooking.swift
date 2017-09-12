@@ -14,18 +14,14 @@ public struct HampBooking : HampObject {
     public var transaction : HampTransaction?
     public var deliveryLocker : HampLocker?
     public var collectionLocker : HampLocker?
-    public var date: String?
-    public var payment: Int?
 
     //MARK: Constructors
     public init(transaction: HampTransaction?,
          deliveryLocker: HampLocker?,
-         collectionLocker: HampLocker?,
-         date: String?) {
+         collectionLocker: HampLocker?,) {
         self.transaction = transaction
         self.deliveryLocker = deliveryLocker
         self.collectionLocker = collectionLocker
-        
     }
     
     
