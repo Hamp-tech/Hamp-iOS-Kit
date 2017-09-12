@@ -12,16 +12,16 @@ public struct HampBooking : HampObject {
     
     //MARK: Properties
     public var transaction : HampTransaction?
-    public var delivery_locker : HampLocker?
-    public var collection_locker : HampLocker?
+    public var deliveryLocker : HampLocker?
+    public var collectionLocker : HampLocker?
 
     //MARK: Constructors
-    init(transaction: HampTransaction?,
-         delivery_locker: HampLocker?,
+    public init(transaction: HampTransaction?,
+         deliverLocker: HampLocker?,
          collectionLocker: HampLocker?) {
         self.transaction = transaction
-        self.delivery_locker = delivery_locker
-        self.collection_locker = collectionLocker
+        self.deliveryLocker = delivery_locker
+        self.collectionLocker = collectionLocker
     }
     
     
@@ -30,7 +30,7 @@ public struct HampBooking : HampObject {
     /// - Throws: throw if transaction or locker is not valid
     public func validate() throws {
         try transaction?.validate()
-        try delivery_locker?.validate()
-        try collection_locker?.validate()
+        try deliveryLocker?.validate()
+        try collectionLocker?.validate()
     }
 }
