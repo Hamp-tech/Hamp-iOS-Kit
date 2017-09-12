@@ -21,13 +21,10 @@ public struct HampBooking : HampObject {
     public init(transaction: HampTransaction?,
          deliveryLocker: HampLocker?,
          collectionLocker: HampLocker?,
-         date: String?,
-         payment: Int?) {
+         date: String?) {
         self.transaction = transaction
         self.deliveryLocker = deliveryLocker
         self.collectionLocker = collectionLocker
-        self.date = date
-        self.payment = payment
         
     }
     

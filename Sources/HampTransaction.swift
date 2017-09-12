@@ -18,17 +18,23 @@ public struct HampTransaction : HampDatabaseObject {
     public var userID: String?
     public var cardID : String?
     public var order : HampOrder?
+    public var date: String?
+    public var payment: Double?
     
     
     //MARK: Constructor
     public init(identifier: String? = nil,
                 userID: String?,
                 cardID: String?,
-                order: HampOrder?) throws {
+                order: HampOrder?,
+                date: String?,
+                payment: Double?) throws {
         self.identifier = identifier
         self.userID = userID
         self.cardID = cardID
         self.order = order
+        self.date = date
+        self.payment = payment
         try validate()
     }
     
@@ -36,7 +42,9 @@ public struct HampTransaction : HampDatabaseObject {
      try self.init(identifier: identifier,
                    userID : properties?[Constants.Transaction.userID] as? String,
                    cardID: properties?[Constants.Transaction.cardID] as? String,
-                   order: properties?[Constants.Transaction.order] as? HampOrder)
+                   order: properties?[Constants.Transaction.order] as? HampOrder,
+                   date: properties?[Constants.Transaction.date] as? String,
+                   payment: properties?[Constants.Transaction.payment] as? Double)
     }
     
     //MARK: HampObject protocol

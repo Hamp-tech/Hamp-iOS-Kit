@@ -23,10 +23,12 @@ class HampKitTransactionTests: XCTestCase {
     
     
     func testConstructor_properties() {
-        let transaction = try! HampTransaction(identifier: "123", userID: "123", cardID: "123", order: order)
+        let transaction = try! HampTransaction(identifier: "123", userID: "123", cardID: "123", order: order, date: "1994-11-05T13:15:30Z", payment: 0.0)
         XCTAssertEqual(transaction.identifier, "123")
         XCTAssertEqual(transaction.userID, "123")
         XCTAssertEqual(transaction.cardID, "123")
+        XCTAssertEqual(transaction.date, "1994-11-05T13:15:30Z")
+        XCTAssertEqual(transaction.payment, 0.0)
     }
     
     func testConstructor_dictionary() {
@@ -34,25 +36,22 @@ class HampKitTransactionTests: XCTestCase {
         dict[Constants.Transaction.userID] = "123"
         dict[Constants.Transaction.cardID] = "123"
         dict[Constants.Transaction.order] = order
+        dict[Constants.Transaction.date] = "1994-11-05T13:15:30Z"
+        dict[Constants.Transaction.payment] = 0.0
+        
         let transaction = try! HampTransaction(identifier: "123",properties: dict)
         
         XCTAssertEqual(transaction.identifier, "123")
         XCTAssertEqual(transaction.userID, "123")
         XCTAssertEqual(transaction.cardID, "123")
+        XCTAssertEqual(transaction.date, "1994-11-05T13:15:30Z")
+        XCTAssertEqual(transaction.payment, 0.0)
     }
     
     func testConstructor_NilDictionary() {
         let dict : [String : Any]? = nil
         XCTAssertThrowsError(try HampTransaction(identifier: "123", properties: dict))
         
-    }
-    
-    func testConstructor_missingPropertiesUserID() {
-        var dict = [String : Any]()
-        dict[Constants.Transaction.cardID] = "123"
-        dict[Constants.Transaction.order] = order
-        
-        XCTAssertThrowsError(try HampTransaction(identifier: "123", properties: dict))
     }
     
     func testConstructor_missingPropertiesCardID() {

@@ -37,7 +37,8 @@ internal final class HampAPIBooking: APIBooking {
         
         let bookingPath = String(format: path, uid)
         
-        let transaction = try? HampTransaction(identifier: nil, userID: nil, cardID: cid, order: order)
+        //TODO: Set price and payment
+        let transaction = try? HampTransaction(identifier: nil, userID: nil, cardID: cid, order: order, date: "", payment: 0.0)
         let params = transaction?.propertiesDictionary()
         
         HampServerManager

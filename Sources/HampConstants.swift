@@ -59,6 +59,8 @@ internal struct Constants {
         static let userID = "userID"
         static let cardID = "cardID"
         static let order = "order"
+        static let date = "date"
+        static let payment = "payment"
     }
     
     /// User properties names
