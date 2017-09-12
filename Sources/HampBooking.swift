@@ -17,10 +17,10 @@ public struct HampBooking : HampObject {
 
     //MARK: Constructors
     public init(transaction: HampTransaction?,
-         deliverLocker: HampLocker?,
+         deliveryLocker: HampLocker?,
          collectionLocker: HampLocker?) {
         self.transaction = transaction
-        self.deliveryLocker = delivery_locker
+        self.deliveryLocker = deliveryLocker
         self.collectionLocker = collectionLocker
     }
     
