@@ -60,6 +60,19 @@ public struct HampOrder : HampObject {
         return servicesHired().count
     }
     
+    /// Compare two orders
+    
+    public func equal (order: HampOrder?) -> Bool {
+        guard let order = order else {return false}
+        return order.smallBag == self.smallBag
+            && order.bigBag == self.bigBag
+            && order.curtain == self.curtain
+            && order.cushion == self.cushion
+            && order.quilt == self.quilt
+            && order.sofaCover == self.sofaCover
+            && order.blanket == self.blanket
+    }
+    
     //MARK: HampObject protocol
     public func validate() throws {}
 }
