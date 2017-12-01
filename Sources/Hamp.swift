@@ -53,6 +53,14 @@ extension Hamp {
             },  onError: onError)
         }
         
+        public static func signOut (onSucced: @escaping ()->(), onError: @escaping (HampBaseError)->()) {
+            HampFirebaseAuth.signOut(onSuccess: {
+                onSucced ()
+            }) { (error) in
+                onError (error)
+            }
+        }
+        
         /// Get logged user
         ///
         /// - Returns: User logged, nil otherwise
