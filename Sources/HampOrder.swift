@@ -12,7 +12,7 @@ public struct HampOrder : HampObject {
     
     public var identifier: String?
     public var userID: String
-    public var basket: HampBasket
+    public var basket: [HampHiredService]
     public var price: String
     public var pickUpTime: String
     public var deliveryLocker: HampLocker
@@ -21,7 +21,7 @@ public struct HampOrder : HampObject {
 
     public init (identifier: String,
                  userID: String,
-                 basket: HampBasket,
+                 basket: [HampHiredService],
                  price: String,
                  pickUpTime: String,
                  deliveryLocker: HampLocker,
@@ -41,5 +41,9 @@ public struct HampOrder : HampObject {
     
     public func validate() throws {}
     
+    public func equals (order: HampOrder?) -> Bool {
+        guard let order = order else {return false}
+        return self.identifier == order.identifier
+    }
     
 }
