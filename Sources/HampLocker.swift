@@ -15,39 +15,44 @@ public struct HampLocker : HampDatabaseObject {
     
     //MARK: Properties
     public var identifier: String?
-    public var booked : Bool!
-    public var lockerID : String!
-    public var secretKey : String!
-    
+    public var number: Int8?
+    public var key: Int8?
+    public var available: Bool?
+    public var capacity: String?
+
     //MARK: Constructors
-    public init(identifier : String?,
-                booked : Bool?,
-                lockerID : String?,
-                secretKey : String?) throws {
+    
+    public init (identifier: String?,
+                 number: Int8?,
+                 key: Int8?,
+                 available: Bool?,
+                 capacity: String?) throws {
         self.identifier = identifier
-        self.booked = booked
-        self.lockerID = lockerID
-        self.secretKey = secretKey
+        self.number = number
+        self.key = key
+        self.available = available
+        self.capacity = capacity
         
         try validate()
     }
     
     public init(identifier: String? = nil, properties: Dictionary<String, Any>?) throws {
-        try self.init(
-            identifier: identifier,
-            booked: properties?[Constants.Locker.booked] as? Bool,
-            lockerID: properties?[Constants.Locker.lockerID] as? String,
-            secretKey: properties?[Constants.Locker.secretKey] as? String)
+        try self.init(identifier: identifier,
+                      number: properties?[Constants.Locker.number] as? Int8,
+                      key: properties?[Constants.Locker.key] as? Int8,
+                      available: properties?[Constants.Locker.available] as? Bool,
+                      capacity: properties?[Constants.Locker.capacity] as? String)
     }
     
     //MARK: HampObject protocol
     public func validate() throws {
         guard
-            let _ = booked,
-            let l = lockerID,
-            let s = secretKey,
-            l.count > 0,
-            s.count > 0 else {
+            let _ = available,
+            let n = number,
+            let k = key,
+            let _ = capacity,
+            n > 0,
+            k > 0 else {
                 throw HampFirebaseObjectError.missingProperties
         }
         

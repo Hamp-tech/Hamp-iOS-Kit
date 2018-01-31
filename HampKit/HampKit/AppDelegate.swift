@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }, onError: {(error) in
 //
 //        })
-        let user = try? HampUser(identifier: nil, name: "joannnnnnnnnnn", surname: "molinas", mail: "joan@molinas.com", phone: "666666666", birthday: "05/05/1994", gender: "M", tokenFCM: "123", language: "ca-ES", OS: "iOS", signupDate: "05/05/1994")
+//        let user = try? HampUser(identifier: nil, name: "joannnnnnnnnnn", surname: "molinas", mail: "joan@molinas.com", phone: "666666666", birthday: "05/05/1994", gender: "M", tokenFCM: "123", language: "ca-ES", OS: "iOS", signupDate: "05/05/1994")
+        let user = try? HampUser (identifier: nil, name: "Joan", surname: "Molinas", mail: "joan@molinas.com", password: "123456", phone: "666666666", birthday: "05/05/1994", gender: "M", signupDate: Date(), tokenFCM: nil, os: "iOS", language: "ca-ES", lastActivity: Date (), unsubscribed: nil, stripeID: nil)
         Hamp.Auth.signUp(with: user!, password: "arcanine", onSuccess: { (response) in
 
         }, onError: {(error) in

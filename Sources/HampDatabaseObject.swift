@@ -19,7 +19,7 @@ public protocol HampDatabaseObject : HampObject {
     ///   - identifier: object identifier
     ///   - properties: dictionary with object properties
     /// - Throws: Error if identifier is empty or missing properties
-    init(identifier : String?, properties : Dictionary<String, Any>?) throws 
+    init(identifier : String?, properties : Dictionary<String, Any>?) throws
 }
 
 public enum HampFirebaseObjectError : Swift.Error {
