@@ -69,10 +69,6 @@ public struct HampCreditCard : HampDatabaseObject {
                 
         }
         
-        guard na.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count > 0 else {
-            throw CreditCardError.invalidName
-        }
-        
         guard (try! HampRegex(pattern: Constants.Regex.visa)).parse(input: String(n)) else {
             throw CreditCardError.invalidNumber
         }
@@ -91,6 +87,10 @@ public struct HampCreditCard : HampDatabaseObject {
         
         guard (try! HampRegex(pattern: Constants.Regex.cvv)).parse(input: String(c)) else {
             throw CreditCardError.invalidCVV
+        }
+        
+        guard na.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count > 0 else {
+            throw CreditCardError.invalidName
         }
     }
 }
