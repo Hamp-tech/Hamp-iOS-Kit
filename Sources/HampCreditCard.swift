@@ -63,8 +63,6 @@ public struct HampCreditCard : HampDatabaseObject {
             let n = number,
             let m = month,
             let y = year,
-            month.count == 2,
-            year.count == 2,
             let na = name,
             let c = cvv else {
                 throw HampFirebaseObjectError.missingProperties
@@ -73,6 +71,14 @@ public struct HampCreditCard : HampDatabaseObject {
         
         guard (try! HampRegex(pattern: Constants.Regex.visa)).parse(input: String(n)) else {
             throw CreditCardError.invalidNumber
+        }
+        
+        guard month.count == 2 else {
+            throw CreditCardError.invalidMonth
+        }
+        
+        guard year.count == 2 else {
+            throw CreditCardError.invalidYear
         }
         
         guard let mInt = Int(m), mInt > 0 && mInt < 13 else {
