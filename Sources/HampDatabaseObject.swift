@@ -24,6 +24,13 @@ public protocol HampDatabaseObject : HampObject {
 
 public enum HampFirebaseObjectError : Swift.Error {
     case missingProperties
+    
+    public var description: String {
+        switch self {
+        case .missingProperties:
+            return "missing properties"
+        }
+    }
 }
 
 
