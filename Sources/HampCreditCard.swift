@@ -63,6 +63,8 @@ public struct HampCreditCard : HampDatabaseObject {
             let n = number,
             let m = month,
             let y = year,
+            month.count == 2,
+            year.count == 2,
             let na = name,
             let c = cvv else {
                 throw HampFirebaseObjectError.missingProperties
