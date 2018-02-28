@@ -9,14 +9,92 @@
 import Foundation
 
 struct CreditCard: Objectable {
+    private let creditCardNumbers = 16 + 3
+    
     var identifier: String?
     var number: String?
     var expMonth: UInt8?
     var expYear: UInt8?
     var cvc: String?
     
+    private var validator = Validator ()
+    
+    init(identifier: String? = nil, number: String? = nil, expMonth: UInt8? = nil, expYear: UInt8? = nil, cvc: String? = nil) {
+        self.identifier = identifier
+        self.number = number
+        self.expMonth = expMonth
+        self.expYear = expYear
+        self.cvc = cvc
+
+        addValidations()
+    }
+    
+    init () {
+        addValidations()
+    }
+    
     func validate() throws {
+        try validator.validate()
+    }
+    
+    private func addValidations () {
         
+        let missingNumberValidation = Validation.init(validable: {
+            return self.number != nil
+        }) { (validated) in
+            if !validated {throw CreditCardError.missingParameter("credit card number")}
+        }
+        
+        let numberValidation = Validation.init(validable: {
+            return try! Regex.init(pattern: Schemes.Regex.visa).parse(input: String(describing: self.number))
+        }, validated: { (validated) in
+            if !validated {throw CreditCardError.numberFormatError}
+        })
+        
+        let missingYearValidation = Validation.init(validable: {
+            return self.expYear != nil
+        }) { (validated) in
+            if !validated {throw CreditCardError.missingParameter("year")}
+        }
+        
+        let yearValidation = Validation.init(validable: {
+            return 2000 + Int(self.expYear!) >= Date.currentYear()
+        }) { (validated) in
+            throw CreditCardError.invalidYear
+        }
+        
+        let missingMonthValidation = Validation.init(validable: {
+            return self.expMonth != nil
+        }) { (validated) in
+            if !validated {throw CreditCardError.missingParameter("month")}
+        }
+        
+        let monthValidation = Validation.init(validable: {
+            return !(Int(self.expYear!) + 2000 == Date.currentYear() && self.expMonth! < Date.currentMonth())
+        }) { (validated) in
+            throw CreditCardError.invalidMonth
+        }
+        
+        let missingCVCValidation = Validation.init(validable: {
+            return self.cvc != nil
+        }) { (validated) in
+            if !validated {throw CreditCardError.missingParameter("CVC")}
+        }
+        
+        let cvcValidation = Validation.init(validable: {
+            return try! Regex.init(pattern: Schemes.Regex.cvv).parse(input: String(describing: self.cvc!))
+        }) { (validated) in
+            throw CreditCardError.invalidCVV
+        }
+        
+        validator.add(missingNumberValidation)
+        validator.add(numberValidation)
+        validator.add(missingYearValidation)
+        validator.add(yearValidation)
+        validator.add(missingMonthValidation)
+        validator.add(monthValidation)
+        validator.add(missingCVCValidation)
+        validator.add(cvcValidation)
     }
 }
 

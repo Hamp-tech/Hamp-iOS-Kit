@@ -25,6 +25,8 @@ class Booking: Objectable {
     var pickUpLockers: [Locker]?
     var created: String?
     
+    private var validator = Validator ()
+    
     init(identifier: String? = nil,
          userID: String? = nil,
          basket: [HiredService]? = nil,
@@ -45,5 +47,73 @@ class Booking: Objectable {
         self.created = created
     }
     
-    func validate() throws { }
+    private func addValidations () {
+        let missingBasketValidation = Validation.init(validable: {
+            return self.basket != nil && !self.basket!.isEmpty
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("basket")}
+        }
+        
+        let priceValidation = Validation.init(validable: {
+            return self.price != nil && self.price! > 0
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("price")}
+        }
+        
+        let pointValidation = Validation.init(validable: { () -> Bool in
+            return self.point != nil
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("point")}
+        }
+        
+        let pickUpTimeValidation = Validation.init(validable: { () -> Bool in
+            return self.pickUpTime != nil
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("pickUpTime")}
+        }
+        
+        let deliveryLockersValidation = Validation.init(validable: { () -> Bool in
+            return self.deliveryLockers != nil && !self.deliveryLockers!.isEmpty
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("deliveryLockers")}
+        }
+        
+        let pickUpLockersValidation = Validation.init(validable: { () -> Bool in
+            return self.pickUpLockers != nil && !self.pickUpLockers!.isEmpty
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("pickUpLockers")}
+        }
+        
+        let createdValidation = Validation.init(validable: {
+            return self.created != nil
+        }) { (validated) in
+            if !validated {throw BookingError.missingParameter("created")}
+        }
+        
+        validator.add(missingBasketValidation)
+        validator.add(priceValidation)
+        validator.add(pointValidation)
+        validator.add(pickUpTimeValidation)
+        validator.add(deliveryLockersValidation)
+        validator.add(pickUpLockersValidation)
+        validator.add(createdValidation)
+    }
+    
+    func validate() throws {
+        try validator.validate()
+    }
+}
+
+extension Booking {
+    private enum CodingKeys: String, CodingKey {
+        case identifier = "id"
+        case userID = "user_id"
+        case basket
+        case price
+        case point
+        case pickUpTime = "pick_up_time"
+        case deliveryLockers = "delivery_lockers"
+        case pickUpLockers = "pick_up_lockers"
+        case created
+    }
 }

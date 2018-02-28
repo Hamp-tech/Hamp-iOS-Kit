@@ -15,7 +15,7 @@ class Locker: Objectable {
     var code: String?
     var available: Bool?
     var capacity: Size?
-    
+        
     init(identifier: String? = nil, number: Int? = nil, code: String? = nil, available: Bool? = nil, capacity: Size? = nil) {
         self.identifier = identifier
         self.number = number

@@ -12,7 +12,13 @@ import XCTest
 class UserTests: XCTestCase {
     
     func testSuccessfulUser() {
-        // TODO: When all validations will be done, do it.
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@userhamp.io", password: "123123", phone: "666666666", birthday: "1994-11-07T13:15:30Z", gender: "M")
+        do {
+            try user.validate()
+            XCTAssertTrue(true)
+        } catch {
+            XCTAssertTrue(false)
+        }
     }
     
     func testMissingName() {
@@ -39,17 +45,52 @@ class UserTests: XCTestCase {
     func testWrongEmail() {
         let user = User(name: "Elon", surname: "Musk", email: "SpaceX")
         XCTAssertThrowsError(try user.validate()) { (error) in
-            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("email").description)
+            XCTAssertEqual((error as! UserError).description, UserError.emailFormatError.description)
         }
     }
     
-    func testValidEmail() {
-        let user = User(name: "Elon", surname: "Musk", email: "elon@usehamp.io")
-        do {
-            try user.validate()
-            XCTAssertTrue(true)
-        } catch {
-            XCTAssertTrue(false)
+    func testMissingPassword () {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("password").description)
         }
     }
+    
+    func testWrongPassword () {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io", password: "")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("password").description)
+        }
+        //let foo = User.init(identifier: <#T##String?#>, name: <#T##String?#>, surname: <#T##String?#>, email: <#T##String?#>, password: <#T##String?#>, phone: <#T##String?#>, birthday: <#T##String?#>, gender: <#T##String?#>, tokenFCM: <#T##String?#>, os: <#T##String?#>, language: <#T##String?#>, cards: <#T##[CreditCard]?#>)
+    }
+    
+    func testMissingPhone () {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io", password: "123123")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("phone").description)
+        }
+    }
+    
+    func testWrongPhone () {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@userhamp.io", password: "123123", phone: "66666666")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.phoneFormatError.description)
+        }
+    }
+    
+    //1994-11-07T13:15:30Z
+    func testMissingBirthday () {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io", password: "123123", phone: "666666666")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("birthday").description)
+        }
+    }
+    
+    func testMissingGender () {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io", password: "123123", phone: "666666666", birthday: "1994-11-07T13:15:30Z")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("gender").description)
+        }
+    }
+    
 }

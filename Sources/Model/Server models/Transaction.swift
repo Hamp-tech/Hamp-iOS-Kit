@@ -17,7 +17,7 @@ class Transaction: Objectable {
     var pickUpDate: String?
     var deliveryDate: String?
     var created: String?
-
+    
     init(identifier: String? = nil,
          userID: String? = nil,
          booking: Booking? = nil,

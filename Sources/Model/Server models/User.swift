@@ -93,15 +93,58 @@ class User: Objectable {
             if !validated { throw UserError.missingParameter("surname") }
         }
         
-        let emailValidation = Validation(validable: { () -> Bool in
-            return self.email != nil && (try! Regex(pattern: Schemes.Regex.email).parse(input: self.email!))
+        let missingEmailValidation = Validation(validable: { () -> Bool in
+            return self.email != nil
         }) { (validated) in
             if !validated { throw UserError.missingParameter("email") }
         }
         
+        let emailFormatValidation = Validation.init(validable: {
+            return (try! Regex(pattern: Schemes.Regex.email).parse(input: self.email!))
+        }) { (validated) in
+            if !validated {throw UserError.emailFormatError}
+        }
+        
+        let missingPasswordValidation = Validation.init(validable: {
+            return self.password != nil && self.password!.count > 0
+        }) { (validated) in
+            if !validated {throw UserError.missingParameter("password")}
+        }
+        
+        let missingPhoneValidation = Validation.init(validable: {
+            return self.phone != nil
+        }) { (validated) in
+            if !validated {throw UserError.missingParameter("phone")}
+        }
+        
+        let phoneFormatValidation = Validation.init(validable: {
+            return self.phone!.count == 9
+        }) { (validated) in
+            if !validated {throw UserError.phoneFormatError}
+        }
+        
+        let missingBirthdayValidation = Validation.init(validable: {
+            return self.birthday != nil
+        }) { (validated) in
+            if !validated {throw UserError.missingParameter("birthday")}
+        }
+        
+        let missingGenderValidation = Validation.init(validable: {
+            return self.gender != nil && self.gender!.count == 1
+        }) { (validated) in
+            if !validated {throw UserError.missingParameter("gender")}
+        }
+        
         validator.add(nameValidation)
         validator.add(surnameValidation)
-        validator.add(emailValidation)
+        validator.add(missingEmailValidation)
+        validator.add(emailFormatValidation)
+        validator.add(missingPasswordValidation)
+        validator.add(missingPhoneValidation)
+        validator.add(phoneFormatValidation)
+        validator.add(missingBirthdayValidation)
+        validator.add(missingGenderValidation)
+        
     }
 }
 

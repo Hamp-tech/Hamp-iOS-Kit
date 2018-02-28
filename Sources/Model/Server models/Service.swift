@@ -18,7 +18,7 @@ class Service: Objectable {
     var size: Size?
     var active: Bool?
     var created: String?
-    
+
     init(identifier: String?,
          name: String?,
          description: String?,
@@ -35,6 +35,7 @@ class Service: Objectable {
         self.size = size
         self.active = active
         self.created = created
+        
     }
     
     func validate() throws {}
