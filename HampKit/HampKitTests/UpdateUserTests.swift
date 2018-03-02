@@ -63,6 +63,7 @@ class UpdateUserTests: XCTestCase {
     func testUserCreateCreditCard() {
         let raw = """
             {
+                "name": "Elon Musk",
                 "number": "4242424242424242",
                 "exp_month": 12,
                 "exp_year": 23,

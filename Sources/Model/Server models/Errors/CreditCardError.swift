@@ -24,7 +24,7 @@ extension CreditCardError: CustomStringConvertible {
             case .invalidMonth:
                 return "Invalid month"
             case .invalidCVV:
-                return "Invalid cvv"
+                return "Invalid cvc"
         }
     }
 }

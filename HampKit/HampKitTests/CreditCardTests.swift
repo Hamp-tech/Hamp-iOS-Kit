@@ -12,7 +12,7 @@ import XCTest
 class CreditCardTests: XCTestCase {
     
     func testCorrectCreditCard () {
-        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 12, expYear: 18, cvv: "123")
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 12, expYear: 18, cvc: "123")
         do {
             try creditCard.validate()
             XCTAssertTrue(true);
@@ -76,12 +76,12 @@ class CreditCardTests: XCTestCase {
         let creditCard = CreditCard.init(name: "Elon musk", number: "4511472314229113", expMonth: 12, expYear: 18)
         
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
-            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("cvv").description)
+            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("cvc").description)
         }
     }
     
     func testIncorrectCVV () {
-        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113", expMonth: 12, expYear: 18, cvv: "1")
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113", expMonth: 12, expYear: 18, cvc: "1")
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.invalidCVV.description)
         }

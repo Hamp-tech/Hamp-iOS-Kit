@@ -16,7 +16,7 @@ struct CreditCard: Objectable {
     var number: String?
     var expMonth: UInt8?
     var expYear: UInt8?
-    var cvv: String?
+    var cvc: String?
     
     private var validator = Validator ()
     
@@ -25,13 +25,13 @@ struct CreditCard: Objectable {
          number: String? = nil,
          expMonth: UInt8? = nil,
          expYear: UInt8? = nil,
-         cvv: String? = nil) {
+         cvc: String? = nil) {
         self.identifier = identifier
         self.name = name
         self.number = number?.replacingOccurrences(of: " ", with: "")
         self.expMonth = expMonth
         self.expYear = expYear
-        self.cvv = cvv
+        self.cvc = cvc
 
         addValidations()
     }
@@ -89,13 +89,13 @@ struct CreditCard: Objectable {
         }
         
         let missingCVVValidation = Validation.init(validable: {
-            return self.cvv != nil
+            return self.cvc != nil
         }) { (validated) in
-            if !validated {throw CreditCardError.missingParameter("cvv")}
+            if !validated {throw CreditCardError.missingParameter("cvc")}
         }
         
         let cvvValidation = Validation.init(validable: {
-            return try! Regex.init(pattern: Schemes.Regex.cvv).parse(input: self.cvv!)
+            return try! Regex.init(pattern: Schemes.Regex.cvv).parse(input: self.cvc!)
         }) { (validated) in
             if !validated {throw CreditCardError.invalidCVV}
         }
@@ -119,6 +119,6 @@ extension CreditCard {
         case name
         case expMonth = "exp_month"
         case expYear = "exp_year"
-        case cvv
+        case cvc
     }
 }
