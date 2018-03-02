@@ -18,13 +18,13 @@ extension CreditCardError: CustomStringConvertible {
             case .missingParameter(let parameter):
                 return "Missing parameter \(parameter)"
             case .numberFormatError:
-                return "Credit card number incorrect format"
+                return "Invalid number"
             case .invalidYear:
                 return "Invalid year"
             case .invalidMonth:
                 return "Invalid month"
             case .invalidCVV:
-                return "Invalid CVV"
+                return "Invalid cvv"
         }
     }
 }

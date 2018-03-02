@@ -69,7 +69,7 @@ class TransactionTests: XCTestCase {
 		let transaction = try! Singletons.sharedJSONDecoder.decode(Transaction.self, from: raw.data(using: .utf8)!)
 		transaction.identifier = "995828f80c7d4479a8caf3a90079d0e8"
 		
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		
 		let createTransactionExpectation = expectation(description: "Create transaction expectation")
 		
@@ -127,7 +127,7 @@ class TransactionTests: XCTestCase {
 			let transaction = try! Singletons.sharedJSONDecoder.decode(Transaction.self, from: raw.data(using: .utf8)!)
 			transaction.identifier = "995828f80c7d4479a8caf3a90079d0e8"
 			
-			let requester = TransactionsRequeter(session: session)
+			let requester = TransactionsRequester(session: session)
 			
 			let createTransactionExpectation = expectation(description: "Create transaction expectation")
 			
@@ -171,7 +171,7 @@ class TransactionTests: XCTestCase {
 		let transaction = try! Singletons.sharedJSONDecoder.decode(Transaction.self, from: raw.data(using: .utf8)!)
 		transaction.identifier = "995828f80c7d4479a8caf3a90079d0e8"
 		
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		
 		requester.createTransaction(transaction: transaction) { (response) in
 			XCTAssertEqual(response.code, .internalError)
@@ -248,7 +248,7 @@ class TransactionTests: XCTestCase {
 		let response = try! Singletons.sharedJSONDecoder.decode(Response<[Transaction]>.self, from: responseRaw.data(using: .utf8)!)
 		let session = URLSessionMock(data: response.toData)
 		
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		requester.userTransactions(userID: "995828f80c7d4479a8caf3a90079d0e8") { (response) in
 			XCTAssertEqual(response.code, .ok)
 			XCTAssertEqual(response.data?.count, 2)
@@ -268,7 +268,7 @@ class TransactionTests: XCTestCase {
 		let response = try! Singletons.sharedJSONDecoder.decode(Response<[Transaction]>.self, from: responseRaw.data(using: .utf8)!)
 		let session = URLSessionMock(data: response.toData)
 		
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		requester.userTransactions(userID: "995828f80c7d4479a8caf3a90079d0e8") { (response) in
 			XCTAssertEqual(response.code, .ok)
 			XCTAssertEqual(response.data?.count, 0)
@@ -280,7 +280,7 @@ class TransactionTests: XCTestCase {
 		
 		let error = NSError(domain: "", code: HTTPCode.internalError.rawValue, userInfo: nil)
 		let session = URLSessionMock(error: error)
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		
 		requester.userTransactions(userID: "995828f80c7d4479a8caf3a90079d0e8") { (response) in
 			XCTAssertEqual(response.code, .internalError)
@@ -335,7 +335,7 @@ class TransactionTests: XCTestCase {
 		let response = try! Singletons.sharedJSONDecoder.decode(Response<Transaction>.self, from: rawResponse.data(using: .utf8)!)
 		let session = URLSessionMock(data: response.toData)
 		
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		
 		requester.deliver(transactionID: "874725e48029488ead4c9b28b08e100c", userID: "995828f80c7d4479a8caf3a90079d0e8") { (response) in
 			XCTAssertEqual(response.code, .ok)
@@ -350,7 +350,7 @@ class TransactionTests: XCTestCase {
 		
 		let error = NSError(domain: "", code: HTTPCode.internalError.rawValue, userInfo: nil)
 		let session = URLSessionMock(error: error)
-		let requester = TransactionsRequeter(session: session)
+		let requester = TransactionsRequester(session: session)
 		
 		requester.deliver(transactionID: "874725e48029488ead4c9b28b08e100c", userID: "995828f80c7d4479a8caf3a90079d0e8") { (response) in
 			XCTAssertEqual(response.code, .internalError)

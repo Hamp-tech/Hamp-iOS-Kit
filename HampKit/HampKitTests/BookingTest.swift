@@ -17,7 +17,7 @@ class BookingTest: XCTestCase {
         let deliveryLockers = [Locker.init()]
         let pickUpLockers = [Locker.init()]
         
-        let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime, deliveryLockers: deliveryLockers, pickUpLockers: pickUpLockers, created: "Created");
+        let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime, deliveryLockers: deliveryLockers, pickUpLockers: pickUpLockers);
         do {
             try booking.validate()
             XCTAssertTrue(true)
@@ -41,14 +41,6 @@ class BookingTest: XCTestCase {
         }
     }
     
-    func testMissingPoint () {
-        let basket  = [HiredService.init(), HiredService.init()]
-        let booking = Booking.init(basket: basket, price: 30);
-        
-        XCTAssertThrowsError(try booking.validate()) { (error) in
-            XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("point").description)
-        }
-    }
     
     func testMissingPickUpTime () {
         let basket  = [HiredService.init(), HiredService.init()]
@@ -80,17 +72,12 @@ class BookingTest: XCTestCase {
         }
     }
     
-    func testMissingCreated () {
+    func testMissingPoint () {
         let basket  = [HiredService.init(), HiredService.init()]
-        let pickUpTime = Booking.PickUpTime.afternoon
-        let deliveryLockers = [Locker.init()]
-        let pickUpLockers = [Locker.init()]
-        let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime, deliveryLockers: deliveryLockers, pickUpLockers: pickUpLockers);
+        let booking = Booking.init(basket: basket, price: 30);
         
         XCTAssertThrowsError(try booking.validate()) { (error) in
-            XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("created").description)
+            XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("1").description)
         }
     }
-    
-    
 }

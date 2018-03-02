@@ -12,7 +12,7 @@ import XCTest
 class CreditCardTests: XCTestCase {
     
     func testCorrectCreditCard () {
-        let creditCard = CreditCard.init(number: "4511472314229113",expMonth: 12, expYear: 18, cvc: "123")
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 12, expYear: 18, cvv: "123")
         do {
             try creditCard.validate()
             XCTAssertTrue(true);
@@ -21,36 +21,43 @@ class CreditCardTests: XCTestCase {
         }
     }
     
-    func testMissingNumber () {
+    func testMissingName () {
         let creditCard = CreditCard.init()
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
-            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("credit card number").description)
+            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("name").description)
+        }
+    }
+    
+    func testMissingNumber () {
+        let creditCard = CreditCard.init(name: "Elon Musk")
+        XCTAssertThrowsError(try creditCard.validate()) { (error) in
+            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("number").description)
         }
     }
     
     func testIncorrectNumber () {
-        let creditCard = CreditCard.init(number: "4222 2222 2222 2")
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4222 2222 2222 2")
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.numberFormatError.description)
         }
     }
     
     func testMissingYear () {
-        let creditCard = CreditCard.init(number: "4511472314229113")
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511 4723 1422 9113")
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("year").description)
         }
     }
     
     func testInvalidYear () {
-        let creditCard = CreditCard.init(number: "4511472314229113", expYear: 17)
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113", expYear: 17)
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.invalidYear.description)
         }
     }
     
     func testMissingMonth () {
-        let creditCard = CreditCard.init(number: "4511472314229113", expYear: 18)
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113", expYear: 18)
         
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("month").description)
@@ -58,23 +65,23 @@ class CreditCardTests: XCTestCase {
     }
     
     func testIncorrectMonth () {
-        let creditCard = CreditCard.init(number: "4511472314229113",expMonth: 1, expYear: 18)
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 1, expYear: 18)
         
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.invalidMonth.description)
         }
     }
     
-    func testMissingCVC () {
-        let creditCard = CreditCard.init(number: "4511472314229113",expMonth: 12, expYear: 18)
+    func testMissingCVV () {
+        let creditCard = CreditCard.init(name: "Elon musk", number: "4511472314229113", expMonth: 12, expYear: 18)
         
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
-            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("CVC").description)
+            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("cvv").description)
         }
     }
     
-    func testIncorrectCVC () {
-        let creditCard = CreditCard.init(number: "4511472314229113",expMonth: 12, expYear: 18, cvc: "1")
+    func testIncorrectCVV () {
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113", expMonth: 12, expYear: 18, cvv: "1")
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.invalidCVV.description)
         }

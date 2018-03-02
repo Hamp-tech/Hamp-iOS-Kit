@@ -10,7 +10,9 @@ import Foundation
 
 enum UserError: Error {
 	/// Missing a parameter on user
-	case missingParameter(String), emailFormatError, phoneFormatError
+	case missingParameter(String)
+    case emailFormatError
+    case phoneFormatError
 }
 
 extension UserError: CustomStringConvertible {

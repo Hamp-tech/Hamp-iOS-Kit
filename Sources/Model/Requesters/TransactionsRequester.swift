@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal struct TransactionsRequeter: Requestable {
+internal struct TransactionsRequester: Requestable {
     var session: URLSession
     
     init(session: URLSession = .shared) {

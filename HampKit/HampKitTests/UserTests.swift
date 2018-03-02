@@ -61,7 +61,6 @@ class UserTests: XCTestCase {
         XCTAssertThrowsError(try user.validate()) { (error) in
             XCTAssertEqual((error as! UserError).description, UserError.missingParameter("password").description)
         }
-        //let foo = User.init(identifier: <#T##String?#>, name: <#T##String?#>, surname: <#T##String?#>, email: <#T##String?#>, password: <#T##String?#>, phone: <#T##String?#>, birthday: <#T##String?#>, gender: <#T##String?#>, tokenFCM: <#T##String?#>, os: <#T##String?#>, language: <#T##String?#>, cards: <#T##[CreditCard]?#>)
     }
     
     func testMissingPhone () {
@@ -73,6 +72,13 @@ class UserTests: XCTestCase {
     
     func testWrongPhone () {
         let user = User.init(name: "Elon", surname: "Musk", email: "elon@userhamp.io", password: "123123", phone: "66666666")
+        XCTAssertThrowsError(try user.validate()) { (error) in
+            XCTAssertEqual((error as! UserError).description, UserError.phoneFormatError.description)
+        }
+    }
+    
+    func testWrongPhoneNumber() {
+        let user = User.init(name: "Elon", surname: "Musk", email: "elon@userhamp.io", password: "123123", phone: "123456789")
         XCTAssertThrowsError(try user.validate()) { (error) in
             XCTAssertEqual((error as! UserError).description, UserError.phoneFormatError.description)
         }

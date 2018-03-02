@@ -114,11 +114,11 @@ class User: Objectable {
         let missingPhoneValidation = Validation.init(validable: {
             return self.phone != nil
         }) { (validated) in
-            if !validated {throw UserError.missingParameter("phone")}
+            if !validated { throw UserError.missingParameter("phone") }
         }
         
         let phoneFormatValidation = Validation.init(validable: {
-            return self.phone!.count == 9
+            return try! Regex(pattern: Schemes.Regex.phone).parse(input: self.phone!)
         }) { (validated) in
             if !validated {throw UserError.phoneFormatError}
         }

@@ -36,5 +36,6 @@ struct Schemes {
         static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         static let visa = "^4[0-9]{12}(?:[0-9]{3})?$"
         static let cvv = "^([0-9]{3})$"
+        static let phone = "^[9|6|7][0-9]{8}$"
     }
 }

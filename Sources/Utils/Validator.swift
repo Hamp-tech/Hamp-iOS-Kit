@@ -27,7 +27,6 @@ final class Validator {
 	// MARK: - Properties
 	private var validations = [Validation]()
 	
-	
 	// MARK: - Public api
 	func add(_ validation: Validation) {
 		validations.append(validation)
