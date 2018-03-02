@@ -46,8 +46,6 @@
 		4EB3133920433E4200373760 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3133220433E4100373760 /* URLSessionDataTaskMock.swift */; };
 		4EB3133A20433E4200373760 /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3133320433E4100373760 /* AuthTests.swift */; };
 		4EB3133C20433E9D00373760 /* Hamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3133B20433E9D00373760 /* Hamp.swift */; };
-		7A4DA6F8D8FCD7054E9F1560 /* Pods_HampKit_HampKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE8D9D0465669BA02232D74 /* Pods_HampKit_HampKitTests.framework */; };
-		E04B20A9F4F99841943FDFB6 /* Pods_HampKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +64,6 @@
 		192C8D5D2046E2C80071D85D /* CreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTests.swift; sourceTree = "<group>"; };
 		192C8D5F204702070071D85D /* BookingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingError.swift; sourceTree = "<group>"; };
 		1979EC4120494D2B006D7BE7 /* BookingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTest.swift; sourceTree = "<group>"; };
-		29A29BE8B8B5A81E5374D121 /* Pods-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HampKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Assets/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E5B08BE1F04776900236A9E /* HampKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HampKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5B08C11F04776A00236A9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,13 +102,6 @@
 		4EB3133220433E4100373760 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		4EB3133320433E4100373760 /* AuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		4EB3133B20433E9D00373760 /* Hamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hamp.swift; path = ../../Sources/Hamp.swift; sourceTree = "<group>"; };
-		6CB9AC343DA4BE670916D2C1 /* Pods-HampKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.release.xcconfig"; sourceTree = "<group>"; };
-		860AD15CD5553611C2383A9F /* Pods-HampKit-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		92CA31753B318C7843B71695 /* Pods-HampKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit/Pods-HampKit.release.xcconfig"; sourceTree = "<group>"; };
-		AB970159482CDD3FFB1F169D /* Pods-HampKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit/Pods-HampKit.debug.xcconfig"; sourceTree = "<group>"; };
-		DAE8D9D0465669BA02232D74 /* Pods_HampKit_HampKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HampKit_HampKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE4F2C5C1A954283315CCD3E /* Pods_HampKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HampKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE8FF8AF25485BBEC69CEA2D /* Pods-HampKit-HampKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit-HampKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E04B20A9F4F99841943FDFB6 /* Pods_HampKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4DA6F8D8FCD7054E9F1560 /* Pods_HampKit_HampKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +128,6 @@
 				4E5B08C01F04776900236A9E /* HampKit */,
 				4E881E351F0484EE00DB700E /* HampKitTests */,
 				4E5B08BF1F04776900236A9E /* Products */,
-				A1F1E450D7E903CE26E97B60 /* Pods */,
-				E3C53F3006CC33C6325F4C98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,29 +270,6 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		A1F1E450D7E903CE26E97B60 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AB970159482CDD3FFB1F169D /* Pods-HampKit.debug.xcconfig */,
-				92CA31753B318C7843B71695 /* Pods-HampKit.release.xcconfig */,
-				29A29BE8B8B5A81E5374D121 /* Pods-HampKitTests.debug.xcconfig */,
-				6CB9AC343DA4BE670916D2C1 /* Pods-HampKitTests.release.xcconfig */,
-				860AD15CD5553611C2383A9F /* Pods-HampKit-HampKitTests.debug.xcconfig */,
-				EE8FF8AF25485BBEC69CEA2D /* Pods-HampKit-HampKitTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		E3C53F3006CC33C6325F4C98 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */,
-				EE4F2C5C1A954283315CCD3E /* Pods_HampKitTests.framework */,
-				DAE8D9D0465669BA02232D74 /* Pods_HampKit_HampKitTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,12 +277,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E5B08DB1F04776A00236A9E /* Build configuration list for PBXNativeTarget "HampKit" */;
 			buildPhases = (
-				3FC99D335B994468E1581D4B /* [CP] Check Pods Manifest.lock */,
 				4E5B08BA1F04776900236A9E /* Sources */,
 				4E5B08BB1F04776900236A9E /* Frameworks */,
 				4E5B08BC1F04776900236A9E /* Resources */,
-				13AD0C72E4865651879F03FA /* [CP] Embed Pods Frameworks */,
-				7BC327D02E4E4AA508AE02BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,12 +294,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E881E3B1F0484EE00DB700E /* Build configuration list for PBXNativeTarget "HampKitTests" */;
 			buildPhases = (
-				9C17ABC9D0D02F1CEFD68379 /* [CP] Check Pods Manifest.lock */,
 				4E881E301F0484ED00DB700E /* Sources */,
 				4E881E311F0484ED00DB700E /* Frameworks */,
 				4E881E321F0484ED00DB700E /* Resources */,
-				0525C4400B12F5C8EFAEB35B /* [CP] Embed Pods Frameworks */,
-				6E9FC3443E178149A1F8D1E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -409,127 +365,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0525C4400B12F5C8EFAEB35B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCommunity/FirebaseCommunity.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCommunity.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		13AD0C72E4865651879F03FA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HampKit/Pods-HampKit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCommunity/FirebaseCommunity.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCommunity.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HampKit/Pods-HampKit-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3FC99D335B994468E1581D4B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HampKit-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6E9FC3443E178149A1F8D1E4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7BC327D02E4E4AA508AE02BC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HampKit/Pods-HampKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C17ABC9D0D02F1CEFD68379 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HampKit-HampKitTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E5B08BA1F04776900236A9E /* Sources */ = {
@@ -699,7 +534,6 @@
 		};
 		4E5B08DC1F04776A00236A9E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB970159482CDD3FFB1F169D /* Pods-HampKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = NO;
@@ -717,7 +551,6 @@
 		};
 		4E5B08DD1F04776A00236A9E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92CA31753B318C7843B71695 /* Pods-HampKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = NO;
@@ -735,7 +568,6 @@
 		};
 		4E881E3C1F0484EE00DB700E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 860AD15CD5553611C2383A9F /* Pods-HampKit-HampKitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -753,7 +585,6 @@
 		};
 		4E881E3D1F0484EE00DB700E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE8FF8AF25485BBEC69CEA2D /* Pods-HampKit-HampKitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
