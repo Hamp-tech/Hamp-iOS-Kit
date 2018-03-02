@@ -11,6 +11,7 @@
 		192C8D582046D8BC0071D85D /* Date+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C8D572046D8BC0071D85D /* Date+Calendar.swift */; };
 		192C8D5E2046E2C80071D85D /* CreditCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C8D5D2046E2C80071D85D /* CreditCardTests.swift */; };
 		192C8D60204702070071D85D /* BookingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C8D5F204702070071D85D /* BookingError.swift */; };
+		1979EC4220494D2B006D7BE7 /* BookingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1979EC4120494D2B006D7BE7 /* BookingTest.swift */; };
 		4E4D4F9C1F2633860063A50C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */; };
 		4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08C11F04776A00236A9E /* AppDelegate.swift */; };
 		4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B08C81F04776A00236A9E /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		192C8D572046D8BC0071D85D /* Date+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Calendar.swift"; sourceTree = "<group>"; };
 		192C8D5D2046E2C80071D85D /* CreditCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTests.swift; sourceTree = "<group>"; };
 		192C8D5F204702070071D85D /* BookingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingError.swift; sourceTree = "<group>"; };
+		1979EC4120494D2B006D7BE7 /* BookingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTest.swift; sourceTree = "<group>"; };
 		29A29BE8B8B5A81E5374D121 /* Pods-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		370DA003F727CFC8347C4B2C /* Pods_HampKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HampKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Assets/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		4E881E351F0484EE00DB700E /* HampKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1979EC4120494D2B006D7BE7 /* BookingTest.swift */,
 				192C8D5D2046E2C80071D85D /* CreditCardTests.swift */,
 				4EB3133320433E4100373760 /* AuthTests.swift */,
 				4EB3133020433E4100373760 /* Mocks */,
@@ -580,6 +583,7 @@
 				4EB3133820433E4200373760 /* URLSessionMock.swift in Sources */,
 				4EB3133520433E4200373760 /* ValidatorTests.swift in Sources */,
 				4EB3133720433E4200373760 /* UpdateUserTests.swift in Sources */,
+				1979EC4220494D2B006D7BE7 /* BookingTest.swift in Sources */,
 				4EB3133620433E4200373760 /* TransactionTests.swift in Sources */,
 				4EB3133A20433E4200373760 /* AuthTests.swift in Sources */,
 				4EB3133420433E4200373760 /* UserTests.swift in Sources */,

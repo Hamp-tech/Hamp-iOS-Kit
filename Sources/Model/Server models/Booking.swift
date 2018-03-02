@@ -45,6 +45,8 @@ class Booking: Objectable {
         self.deliveryLockers = deliveryLockers
         self.pickUpLockers = pickUpLockers
         self.created = created
+        
+        addValidations()
     }
     
     private func addValidations () {
@@ -106,14 +108,14 @@ class Booking: Objectable {
 
 extension Booking {
     private enum CodingKeys: String, CodingKey {
-        case identifier = "id"
-        case userID = "user_id"
+        case identifier
+        case userID
         case basket
         case price
         case point
-        case pickUpTime = "pick_up_time"
-        case deliveryLockers = "delivery_lockers"
-        case pickUpLockers = "pick_up_lockers"
+        case pickUpTime
+        case deliveryLockers
+        case pickUpLockers
         case created
     }
 }

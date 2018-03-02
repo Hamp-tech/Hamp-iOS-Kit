@@ -46,7 +46,7 @@ struct CreditCard: Objectable {
         }
         
         let numberValidation = Validation.init(validable: {
-            return try! Regex.init(pattern: Schemes.Regex.visa).parse(input: String(describing: self.number))
+            return try! Regex.init(pattern: Schemes.Regex.visa).parse(input: self.number!)
         }, validated: { (validated) in
             if !validated {throw CreditCardError.numberFormatError}
         })
@@ -60,7 +60,7 @@ struct CreditCard: Objectable {
         let yearValidation = Validation.init(validable: {
             return 2000 + Int(self.expYear!) >= Date.currentYear()
         }) { (validated) in
-            throw CreditCardError.invalidYear
+            if !validated {throw CreditCardError.invalidYear}
         }
         
         let missingMonthValidation = Validation.init(validable: {
@@ -72,7 +72,7 @@ struct CreditCard: Objectable {
         let monthValidation = Validation.init(validable: {
             return !(Int(self.expYear!) + 2000 == Date.currentYear() && self.expMonth! < Date.currentMonth())
         }) { (validated) in
-            throw CreditCardError.invalidMonth
+            if !validated {throw CreditCardError.invalidMonth}
         }
         
         let missingCVCValidation = Validation.init(validable: {
@@ -82,9 +82,9 @@ struct CreditCard: Objectable {
         }
         
         let cvcValidation = Validation.init(validable: {
-            return try! Regex.init(pattern: Schemes.Regex.cvv).parse(input: String(describing: self.cvc!))
+            return try! Regex.init(pattern: Schemes.Regex.cvv).parse(input: self.cvc!)
         }) { (validated) in
-            throw CreditCardError.invalidCVV
+            if !validated {throw CreditCardError.invalidCVV}
         }
         
         validator.add(missingNumberValidation)

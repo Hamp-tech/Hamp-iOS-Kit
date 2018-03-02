@@ -25,14 +25,14 @@ public struct Regex {
             throw Error.unknown
         }
     }
-    
+
     //MARK: Public API
     /// Check if input string matches with pattern
     ///
     /// - Parameter input: string to match
     /// - Returns: if input matchs with pattern
     public func parse(input : String ) -> Bool {
-        return NSPredicate(format: "SELF MATCHES %@", Schemes.Regex.email).evaluate(with: input)
+        return NSPredicate(format: "SELF MATCHES %@", pattern).evaluate(with: input)
     }
 }
 
