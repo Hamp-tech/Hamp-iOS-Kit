@@ -10,7 +10,7 @@ import Foundation
 
 enum UserError: Error {
 	/// Missing a parameter on user
-	case missingParameter(String)
+	case missingParameter(String), emailFormatError, phoneFormatError
 }
 
 extension UserError: CustomStringConvertible {
@@ -18,6 +18,10 @@ extension UserError: CustomStringConvertible {
 		switch self {
 		case .missingParameter(let parameter):
 			return "Missing parameter \(parameter)"
+        case .emailFormatError:
+            return "Email format error"
+        case .phoneFormatError:
+            return "Phone format error"
 		}
 	}
 }
