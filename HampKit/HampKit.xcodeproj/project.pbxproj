@@ -95,7 +95,7 @@
 		4EB3133120433E4100373760 /* URLSessionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		4EB3133220433E4100373760 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		4EB3133320433E4100373760 /* AuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
-		4EB3133B20433E9D00373760 /* Hamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hamp.swift; sourceTree = "<group>"; };
+		4EB3133B20433E9D00373760 /* Hamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hamp.swift; path = ../../Sources/Hamp.swift; sourceTree = "<group>"; };
 		6CB9AC343DA4BE670916D2C1 /* Pods-HampKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKitTests/Pods-HampKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		860AD15CD5553611C2383A9F /* Pods-HampKit-HampKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit-HampKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit-HampKitTests/Pods-HampKit-HampKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		92CA31753B318C7843B71695 /* Pods-HampKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HampKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-HampKit/Pods-HampKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 		4E5B08B51F04776900236A9E = {
 			isa = PBXGroup;
 			children = (
-				4E5B08E71F047BA900236A9E /* Sources */,
 				4E5B08C01F04776900236A9E /* HampKit */,
 				4E881E351F0484EE00DB700E /* HampKitTests */,
 				4E5B08BF1F04776900236A9E /* Products */,
@@ -168,13 +167,6 @@
 				4E5B08CD1F04776A00236A9E /* Info.plist */,
 			);
 			name = "Supporting files";
-			sourceTree = "<group>";
-		};
-		4E5B08E71F047BA900236A9E /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Sources;
 			sourceTree = "<group>";
 		};
 		4E881E351F0484EE00DB700E /* HampKitTests */ = {
