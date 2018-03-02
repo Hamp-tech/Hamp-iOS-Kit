@@ -60,7 +60,7 @@ class User: Objectable {
 		self.surname = surname
 		self.email = email
 		self.password = password
-		self.phone = phone
+		self.phone = phone?.replacingOccurrences(of: " ", with: "")
 		self.birthday = birthday
 		self.gender = gender
 		self.tokenFCM = tokenFCM

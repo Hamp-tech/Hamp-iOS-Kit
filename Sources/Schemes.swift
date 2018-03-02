@@ -38,4 +38,8 @@ struct Schemes {
         static let cvv = "^([0-9]{3})$"
         static let phone = "^[9|6|7][0-9]{8}$"
     }
+    
+    struct UserDefaults {
+        static let currentUser = "com.hamp.HampKit.UserDefaults.currentUser"
+    }
 }

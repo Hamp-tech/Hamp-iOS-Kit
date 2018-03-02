@@ -23,16 +23,41 @@ extension Hamp {
     struct Auth {
         // Sign in
         static func signIn(email: String, password: String, onResponse: @escaping onResponse<User>) {
-            authRequester.singIn(email: email, password: password, onResponse: onResponse)
+            authRequester.singIn(email: email, password: password) { (response) in
+                setCurrentUser(response: response)
+                onResponse(response)
+            }
         }
         
         // Sign up
         
         static func signUp(user: User, onResponse: @escaping onResponse<User>) {
-            authRequester.signUp(user: user, onResponse: onResponse)
+            authRequester.signUp(user: user) { response in
+                setCurrentUser(response: response)
+                onResponse(response)
+            }
+        }
+        
+        static var user: User? = {
+            let ud = UserDefaults.standard
+            let user = try! Singletons.sharedJSONDecoder.decode(User.self, from: ud.string(forKey: Schemes.UserDefaults.currentUser)!.data(using: .utf8)!)
+            
+            return user
+        }()
+        
+        static func logout() {
+            let ud = UserDefaults.standard
+            ud.removeObject(forKey: Schemes.UserDefaults.currentUser)
         }
         
         // Restore
+        
+        private static func setCurrentUser(response: Response<User>) {
+            if let u = response.data {
+                let ud = UserDefaults.standard
+                ud.set(u.json, forKey: Schemes.UserDefaults.currentUser)
+            }
+        }
     }
 }
 
@@ -68,7 +93,6 @@ extension Hamp {
         }
         
         // Deliver
-        
         static func deliver(transactionID: String, userID: String, onResponse: @escaping onResponse<Transaction>) {
             transactionsRequester.deliver(transactionID: transactionID, userID: userID, onResponse: onResponse)
         }
