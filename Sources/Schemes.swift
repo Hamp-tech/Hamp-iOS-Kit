@@ -9,7 +9,7 @@
 import Foundation
 
 struct Schemes {
-    private static let baseURL = "http://localhost:8181/api/v1"
+    private static let baseURL = "http://52.47.82.232:8181/api/v1/"
     
     struct Auth {
         static let signIn = baseURL + "/auth/signin"
