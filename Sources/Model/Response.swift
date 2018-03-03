@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HTTPCode: Int, Codable {
+public enum HTTPCode: Int, Codable {
     case ok = 200
     case created = 201
     case badRequest = 400
@@ -25,10 +25,10 @@ enum HTTPCode: Int, Codable {
     
 }
 
-class Response<T>: HampCodable where T: Codable {
-    var code: HTTPCode
-    var message: String
-    var data: T? = nil
+public class Response<T>: HampCodable where T: Codable {
+    public var code: HTTPCode
+    public var message: String
+    public var data: T? = nil
     
     init() {
         code = .badRequest

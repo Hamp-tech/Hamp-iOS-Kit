@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum BookingError: Error {
+public enum BookingError: Error {
     case missingParameter (String)
 }
 
 extension BookingError: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
         case .missingParameter(let parameter):
             return "Missing parameter \(parameter)"

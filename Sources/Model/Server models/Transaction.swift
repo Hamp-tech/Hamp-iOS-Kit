@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Transaction: Objectable {
+public class Transaction: Objectable {
     
-    var identifier: String?
-    var userID: String?
-    var booking: Booking?
-    var creditCardIdentifier: String?
-    var pickUpDate: String?
-    var deliveryDate: String?
-    var created: String?
+    public var identifier: String?
+    public var userID: String?
+    public var booking: Booking?
+    public var creditCardIdentifier: String?
+    public var pickUpDate: String?
+    public var deliveryDate: String?
+    public var created: String?
     
-    init(identifier: String? = nil,
+    public init(identifier: String? = nil,
          userID: String? = nil,
          booking: Booking? = nil,
          creditCardIdentifier: String? = nil,
@@ -34,5 +34,5 @@ class Transaction: Objectable {
         self.created = created
     }
     
-    func validate() throws { }
+    public func validate() throws { }
 }

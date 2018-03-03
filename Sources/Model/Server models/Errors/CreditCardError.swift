@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum CreditCardError: Error {
+public enum CreditCardError: Error {
     case missingParameter(String), numberFormatError, invalidYear, invalidMonth, invalidCVV
 }
 
 extension CreditCardError: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
             case .missingParameter(let parameter):
                 return "Missing parameter \(parameter)"

@@ -8,21 +8,21 @@
 
 import Foundation
 
-class User: Objectable {
+public class User: Objectable {
 	
 	// MARK: - Properties
-	var identifier: String?
-	var name: String?
-	var surname: String?
-	var email: String?
-	var password: String?
-	var phone: String?
-	var birthday: String?
-	var gender: String?
+	public var identifier: String?
+	public var name: String?
+	public var surname: String?
+	public var email: String?
+	public var password: String?
+	public var phone: String?
+	public var birthday: String?
+	public var gender: String?
 	var tokenFCM: String?
 	var os: String?
 	var language: String?
-	var cards: [CreditCard]?
+	public var cards: [CreditCard]?
 	
 	private var validator = Validator()
 	
@@ -42,7 +42,7 @@ class User: Objectable {
 	}
 	
 	// MARK: - Life cycle
-	init(identifier: String? = nil,
+	public init(identifier: String? = nil,
 		 name: String? = nil,
 		 surname: String? = nil,
 		 email: String? = nil,
@@ -71,12 +71,12 @@ class User: Objectable {
         self.addValidations()
 	}
     
-    init() {
+    public init() {
         self.addValidations()
     }
 	
 	// MARK: - Objectable
-	func validate() throws {
+	public func validate() throws {
 		try validator.validate()
 	}
     
@@ -148,7 +148,7 @@ class User: Objectable {
 }
 
 extension User: CustomStringConvertible {
-	var description: String {
+	public var description: String {
 		var desc = "<User>"
 		desc += dict.description
 		return desc

@@ -12,17 +12,18 @@ import XCTest
 class CreditCardTests: XCTestCase {
     
     func testCorrectCreditCard () {
-        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 12, expYear: 18, cvc: "123")
+        let creditCard = CreditCard.init(name: "Aleix Diaz", number: "4444444444444444",expMonth: 11, expYear: 19, cvc: "123")
         do {
             try creditCard.validate()
             XCTAssertTrue(true);
-        } catch {
+        } catch let error {
+            print ("ERROROROEROEOROEROEOREOROOEROEOREOR", (error as! CreditCardError).description)
             XCTAssertTrue(false)
         }
     }
-    
     func testMissingName () {
-        let creditCard = CreditCard.init()
+        let creditCard = CreditCard.init(number: "4444444444444444",expMonth: 12, expYear: 18, cvc: "123")
+        
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("name").description)
         }

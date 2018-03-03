@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Size: String, Codable {
+public enum Size: String, Codable {
     case S
     case M
 }
