@@ -22,7 +22,7 @@ class AuthTests: XCTestCase {
                 "gender": "M",
                 "cards": [],
                 "surname": "Musk",
-                "email": "elon@usehamp1.io",
+                "email": "elon1@usehamp.io",
                 "identifier": "e33577a075a44f7d8094b0c8edfac85b",
                 "name": "Elon"
             },

@@ -67,7 +67,7 @@ class TransactionTests: XCTestCase {
 		let session = URLSessionMock(data: response.toData)
 		
 		let transaction = try! Singletons.sharedJSONDecoder.decode(Transaction.self, from: raw.data(using: .utf8)!)
-		transaction.identifier = "995828f80c7d4479a8caf3a90079d0e8"
+		transaction.userID = "995828f80c7d4479a8caf3a90079d0e8"
 		
 		let requester = TransactionsRequester(session: session)
 		
@@ -125,7 +125,7 @@ class TransactionTests: XCTestCase {
 			let session = URLSessionMock(data: response.toData)
 			
 			let transaction = try! Singletons.sharedJSONDecoder.decode(Transaction.self, from: raw.data(using: .utf8)!)
-			transaction.identifier = "995828f80c7d4479a8caf3a90079d0e8"
+			transaction.userID = "995828f80c7d4479a8caf3a90079d0e8"
 			
 			let requester = TransactionsRequester(session: session)
 			
@@ -169,7 +169,7 @@ class TransactionTests: XCTestCase {
 		let session = URLSessionMock(error: error)
 		
 		let transaction = try! Singletons.sharedJSONDecoder.decode(Transaction.self, from: raw.data(using: .utf8)!)
-		transaction.identifier = "995828f80c7d4479a8caf3a90079d0e8"
+		transaction.userID = "995828f80c7d4479a8caf3a90079d0e8"
 		
 		let requester = TransactionsRequester(session: session)
 		
