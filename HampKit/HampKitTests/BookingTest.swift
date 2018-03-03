@@ -12,7 +12,7 @@ import XCTest
 class BookingTest: XCTestCase {
     
     func testSuccedBooking () {
-        let basket  = [HiredService.init(), HiredService.init()]
+        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
         let pickUpTime = Booking.PickUpTime.afternoon
         let deliveryLockers = [Locker.init()]
         let pickUpLockers = [Locker.init()]
@@ -34,7 +34,8 @@ class BookingTest: XCTestCase {
     }
     
     func testMissingPrice () {
-        let basket  = [HiredService.init(), HiredService.init()]
+        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
+
         let booking = Booking.init(basket: basket);
         XCTAssertThrowsError(try booking.validate()) { (error) in
             XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("price").description)
@@ -43,7 +44,7 @@ class BookingTest: XCTestCase {
     
     
     func testMissingPickUpTime () {
-        let basket  = [HiredService.init(), HiredService.init()]
+        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
         let booking = Booking.init(basket: basket, price: 30, point: "Point");
         
         XCTAssertThrowsError(try booking.validate()) { (error) in
@@ -52,7 +53,7 @@ class BookingTest: XCTestCase {
     }
     
     func testMissingDeliveryLockers () {
-        let basket  = [HiredService.init(), HiredService.init()]
+        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
         let pickUpTime = Booking.PickUpTime.afternoon
         let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime);
         
@@ -62,7 +63,7 @@ class BookingTest: XCTestCase {
     }
     
     func testMissingPickUpLockers () {
-        let basket  = [HiredService.init(), HiredService.init()]
+        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
         let pickUpTime = Booking.PickUpTime.afternoon
         let deliveryLockers = [Locker.init()]
         let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime, deliveryLockers: deliveryLockers);
@@ -73,7 +74,7 @@ class BookingTest: XCTestCase {
     }
     
     func testMissingPoint () {
-        let basket  = [HiredService.init(), HiredService.init()]
+        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
         let booking = Booking.init(basket: basket, price: 30);
         
         XCTAssertThrowsError(try booking.validate()) { (error) in
