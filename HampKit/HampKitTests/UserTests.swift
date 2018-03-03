@@ -48,14 +48,7 @@ class UserTests: XCTestCase {
             XCTAssertEqual((error as! UserError).description, UserError.emailFormatError.description)
         }
     }
-    
-    func testMissingPassword () {
-        let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io")
-        XCTAssertThrowsError(try user.validate()) { (error) in
-            XCTAssertEqual((error as! UserError).description, UserError.missingParameter("password").description)
-        }
-    }
-    
+        
     func testWrongPassword () {
         let user = User.init(name: "Elon", surname: "Musk", email: "elon@usehamp.io", password: "")
         XCTAssertThrowsError(try user.validate()) { (error) in

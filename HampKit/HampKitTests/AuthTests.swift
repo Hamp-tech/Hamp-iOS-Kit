@@ -12,9 +12,25 @@ import XCTest
 class AuthTests: XCTestCase {
     
     func testSignInSuccess() {
-        let user = User(identifier: "92da06f492c3435b883d845df00dacd", name: "Elon", surname: "Musk", email: "elon1@usehamp.io", phone: "666777888", gender: "M", cards: [])
         
-        let response = Response(code: .ok, data: user)
+        let responseJSON =
+        """
+            {
+            "message": "",
+            "data": {
+                "phone": "666777888",
+                "gender": "M",
+                "cards": [],
+                "surname": "Musk",
+                "email": "elon@usehamp1.io",
+                "identifier": "e33577a075a44f7d8094b0c8edfac85b",
+                "name": "Elon"
+            },
+            "code": 200
+        }
+        """
+        
+        let response = try! Singletons.sharedJSONDecoder.decode(Response<User>.self, from: responseJSON.data(using: .utf8)!)
         let session = URLSessionMock(data: response.json.data(using: .utf8))
         
         let singinExpectation = expectation(description: "Sign in expectation")
@@ -24,12 +40,21 @@ class AuthTests: XCTestCase {
             XCTAssertEqual(resp.code, response.code)
             XCTAssertNotNil(resp.data)
             XCTAssertNotNil(resp.data?.identifier)
-            XCTAssertEqual(resp.data?.name, user.name)
-            XCTAssertEqual(resp.data?.gender, user.gender)
-            XCTAssertEqual(resp.data?.surname, user.surname)
-            XCTAssertEqual(resp.data?.phone, user.phone)
-            XCTAssertEqual(resp.data?.email, user.email)
+            XCTAssertEqual(resp.data?.name, response.data?.name)
+            XCTAssertEqual(resp.data?.gender, response.data?.gender)
+            XCTAssertEqual(resp.data?.surname, response.data?.surname)
+            XCTAssertEqual(resp.data?.phone, response.data?.phone)
+            XCTAssertEqual(resp.data?.email, response.data?.email)
             XCTAssertEqual(resp.data?.dict.count, 8)
+            
+            do {
+                try response.data!.validate()
+                XCTAssertTrue(true)
+            } catch {
+                print(error.localizedDescription)
+                XCTAssertFalse(true)
+            }
+            
             singinExpectation.fulfill()
         }
         
@@ -124,6 +149,14 @@ class AuthTests: XCTestCase {
             XCTAssertTrue(response.data!.cards!.isEmpty)
             XCTAssertNotNil(responseWaited.data?.identifier)
             XCTAssertEqual(response.data?.dict.count, 8)
+            
+            do {
+                try response.data!.validate()
+                XCTAssertTrue(true)
+            } catch {
+                XCTAssertFalse(true)
+            }
+            
             signupExpectation.fulfill()
         }
         

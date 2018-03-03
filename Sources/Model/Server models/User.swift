@@ -46,7 +46,7 @@ public class User: Objectable {
 		 name: String? = nil,
 		 surname: String? = nil,
 		 email: String? = nil,
-		 password: String? = nil,
+		 password: String? = "",
 		 phone: String? = nil,
 		 birthday: String? = nil,
 		 gender: String? = nil,
@@ -139,7 +139,7 @@ public class User: Objectable {
         validator.add(surnameValidation)
         validator.add(missingEmailValidation)
         validator.add(emailFormatValidation)
-        validator.add(missingPasswordValidation)
+        if password != nil { validator.add(missingPasswordValidation) }
         validator.add(missingPhoneValidation)
         validator.add(phoneFormatValidation)
         validator.add(missingBirthdayValidation)
