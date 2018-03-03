@@ -144,7 +144,6 @@ class User: Objectable {
         validator.add(phoneFormatValidation)
         validator.add(missingBirthdayValidation)
         validator.add(missingGenderValidation)
-        
     }
 }
 
