@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CreditCard: Objectable {
+public struct CreditCard: Objectable {
     private let creditCardNumbers = 16 + 3
     
     var identifier: String?
