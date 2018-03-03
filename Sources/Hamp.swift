@@ -40,7 +40,7 @@ extension Hamp {
         
         public static var user: User? = {
             let ud = UserDefaults.standard
-            let user = try! Singletons.sharedJSONDecoder.decode(User.self, from: ud.string(forKey: Schemes.UserDefaults.currentUser)!.data(using: .utf8)!)
+            let user = try? Singletons.sharedJSONDecoder.decode(User.self, from: ud.string(forKey: Schemes.UserDefaults.currentUser)!.data(using: .utf8)!)
             
             return user
         }()
