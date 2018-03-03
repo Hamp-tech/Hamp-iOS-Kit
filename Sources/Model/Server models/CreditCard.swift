@@ -52,12 +52,6 @@ public struct CreditCard: Objectable {
             if !validated {throw CreditCardError.missingParameter("number")}
         }
         
-        let nameValidation = Validation(validable: { () -> Bool in
-            return self.name != nil && !self.name!.isEmpty
-        }) { (validated) in
-            if !validated { throw CreditCardError.missingParameter("name") }
-        }
-        
         let numberValidation = Validation.init(validable: {
             return self.number!.count == 16 && (try! Regex.init(pattern: Schemes.Regex.visa).parse(input: self.number!))
         }, validated: { (validated) in
@@ -100,7 +94,12 @@ public struct CreditCard: Objectable {
             if !validated {throw CreditCardError.invalidCVV}
         }
         
-        validator.add(nameValidation)
+        let nameValidation = Validation(validable: { () -> Bool in
+            return self.name != nil && !self.name!.isEmpty
+        }) { (validated) in
+            if !validated { throw CreditCardError.missingParameter("name") }
+        }
+        
         validator.add(missingNumberValidation)
         validator.add(numberValidation)
         validator.add(missingYearValidation)
@@ -109,6 +108,7 @@ public struct CreditCard: Objectable {
         validator.add(monthValidation)
         validator.add(missingCVVValidation)
         validator.add(cvvValidation)
+        validator.add(nameValidation)
     }
 }
 

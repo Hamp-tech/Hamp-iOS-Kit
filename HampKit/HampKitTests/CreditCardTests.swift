@@ -22,7 +22,8 @@ class CreditCardTests: XCTestCase {
     }
     
     func testMissingName () {
-        let creditCard = CreditCard.init()
+        let creditCard = CreditCard.init(number: "4511472314229113",expMonth: 12, expYear: 18, cvc: "123")
+        
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.missingParameter("name").description)
         }
