@@ -13,11 +13,11 @@ internal struct UserRequester: Requestable {
     var session: URLSession
     
     // MARK: - Life cycle
-    public init(session: URLSession = .shared) {
+    init(session: URLSession = .shared) {
         self.session = session
     }
     
-    public func update(user: User, onResponse: @escaping onResponse<User>) {
+    func update(user: User, onResponse: @escaping onResponse<User>) {
         let urlRequest = URLRequest.PUT(Schemes.User.update.replace(["{pid}": user.identifier!]).url, body: user.json.data(using: .utf8))
         session.dataTask(with: urlRequest) { (data, _, error) in
             guard let d = data else {
@@ -30,7 +30,7 @@ internal struct UserRequester: Requestable {
         }.resume()
     }
     
-    public func createCreditCard(userIdentifier: String, card: CreditCard, onResponse: @escaping onResponse<CreditCard>) {
+    func createCreditCard(userIdentifier: String, card: CreditCard, onResponse: @escaping onResponse<CreditCard>) {
         let urlRequest = URLRequest.POST(Schemes.User.createCreditCard.replace(["{pid}": userIdentifier]).url, body: card.toData)
         session.dataTask(with: urlRequest) { (data, _, error) in
             guard let d = data else {
@@ -43,7 +43,7 @@ internal struct UserRequester: Requestable {
         }.resume()
     }
     
-    public func deleteCreditCard(userIdentifier: String, cardIdentifier: String, onResponse: @escaping onResponse<String>) {
+    func deleteCreditCard(userIdentifier: String, cardIdentifier: String, onResponse: @escaping onResponse<String>) {
         let urlRequest = URLRequest.DELETE(Schemes.User.removeCreditCard.replace(["{pid}": userIdentifier, "{cid}": cardIdentifier]).url)
         session.dataTask(with: urlRequest) { (data, _, error) in
             guard let d = data else {

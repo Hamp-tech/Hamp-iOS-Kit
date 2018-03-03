@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct TransactionsRequester: Requestable {
+internal struct TransactionsRequester: Requestable {
     var session: URLSession
     
-    public init(session: URLSession = .shared) {
+    init(session: URLSession = .shared) {
         self.session = session
     }
 
-    public func createTransaction(transaction: Transaction,
+    func createTransaction(transaction: Transaction,
                            onResponse: @escaping onResponse<Transaction>) {
 		let request = URLRequest.POST(Schemes.Transaction.createTransaction.replace(["{pid}": transaction.identifier!]).url, body: transaction.toData!)
 		
@@ -30,7 +30,7 @@ public struct TransactionsRequester: Requestable {
 		}.resume()
     }
 	
-	public func userTransactions(userID: String,
+	func userTransactions(userID: String,
 						  onResponse: @escaping onResponse<[Transaction]>) {
 		let request = URLRequest.GET(Schemes.Transaction.userTransactions.replace(["{pid}": userID]).url)
 		
@@ -44,7 +44,7 @@ public struct TransactionsRequester: Requestable {
 		}.resume()
 	}
 	
-	public func deliver(transactionID: String,
+	func deliver(transactionID: String,
 				 userID: String,
 				 onResponse: @escaping onResponse<Transaction>) {
 		let request = URLRequest.POST(Schemes.Transaction.deliver.replace(["{pid}": userID, "{tid}": transactionID]).url)
