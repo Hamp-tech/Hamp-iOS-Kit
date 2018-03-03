@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias onResponse<T: Codable> = (Response<T>) -> ()
+public typealias onResponse<T: Codable> = (Response<T>) -> ()
 
 final class Hamp {
     

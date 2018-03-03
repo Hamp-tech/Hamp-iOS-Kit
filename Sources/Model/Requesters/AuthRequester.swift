@@ -8,16 +8,16 @@
 
 import Foundation
 
-internal struct AuthRequester: Requestable {
+public struct AuthRequester: Requestable {
     // MARK: - Properties
     var session: URLSession
     
     // MARK: - Life cycle
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func singIn(email: String, password: String, onResponse: @escaping onResponse<User>) {
+    public func singIn(email: String, password: String, onResponse: @escaping onResponse<User>) {
         let request = URLRequest.POST(
             Schemes.Auth.signIn.url,
             body: "{\"email\": \"\(email)\", \"password\": \"\(password)\"}".data(using: .utf8)
@@ -35,7 +35,7 @@ internal struct AuthRequester: Requestable {
         }.resume()
     }
     
-    func signUp(user: User, onResponse: @escaping onResponse<User>) {
+    public func signUp(user: User, onResponse: @escaping onResponse<User>) {
        let request = URLRequest.POST(Schemes.Auth.signUp.url, body: user.json.data(using: .utf8))
         
         session.dataTask(with: request) { (data, _, error) in

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HiredService: HampCodable {
-    var service: String!
-    var amount: Int!
+public class HiredService: HampCodable {
+    public var service: String!
+    public var amount: Int!
 }

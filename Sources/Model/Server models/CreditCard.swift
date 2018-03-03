@@ -11,16 +11,16 @@ import Foundation
 public struct CreditCard: Objectable {
     private let creditCardNumbers = 16 + 3
     
-    var identifier: String?
-    var name: String?
-    var number: String?
-    var expMonth: UInt8?
-    var expYear: UInt8?
-    var cvc: String?
+    public var identifier: String?
+    public var name: String?
+    public var number: String?
+    public var expMonth: UInt8?
+    public var expYear: UInt8?
+    public var cvc: String?
     
     private var validator = Validator ()
     
-    init(identifier: String? = nil,
+    public init(identifier: String? = nil,
          name: String? = nil,
          number: String? = nil,
          expMonth: UInt8? = nil,
@@ -36,11 +36,11 @@ public struct CreditCard: Objectable {
         addValidations()
     }
     
-    init () {
+    public init () {
         addValidations()
     }
     
-    func validate() throws {
+    public func validate() throws {
         try validator.validate()
     }
     

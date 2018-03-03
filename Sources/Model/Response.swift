@@ -25,7 +25,7 @@ enum HTTPCode: Int, Codable {
     
 }
 
-class Response<T>: HampCodable where T: Codable {
+public class Response<T>: HampCodable where T: Codable {
     var code: HTTPCode
     var message: String
     var data: T? = nil

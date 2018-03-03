@@ -8,18 +8,18 @@
 
 import Foundation
 
-class Service: Objectable {
+public class Service: Objectable {
 
-    var identifier: String?
-    var name: String?
-    var description: String?
-    var imageURL: String?
-    var price: Float?
-    var size: Size?
-    var active: Bool?
-    var created: String?
+    public var identifier: String?
+    public var name: String?
+    public var description: String?
+    public var imageURL: String?
+    public var price: Float?
+    public var size: Size?
+    public var active: Bool?
+    public var created: String?
 
-    init(identifier: String?,
+    public init(identifier: String?,
          name: String?,
          description: String?,
          imageURL: String?,
@@ -38,5 +38,5 @@ class Service: Objectable {
         
     }
     
-    func validate() throws {}
+    public func validate() throws {}
 }

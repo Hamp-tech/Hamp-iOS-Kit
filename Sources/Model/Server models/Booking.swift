@@ -8,25 +8,25 @@
 
 import Foundation
 
-class Booking: Objectable {
+public class Booking: Objectable {
     
-    enum PickUpTime: String, HampCodable {
+    public enum PickUpTime: String, HampCodable {
         case morning = "0"
         case afternoon = "1"
     }
     
-    var identifier: String?
-    var userID: String?
-    var basket: [HiredService]?
-    var price: Float32?
-    var point: String? // Identifier to location
-    var pickUpTime: PickUpTime?
-    var deliveryLockers: [Locker]?
-    var pickUpLockers: [Locker]?
+    public var identifier: String?
+    public var userID: String?
+    public var basket: [HiredService]?
+    public var price: Float32?
+    public var point: String? // Identifier to location
+    public var pickUpTime: PickUpTime?
+    public var deliveryLockers: [Locker]?
+    public var pickUpLockers: [Locker]?
     
     private var validator = Validator ()
     
-    init(identifier: String? = nil,
+    public init(identifier: String? = nil,
          userID: String? = nil,
          basket: [HiredService]? = nil,
          price: Float32? = nil,
@@ -91,7 +91,7 @@ class Booking: Objectable {
         validator.add(pickUpLockersValidation)
     }
     
-    func validate() throws {
+    public func validate() throws {
         try validator.validate()
     }
 }

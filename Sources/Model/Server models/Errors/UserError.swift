@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum UserError: Error {
+public enum UserError: Error {
 	/// Missing a parameter on user
 	case missingParameter(String)
     case emailFormatError
@@ -16,7 +16,7 @@ enum UserError: Error {
 }
 
 extension UserError: CustomStringConvertible {
-	var description: String {
+	public var description: String {
 		switch self {
 		case .missingParameter(let parameter):
 			return "Missing parameter \(parameter)"

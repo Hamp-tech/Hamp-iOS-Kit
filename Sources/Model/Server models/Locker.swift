@@ -8,15 +8,15 @@
 
 import Foundation
 
-class Locker: Objectable {
+public class Locker: Objectable {
 
-    var identifier: String?
-    var number: Int?
-    var code: String?
-    var available: Bool?
-    var capacity: Size?
+    public var identifier: String?
+    public var number: Int?
+    public var code: String?
+    public var available: Bool?
+    public var capacity: Size?
         
-    init(identifier: String? = nil, number: Int? = nil, code: String? = nil, available: Bool? = nil, capacity: Size? = nil) {
+    public init(identifier: String? = nil, number: Int? = nil, code: String? = nil, available: Bool? = nil, capacity: Size? = nil) {
         self.identifier = identifier
         self.number = number
         self.code = code
@@ -24,5 +24,5 @@ class Locker: Objectable {
         self.capacity = capacity
     }
     
-    func validate() throws { }
+    public func validate() throws { }
 }
