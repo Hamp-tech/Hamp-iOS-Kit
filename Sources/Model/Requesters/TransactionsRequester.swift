@@ -17,7 +17,7 @@ internal struct TransactionsRequester: Requestable {
 
     func createTransaction(transaction: Transaction,
                            onResponse: @escaping onResponse<Transaction>) {
-		let request = URLRequest.POST(Schemes.Transaction.createTransaction.replace(["{pid}": transaction.identifier!]).url, body: transaction.toData!)
+		let request = URLRequest.POST(Schemes.Transaction.createTransaction.replace(["{pid}": transaction.userID!]).url, body: transaction.toData!)
 		
 		session.dataTask(with: request) { (data, _, error) in
 			guard let d = data else {

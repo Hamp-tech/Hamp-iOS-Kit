@@ -16,8 +16,8 @@ class BookingTest: XCTestCase {
         let pickUpTime = Booking.PickUpTime.afternoon
         let deliveryLockers = [Locker.init()]
         let pickUpLockers = [Locker.init()]
-        
-        let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime, deliveryLockers: deliveryLockers, pickUpLockers: pickUpLockers);
+
+		let booking = Booking(basket: basket, price: 30.0, point: Point(identifier: "1"), pickUpTime: pickUpTime, deliveryLockers: deliveryLockers, pickUpLockers: pickUpLockers)
         do {
             try booking.validate()
             XCTAssertTrue(true)
@@ -42,36 +42,15 @@ class BookingTest: XCTestCase {
         }
     }
     
-    
     func testMissingPickUpTime () {
         let basket  = [HiredService.init(service: "Big bag", amount: 3)]
-        let booking = Booking.init(basket: basket, price: 30, point: "Point");
+        let booking = Booking(basket: basket, price: 30.0, point: Point(identifier: "1"))
         
         XCTAssertThrowsError(try booking.validate()) { (error) in
             XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("pickUpTime").description)
         }
     }
-    
-    func testMissingDeliveryLockers () {
-        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
-        let pickUpTime = Booking.PickUpTime.afternoon
-        let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime);
-        
-        XCTAssertThrowsError(try booking.validate()) { (error) in
-            XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("deliveryLockers").description)
-        }
-    }
-    
-    func testMissingPickUpLockers () {
-        let basket  = [HiredService.init(service: "Big bag", amount: 3)]
-        let pickUpTime = Booking.PickUpTime.afternoon
-        let deliveryLockers = [Locker.init()]
-        let booking = Booking.init(basket: basket, price: 30, point: "Point", pickUpTime: pickUpTime, deliveryLockers: deliveryLockers);
-        
-        XCTAssertThrowsError(try booking.validate()) { (error) in
-            XCTAssertEqual((error as! BookingError).description, BookingError.missingParameter("pickUpLockers").description)
-        }
-    }
+	
     
     func testMissingPoint () {
         let basket  = [HiredService.init(service: "Big bag", amount: 3)]

@@ -13,7 +13,7 @@ public class Transaction: Objectable {
     public var identifier: String?
     public var userID: String?
     public var booking: Booking?
-    public var creditCardIdentifier: String?
+	public var creditCard: CreditCard?
     public var pickUpDate: String?
     public var deliveryDate: String?
     public var created: String?
@@ -28,7 +28,6 @@ public class Transaction: Objectable {
         self.identifier = identifier
         self.userID = userID
         self.booking = booking
-        self.creditCardIdentifier = creditCardIdentifier
         self.pickUpDate = pickUpDate
         self.deliveryDate = deliveryDate
         self.created = created

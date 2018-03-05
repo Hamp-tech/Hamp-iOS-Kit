@@ -19,7 +19,7 @@ public class Booking: Objectable {
     public var userID: String?
     public var basket: [HiredService]?
     public var price: Float32?
-    public var point: String? // Identifier to location
+    public var point: Point? // Identifier to location
     public var pickUpTime: PickUpTime?
     public var deliveryLockers: [Locker]?
     public var pickUpLockers: [Locker]?
@@ -30,7 +30,7 @@ public class Booking: Objectable {
          userID: String? = nil,
          basket: [HiredService]? = nil,
          price: Float32? = nil,
-         point: String? = nil,
+         point: Point? = nil,
          pickUpTime: PickUpTime? = nil,
          deliveryLockers: [Locker]? = nil,
          pickUpLockers: [Locker]? = nil) {
@@ -70,25 +70,11 @@ public class Booking: Objectable {
         }) { (validated) in
             if !validated {throw BookingError.missingParameter("pickUpTime")}
         }
-        
-        let deliveryLockersValidation = Validation.init(validable: { () -> Bool in
-            return self.deliveryLockers != nil && !self.deliveryLockers!.isEmpty
-        }) { (validated) in
-            if !validated { throw BookingError.missingParameter("deliveryLockers") }
-        }
-        
-        let pickUpLockersValidation = Validation.init(validable: { () -> Bool in
-            return self.pickUpLockers != nil && !self.pickUpLockers!.isEmpty
-        }) { (validated) in
-            if !validated { throw BookingError.missingParameter("pickUpLockers") }
-        }
-        
+		
         validator.add(missingBasketValidation)
         validator.add(priceValidation)
         validator.add(pointValidation)
         validator.add(pickUpTimeValidation)
-        validator.add(deliveryLockersValidation)
-        validator.add(pickUpLockersValidation)
     }
     
     public func validate() throws {

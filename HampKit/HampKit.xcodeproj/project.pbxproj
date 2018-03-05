@@ -13,6 +13,8 @@
 		192C8D60204702070071D85D /* BookingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C8D5F204702070071D85D /* BookingError.swift */; };
 		1979EC4220494D2B006D7BE7 /* BookingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1979EC4120494D2B006D7BE7 /* BookingTest.swift */; };
 		4E4D4F9C1F2633860063A50C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */; };
+		4E57121E204DFAF200707AB2 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57121D204DFAF200707AB2 /* Point.swift */; };
+		4E571220204DFB2000707AB2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57121F204DFB2000707AB2 /* Location.swift */; };
 		4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08C11F04776A00236A9E /* AppDelegate.swift */; };
 		4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B08C81F04776A00236A9E /* Assets.xcassets */; };
 		4EB3131520433E2000373760 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB312F820433E2000373760 /* String+URL.swift */; };
@@ -65,6 +67,8 @@
 		192C8D5F204702070071D85D /* BookingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingError.swift; sourceTree = "<group>"; };
 		1979EC4120494D2B006D7BE7 /* BookingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTest.swift; sourceTree = "<group>"; };
 		4E4D4F9B1F2633860063A50C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Assets/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4E57121D204DFAF200707AB2 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		4E57121F204DFB2000707AB2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4E5B08BE1F04776900236A9E /* HampKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HampKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5B08C11F04776A00236A9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E5B08C81F04776A00236A9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,8 +207,6 @@
 		4EB312FD20433E2000373760 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4EB312FE20433E2000373760 /* Requestable.swift */,
-				4EB312FF20433E2000373760 /* HampCodable.swift */,
 				4EB3130020433E2000373760 /* Requesters */,
 				4EB3130420433E2000373760 /* Server models */,
 				4EB3131120433E2000373760 /* Response.swift */,
@@ -239,6 +241,8 @@
 				4EB3130C20433E2000373760 /* HiredService.swift */,
 				4EB3130D20433E2000373760 /* Errors */,
 				4EB3130F20433E2000373760 /* Protocols */,
+				4E57121D204DFAF200707AB2 /* Point.swift */,
+				4E57121F204DFB2000707AB2 /* Location.swift */,
 			);
 			path = "Server models";
 			sourceTree = "<group>";
@@ -256,6 +260,8 @@
 		4EB3130F20433E2000373760 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				4EB312FE20433E2000373760 /* Requestable.swift */,
+				4EB312FF20433E2000373760 /* HampCodable.swift */,
 				4EB3131020433E2000373760 /* Objectable.swift */,
 			);
 			path = Protocols;
@@ -381,6 +387,7 @@
 				4EB3131520433E2000373760 /* String+URL.swift in Sources */,
 				4EB3131820433E2000373760 /* Validator.swift in Sources */,
 				4EB3131920433E2000373760 /* Requestable.swift in Sources */,
+				4E57121E204DFAF200707AB2 /* Point.swift in Sources */,
 				4EB3131D20433E2000373760 /* AuthRequester.swift in Sources */,
 				4EB3132B20433E2000373760 /* Singletons.swift in Sources */,
 				4EB3132420433E2000373760 /* Transaction.swift in Sources */,
@@ -392,6 +399,7 @@
 				4EB3132820433E2000373760 /* Response.swift in Sources */,
 				4EB3131E20433E2000373760 /* CreditCard.swift in Sources */,
 				192C8D582046D8BC0071D85D /* Date+Calendar.swift in Sources */,
+				4E571220204DFB2000707AB2 /* Location.swift in Sources */,
 				4EB3132920433E2000373760 /* Request.swift in Sources */,
 				4EB3131A20433E2000373760 /* HampCodable.swift in Sources */,
 				4EB3131B20433E2000373760 /* UserRequester.swift in Sources */,
