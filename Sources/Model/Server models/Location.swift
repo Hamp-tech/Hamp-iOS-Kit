@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Location: HampCodable {
-	var name: String?
-	var latitude: Double?
-	var longitude: Double?
+public class Location: HampCodable {
+	public var name: String?
+	public var latitude: Double?
+	public var longitude: Double?
 }

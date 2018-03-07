@@ -10,11 +10,11 @@ import Foundation
 
 public class Point: Objectable {
 	
-	var identifier: String?
-	var location: Location?
-	var CP: String?
-	var address: String?
-	var city: String?
+	public var identifier: String?
+	public var location: Location?
+	public var CP: String?
+	public var address: String?
+	public var city: String?
 //	var lockers: Array<HampyLocker>?
 	
 	init(identifier: String? = nil,
