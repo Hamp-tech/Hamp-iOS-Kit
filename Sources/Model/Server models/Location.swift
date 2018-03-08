@@ -12,4 +12,10 @@ public class Location: HampCodable {
 	public var name: String?
 	public var latitude: Double?
 	public var longitude: Double?
+    
+    public init (name: String? = nil, latitude: Double? = nil, longitude: Double? = nil) {
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
