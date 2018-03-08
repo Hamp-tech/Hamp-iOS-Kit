@@ -17,7 +17,7 @@ public class Point: Objectable {
 	public var city: String?
 //	var lockers: Array<HampyLocker>?
 	
-	init(identifier: String? = nil,
+	public init(identifier: String? = nil,
 		 location: Location? = nil,
 		 CP: String? = nil,
 		 address: String? = nil,
@@ -33,5 +33,5 @@ public class Point: Objectable {
 
 	}
 	
-	func validate() throws { }
+	public func validate() throws { }
 }
