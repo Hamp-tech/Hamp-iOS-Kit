@@ -17,6 +17,7 @@
 		4E571220204DFB2000707AB2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57121F204DFB2000707AB2 /* Location.swift */; };
 		4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B08C11F04776A00236A9E /* AppDelegate.swift */; };
 		4E5B08C91F04776A00236A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B08C81F04776A00236A9E /* Assets.xcassets */; };
+		4E91ACF52053131C00B4181D /* LogedUserHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E91ACF42053131C00B4181D /* LogedUserHandler.swift */; };
 		4EB3131520433E2000373760 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB312F820433E2000373760 /* String+URL.swift */; };
 		4EB3131620433E2000373760 /* String+Replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB312F920433E2000373760 /* String+Replace.swift */; };
 		4EB3131720433E2000373760 /* Schemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB312FA20433E2000373760 /* Schemes.swift */; };
@@ -75,6 +76,7 @@
 		4E5B08CD1F04776A00236A9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E881E341F0484ED00DB700E /* HampKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HampKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E881E381F0484EE00DB700E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E91ACF42053131C00B4181D /* LogedUserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogedUserHandler.swift; sourceTree = "<group>"; };
 		4EB312F820433E2000373760 /* String+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		4EB312F920433E2000373760 /* String+Replace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Replace.swift"; sourceTree = "<group>"; };
 		4EB312FA20433E2000373760 /* Schemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Schemes.swift; path = ../../Sources/Schemes.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				4EB312FC20433E2000373760 /* Validator.swift */,
+				4E91ACF42053131C00B4181D /* LogedUserHandler.swift */,
 			);
 			name = Utils;
 			path = ../../Sources/Utils;
@@ -405,6 +408,7 @@
 				4EB3131B20433E2000373760 /* UserRequester.swift in Sources */,
 				4EB3132220433E2000373760 /* Locker.swift in Sources */,
 				4EB3131620433E2000373760 /* String+Replace.swift in Sources */,
+				4E91ACF52053131C00B4181D /* LogedUserHandler.swift in Sources */,
 				4EB3131C20433E2000373760 /* TransactionsRequester.swift in Sources */,
 				4E5B08C21F04776A00236A9E /* AppDelegate.swift in Sources */,
 			);

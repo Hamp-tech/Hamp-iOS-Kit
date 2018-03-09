@@ -30,6 +30,7 @@ internal struct AuthRequester: Requestable {
             }
         
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<User>.self, from: d)
+			LogedUserHandler.save(user: resp.data)
             onResponse(resp)
           
         }.resume()
@@ -45,6 +46,7 @@ internal struct AuthRequester: Requestable {
             }
 
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<User>.self, from: d)
+			LogedUserHandler.save(user: resp.data)
             onResponse(resp)
         }.resume()
     }

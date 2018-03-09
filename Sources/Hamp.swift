@@ -23,29 +23,17 @@ extension Hamp {
     public struct Auth {
         // Sign in
         public static func signIn(email: String, password: String, onResponse: @escaping onResponse<User>) {
-            authRequester.singIn(email: email, password: password) { (response) in
-                setCurrentUser(response: response)
-                onResponse(response)
-            }
+			authRequester.singIn(email: email, password: password, onResponse: onResponse)
         }
         
         // Sign up
         
         public static func signUp(user: User, onResponse: @escaping onResponse<User>) {
-            authRequester.signUp(user: user) { response in
-                setCurrentUser(response: response)
-                onResponse(response)
-            }
+            authRequester.signUp(user: user, onResponse: onResponse)
         }
         
         public static var user: User? = {
-            let ud = UserDefaults.standard
-            guard let u = ud.string(forKey: Schemes.UserDefaults.currentUser) else {
-                return nil
-            }
-            let user = try! Singletons.sharedJSONDecoder.decode(User.self, from: u.data(using: .utf8)!)
-            
-            return user
+            return LogedUserHandler.retrieve()
         }()
         
         public static func logout() {
@@ -54,13 +42,7 @@ extension Hamp {
         }
         
         // Restore
-        
-        internal static func setCurrentUser(response: Response<User>) {
-            if let u = response.data {
-                let ud = UserDefaults.standard
-                ud.set(u.json, forKey: Schemes.UserDefaults.currentUser)
-            }
-        }
+		
     }
 }
 
@@ -68,15 +50,12 @@ extension Hamp {
     public struct Users {
         // Update user
         public static func update(user: User, onResponse: @escaping onResponse<User>) {
-			userRequester.update(user: user) { response in
-				response.data = user
-				Hamp.Auth.setCurrentUser(response: response)
-			}
+			userRequester.update(user: user, onResponse: onResponse)
         }
         
         // Create credit card
         public static func createCard(userID: String, card: CreditCard, onResponse: @escaping onResponse<CreditCard>) {
-            userRequester.createCreditCard(userIdentifier: userID, card: card, onResponse: onResponse)
+			userRequester.createCreditCard(userIdentifier: userID, card: card, onResponse: onResponse)
         }
         
         // Remove credit card

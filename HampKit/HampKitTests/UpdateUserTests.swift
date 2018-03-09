@@ -91,8 +91,7 @@ class UpdateUserTests: XCTestCase {
         let requester = UserRequester(session: session)
         
         let creditCardExpectation = expectation(description: "Create credit card expectation")
-        
-        
+		
         requester.createCreditCard(userIdentifier: "995828f80c7d4479a8caf3a90079d0e8", card: card) { (response) in
             XCTAssertEqual(response.code, .ok)
             XCTAssertEqual(response.message, "Card created successfully")

@@ -26,6 +26,7 @@ internal struct UserRequester: Requestable {
             }
             
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<User>.self, from: d)
+			LogedUserHandler.save(user: user)
             onResponse(resp)
         }.resume()
     }
@@ -37,7 +38,11 @@ internal struct UserRequester: Requestable {
                 onResponse(Response<CreditCard>(code: .internalError, message: error!.localizedDescription))
                 return
             }
-            
+			
+			let user = LogedUserHandler.retrieve()
+			user?.cards?.append(card)
+			LogedUserHandler.save(user: user)
+			
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<CreditCard>.self, from: d)
             onResponse(resp)
         }.resume()
@@ -52,8 +57,15 @@ internal struct UserRequester: Requestable {
             }
             
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<String>.self, from: d)
+			if let u = LogedUserHandler.retrieve(), var cards = u.cards, let idx = cards.index(where: { (card) -> Bool in
+				return card.identifier! == cardIdentifier
+			}) {
+				cards.remove(at: idx)
+				LogedUserHandler.save(user: u)
+			}
             onResponse(resp)
         }.resume()
-        
+		
+
     }
 }
