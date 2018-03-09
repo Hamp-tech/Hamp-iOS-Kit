@@ -55,7 +55,7 @@ extension Hamp {
         
         // Restore
         
-        private static func setCurrentUser(response: Response<User>) {
+        internal static func setCurrentUser(response: Response<User>) {
             if let u = response.data {
                 let ud = UserDefaults.standard
                 ud.set(u.json, forKey: Schemes.UserDefaults.currentUser)
@@ -68,7 +68,10 @@ extension Hamp {
     public struct Users {
         // Update user
         public static func update(user: User, onResponse: @escaping onResponse<User>) {
-            userRequester.update(user: user, onResponse: onResponse)
+			userRequester.update(user: user) { response in
+				response.data = user
+				Hamp.Auth.setCurrentUser(response: response)
+			}
         }
         
         // Create credit card
