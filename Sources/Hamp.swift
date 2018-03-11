@@ -32,9 +32,11 @@ extension Hamp {
             authRequester.signUp(user: user, onResponse: onResponse)
         }
         
-        public static var user: User? = {
-            return LogedUserHandler.retrieve()
-        }()
+        public static var user: User? {
+            get {
+                return LogedUserHandler.retrieve()
+            }
+        }
         
         public static func logout() {
             let ud = UserDefaults.standard
