@@ -19,9 +19,9 @@ public class User: Objectable {
 	public var phone: String?
 	public var birthday: String?
 	public var gender: String?
-	var tokenFCM: String?
-	var os: String?
-	var language: String?
+	public var tokenFCM: String?
+	public var os: String?
+	public var language: String?
 	public var cards: [CreditCard]?
 	
 	private var validator = Validator()
