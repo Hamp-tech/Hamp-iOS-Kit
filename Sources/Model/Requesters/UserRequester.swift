@@ -26,7 +26,11 @@ internal struct UserRequester: Requestable {
             }
             
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<User>.self, from: d)
-			LogedUserHandler.save(user: user)
+            
+            if resp.code == .ok, let u = resp.data {
+                LogedUserHandler.save(user: u)
+            }
+            
             onResponse(resp)
         }.resume()
     }
