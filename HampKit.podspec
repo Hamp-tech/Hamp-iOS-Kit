@@ -13,10 +13,4 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/Hamp-tech/Hamp-iOS-Kit.git", :tag => s.version }
   s.source_files = "Sources/**/*.{swift}"
-  s.resources = 'Assets/GoogleService-Info.plist'
-
-  s.dependency 'FirebaseCommunity'
-  s.dependency 'FirebaseCommunity/Auth'
-  s.dependency 'FirebaseCommunity/Database'
-  s.dependency 'Alamofire'
 end
