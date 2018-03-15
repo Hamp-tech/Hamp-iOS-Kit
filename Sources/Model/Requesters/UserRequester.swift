@@ -42,12 +42,15 @@ internal struct UserRequester: Requestable {
                 onResponse(Response<CreditCard>(code: .internalError, message: error!.localizedDescription))
                 return
             }
-			
-			let user = LogedUserHandler.retrieve()
-			user?.cards?.append(card)
-			LogedUserHandler.save(user: user)
-			
+            
             let resp = try! Singletons.sharedJSONDecoder.decode(Response<CreditCard>.self, from: d)
+            
+            if resp.code == .ok {
+                let user = LogedUserHandler.retrieve()
+                user?.cards?.append(resp.data!)
+                LogedUserHandler.save(user: user)
+            }
+            
             onResponse(resp)
         }.resume()
     }
