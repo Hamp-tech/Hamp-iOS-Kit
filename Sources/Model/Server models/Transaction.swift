@@ -21,13 +21,14 @@ public class Transaction: Objectable {
     public init(identifier: String? = nil,
          userID: String? = nil,
          booking: Booking? = nil,
-         creditCardIdentifier: String? = nil,
+         creditCard: CreditCard? = nil,
          pickUpDate: String? = nil,
          deliveryDate: String? = nil,
          created: String? = nil) {
         self.identifier = identifier
         self.userID = userID
         self.booking = booking
+        self.creditCard = creditCard
         self.pickUpDate = pickUpDate
         self.deliveryDate = deliveryDate
         self.created = created
