@@ -24,6 +24,7 @@ struct Schemes {
 	
 	struct Transaction {
 		static let createTransaction = baseURL + "/users/{pid}/transactions"
+		static let transaction = baseURL + "/users/{pid}/transactions/{tid}"
 		static let userTransactions = baseURL + "/users/{pid}/transactions"
 		static let deliver = baseURL + "/users/{pid}/transactions/{tid}/deliver"
 	}

@@ -73,6 +73,10 @@ extension Hamp {
         public static func createTransaction(transaction: Transaction, onResponse: @escaping onResponse<Transaction>) {
             transactionsRequester.createTransaction(transaction: transaction, onResponse: onResponse)
         }
+		
+		public static func transaction(transactionID: String, onResponse: @escaping onResponse<Transaction>) {
+			transactionsRequester.transaction(userID: "", transactionID: transactionID, onResponse: onResponse)
+		}
         
         // All transactions
         public static func transactions(userID: String, onResponse: @escaping onResponse<[Transaction]>) {
