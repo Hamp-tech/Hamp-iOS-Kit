@@ -33,7 +33,7 @@ internal struct TransactionsRequester: Requestable {
 	func transaction(userID: String,
 					 transactionID: String,
 					 onResponse: @escaping onResponse<Transaction>) {
-		let request = URLRequest.GET(Schemes.Transaction.deliver.replace(["{pid}": userID, "{tid}": transactionID]).url)
+		let request = URLRequest.GET(Schemes.Transaction.transaction.replace(["{pid}": userID, "{tid}": transactionID]).url)
 		
 		session.dataTask(with: request) { (data, _, error) in
 			guard let d = data else {
