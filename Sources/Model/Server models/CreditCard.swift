@@ -77,9 +77,11 @@ public struct CreditCard: Objectable {
         }
         
         let monthValidation = Validation.init(validable: {
-            return !(Int(self.expYear!) + 2000 == Date.currentYear() && self.expMonth! < Date.currentMonth())
+            return (Int(self.expYear!) + 2000 == Date.currentYear() && self.expMonth! >= Date.currentMonth()) || (Int(self.expYear!) + 2000 > Date.currentYear() && self.expMonth! <= 12)
         }) { (validated) in
-            if !validated {throw CreditCardError.invalidMonth}
+            if !validated {
+                throw CreditCardError.invalidMonth
+            }
         }
         
         let missingCVVValidation = Validation.init(validable: {

@@ -17,7 +17,6 @@ class CreditCardTests: XCTestCase {
             try creditCard.validate()
             XCTAssertTrue(true);
         } catch let error {
-            print ("ERROROROEROEOROEROEOREOROOEROEOREOR", (error as! CreditCardError).description)
             XCTAssertTrue(false)
         }
     }
@@ -67,6 +66,14 @@ class CreditCardTests: XCTestCase {
     
     func testIncorrectMonth () {
         let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 1, expYear: 18)
+        
+        XCTAssertThrowsError(try creditCard.validate()) { (error) in
+            XCTAssertEqual((error as! CreditCardError).description, CreditCardError.invalidMonth.description)
+        }
+    }
+    
+    func testIncorrectMonthBiggerThanTwelve () {
+        let creditCard = CreditCard.init(name: "Elon Musk", number: "4511472314229113",expMonth: 13, expYear: 19)
         
         XCTAssertThrowsError(try creditCard.validate()) { (error) in
             XCTAssertEqual((error as! CreditCardError).description, CreditCardError.invalidMonth.description)
